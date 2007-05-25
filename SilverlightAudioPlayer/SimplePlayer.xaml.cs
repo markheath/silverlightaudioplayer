@@ -29,7 +29,7 @@ namespace SilverlightAudioPlayer
             rightSection.MouseLeftButtonDown += new MouseEventHandler(rightSection_MouseLeftButtonDown);
             try
             {
-                mediaElement.Source = new Uri("tentpeg.mp3",UriKind.Relative);
+                mediaElement.Source = new Uri("markheath+youhavealwaysgiven.mp3",UriKind.Relative);
 
                 //mediaElement.Source = new Uri("http://www.wordandspirit.co.uk/music/tentpeg.mp3");
             }
@@ -93,9 +93,10 @@ namespace SilverlightAudioPlayer
 
         void mediaElement_MediaOpened(object sender, EventArgs e)
         {
+            audioPositionSlider.Duration = mediaElement.NaturalDuration.TimeSpan;
             trackNameTextBlock.Text = FindTrackName();
             TimeSpan duration = mediaElement.NaturalDuration.TimeSpan;
-            timeTextBlock.Text = String.Format("{0:02}:{1:02}:{2:02}",
+            timeTextBlock.Text = String.Format("{0:00}:{1:00}:{2:00}",
                 duration.Hours,
                 duration.Minutes,
                 duration.Seconds);
@@ -114,8 +115,7 @@ namespace SilverlightAudioPlayer
 
         void mediaElement_DownloadProgressChanged(object sender, EventArgs e)
         {
-            downloadProgressRectangle.Width = positionBar.Width *
-                mediaElement.DownloadProgress;
+            audioPositionSlider.DownloadPercent = mediaElement.DownloadProgress;
         }
 
         void mediaElement_CurrentStateChanged(object sender, EventArgs e)
@@ -138,11 +138,7 @@ namespace SilverlightAudioPlayer
 
         private void ShowProgress()
         {
-            positionIndicator.SetValue<double>(Canvas.LeftProperty,
-                (double)downloadProgressRectangle.GetValue(Canvas.LeftProperty) + 
-                (downloadProgressRectangle.Width - positionIndicator.Width) *
-                (mediaElement.Position.TotalMilliseconds / mediaElement.NaturalDuration.TimeSpan.TotalMilliseconds)
-                - 5);
+            audioPositionSlider.Position = mediaElement.Position;
         }
 
         void mediaElement_BufferingProgressChanged(object sender, EventArgs e)

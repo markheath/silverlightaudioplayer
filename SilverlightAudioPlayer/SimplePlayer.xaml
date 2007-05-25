@@ -1,6 +1,11 @@
-﻿<Canvas x:Name="parentCanvas"
+﻿<!-- doesn't seem to work
+       --> 
+
+<Canvas x:Name="parentCanvas"
         xmlns="http://schemas.microsoft.com/client/2007"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:my="clr-namespace:SilverlightAudioPlayer;assembly=ClientBin/SilverlightAudioPlayer.dll"
+
         Loaded="Page_Loaded"
         x:Class="SilverlightAudioPlayer.SimplePlayer;assembly=ClientBin/SilverlightAudioPlayer.dll"
         Width="120"
@@ -70,9 +75,12 @@
   <Canvas x:Name="MidCanvas" Background="LightBlue" Canvas.Top="5" Canvas.Left="120" Width="500" Height="100">  
     <TextBlock x:Name="trackNameTextBlock" Canvas.Left="60" Canvas.Top="5" Text="Track Title / Artist Name Label" />
     <TextBlock x:Name="timeTextBlock" Canvas.Left="330" Canvas.Top="5" Text="00:05:13" />
+    <my:AudioPositionSlider x:Name="audioPositionSlider" Canvas.Left="55" Canvas.Top="55" Width="350" Height="30"/>
+<!--
     <Rectangle x:Name="downloadProgressRectangle" Fill="Blue" Opacity="0.2" Canvas.Left="60" Canvas.Top="60" RadiusX="3" RadiusY="3"  Width="120" Height="20" />
     <Rectangle x:Name="positionBar" Stroke="Black" StrokeThickness="3" Canvas.Left="60" Canvas.Top="60" RadiusX="3" RadiusY="3"  Width="340" Height="20" />
     <Rectangle x:Name="positionIndicator" Fill="Gray" Canvas.Left="55" Canvas.Top="55" RadiusX="3" RadiusY="3"  Width="50" Height="30" Opacity="0.6" />
+    -->
   </Canvas>
 
   <Canvas x:Name="LeftCanvas" Canvas.Top="5" Canvas.Left="5" >

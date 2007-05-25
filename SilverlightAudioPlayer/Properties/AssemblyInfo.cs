@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SilverlightAudioPlayer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("NICE")]
+[assembly: AssemblyCompany("Mark Heath")]
 [assembly: AssemblyProduct("SilverlightAudioPlayer")]
-[assembly: AssemblyCopyright("Copyright © NICE 2007")]
+[assembly: AssemblyCopyright("Copyright © Mark Heath 2007")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,5 +31,10 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("0.1.0.0")]
+[assembly: AssemblyFileVersion("0.1.0.0")]
+
+// v0.1 25 May 2007
+// very basic version can play and pause
+// v0.2 
+// created an AudioPositionSlider control
