@@ -1,0 +1,107 @@
+﻿<Canvas x:Name="parentCanvas"
+        xmlns="http://schemas.microsoft.com/client/2007"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Loaded="Page_Loaded"
+        x:Class="SilverlightAudioPlayer.SimplePlayer;assembly=ClientBin/SilverlightAudioPlayer.dll"
+        Width="120"
+        Height="700"
+        Background="White"
+        >
+  <Canvas.RenderTransform>
+    <TransformGroup>
+      <ScaleTransform ScaleX="1" ScaleY="1" />
+    </TransformGroup>
+  </Canvas.RenderTransform>
+
+  <Canvas.Resources>
+    <Storyboard x:Name="expandPlayer">
+      <DoubleAnimation Storyboard.TargetName="RightCanvas" Storyboard.TargetProperty="(Canvas.Left)"
+      To="550" Duration="0:0:1" />
+      <DoubleAnimation Storyboard.TargetName="MidCanvas" Storyboard.TargetProperty="Width"
+      To="500" Duration="0:0:1" />
+      <DoubleAnimation Storyboard.TargetName="MidCanvas" Storyboard.TargetProperty="Opacity"
+      To="1" Duration="0:0:1" />
+    </Storyboard>
+
+    <Storyboard x:Name="collapsePlayer">
+      <DoubleAnimation Storyboard.TargetName="RightCanvas" Storyboard.TargetProperty="(Canvas.Left)"
+      To="120" Duration="0:0:1" />
+      <DoubleAnimation Storyboard.TargetName="MidCanvas" Storyboard.TargetProperty="Width"
+      To="100" Duration="0:0:1" />
+      <DoubleAnimation Storyboard.TargetName="MidCanvas" Storyboard.TargetProperty="Opacity"
+      To="0" Duration="0:0:1" />
+    </Storyboard>
+
+    <Storyboard x:Name="positionUpdate">
+      <DoubleAnimation Duration="0:0:0.5" />
+    </Storyboard>
+
+            <Storyboard x:Name="soundAnimation">
+
+
+              <DoubleAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetName="Sound1" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" >
+                <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                <LinearDoubleKeyFrame KeyTime="0:0:0.4" Value="1" />
+                <LinearDoubleKeyFrame KeyTime="0:0:0.8" Value="0" />
+              </DoubleAnimationUsingKeyFrames>
+
+              <DoubleAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetName="Sound2" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" >
+                <LinearDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
+                <LinearDoubleKeyFrame KeyTime="0:0:0.6" Value="1" />
+                <LinearDoubleKeyFrame KeyTime="0:0:1.0" Value="0" />
+              </DoubleAnimationUsingKeyFrames>
+
+              <DoubleAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetName="Sound3" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" >
+                <LinearDoubleKeyFrame KeyTime="0:0:0.4" Value="0" />
+                <LinearDoubleKeyFrame KeyTime="0:0:0.8" Value="1" />
+                <LinearDoubleKeyFrame KeyTime="0:0:1.2" Value="0" />
+              </DoubleAnimationUsingKeyFrames>
+
+              <DoubleAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetName="Sound4" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" >
+                <LinearDoubleKeyFrame KeyTime="0:0:0.6" Value="0" />
+                <LinearDoubleKeyFrame KeyTime="0:0:1.0" Value="1" />
+                <LinearDoubleKeyFrame KeyTime="0:0:1.4" Value="0" />
+              </DoubleAnimationUsingKeyFrames>
+              
+            </Storyboard>
+
+  </Canvas.Resources>
+
+  <Canvas x:Name="MidCanvas" Background="LightBlue" Canvas.Top="5" Canvas.Left="120" Width="500" Height="100">  
+    <TextBlock x:Name="trackNameTextBlock" Canvas.Left="60" Canvas.Top="5" Text="Track Title / Artist Name Label" />
+    <TextBlock x:Name="timeTextBlock" Canvas.Left="330" Canvas.Top="5" Text="00:05:13" />
+    <Rectangle x:Name="downloadProgressRectangle" Fill="Blue" Opacity="0.2" Canvas.Left="60" Canvas.Top="60" RadiusX="3" RadiusY="3"  Width="120" Height="20" />
+    <Rectangle x:Name="positionBar" Stroke="Black" StrokeThickness="3" Canvas.Left="60" Canvas.Top="60" RadiusX="3" RadiusY="3"  Width="340" Height="20" />
+    <Rectangle x:Name="positionIndicator" Fill="Gray" Canvas.Left="55" Canvas.Top="55" RadiusX="3" RadiusY="3"  Width="50" Height="30" Opacity="0.6" />
+  </Canvas>
+
+  <Canvas x:Name="LeftCanvas" Canvas.Top="5" Canvas.Left="5" >
+    <Path x:Name="LeftSection" Stroke="Black" StrokeThickness="5" Fill="LightGray"
+    Data="M 50 0 h 60 l 50 50 l -50 50 h -60 a 20,20 0 0 1 -20,-20 v -60 a 20,20 0 0 1 20,-20"
+/>
+    <Path x:Name="Speaker" Stroke="Black" StrokeThickness="5" Data="M 50 40 l 0 20 l 10 0 l 10,10 l 0,-40 l -10,10 Z" />
+
+    <MediaElement x:Name="mediaElement" AutoPlay="False" />
+    
+    <Canvas x:Name="animatedSound" Visibility="Collapsed">
+      <Rectangle x:Name="Sound1" Fill="Gray" Canvas.Left="78" Canvas.Top="40" Width="8" Height="20" Opacity="0" />
+      <Rectangle x:Name="Sound2" Fill="Gray" Canvas.Left="88" Canvas.Top="37" Width="8" Height="26" Opacity="0" />
+      <Rectangle x:Name="Sound3" Fill="Gray" Canvas.Left="98" Canvas.Top="34" Width="8" Height="32" Opacity="0" />
+      <Rectangle x:Name="Sound4" Fill="Gray" Canvas.Left="108" Canvas.Top="31" Width="8" Height="38" Opacity="0" />
+
+
+    </Canvas>
+
+  </Canvas>
+
+  <Canvas x:Name="RightCanvas" Canvas.Top="5" Canvas.Left="550" >
+
+
+
+    <Path x:Name="rightSection" Stroke="Black" StrokeThickness="5" Fill="#C0C0C0"
+    Data="M 0 0 h 100 a 20,20 0 0 1 20,20 v 60 a 20,20 0 0 1 -20,20 h -100 l 50, -50 Z"
+/>
+  </Canvas>
+
+
+</Canvas>
