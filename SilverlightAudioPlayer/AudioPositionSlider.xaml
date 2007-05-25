@@ -1,0 +1,10 @@
+﻿<Canvas xmlns="http://schemas.microsoft.com/client/2007" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        Width="130"
+        Height="30"
+        >
+    <Rectangle x:Name="downloadProgressRectangle" Fill="Blue" Opacity="0.2" Canvas.Left="5" Canvas.Top="5" RadiusX="3" RadiusY="3"  Width="120" Height="20" />
+    <Rectangle x:Name="positionBarRectangle" Stroke="Black" StrokeThickness="3" Canvas.Left="5" Canvas.Top="5" RadiusX="3" RadiusY="3"  Width="340" Height="20" />
+    <Rectangle x:Name="positionIndicatorRectangle" Fill="Gray" Canvas.Left="0" Canvas.Top="0" RadiusX="3" RadiusY="3"  Width="50" Height="30" Opacity="0.6" />
+
+</Canvas>
