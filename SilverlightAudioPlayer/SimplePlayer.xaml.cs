@@ -29,8 +29,8 @@ namespace SilverlightAudioPlayer
             rightSection.MouseLeftButtonDown += new MouseEventHandler(rightSection_MouseLeftButtonDown);
             try
             {
-                mediaElement.Source = new Uri("markheath+youhavealwaysgiven.mp3",UriKind.Relative);
-
+                //tentpeg.mp3, markheath+youhavealwaysgiven.mp3
+                mediaElement.Source = new Uri("tentpeg.mp3",UriKind.Relative);
                 //mediaElement.Source = new Uri("http://www.wordandspirit.co.uk/music/tentpeg.mp3");
             }
             catch (Exception ex)
