@@ -5,7 +5,7 @@
         xmlns="http://schemas.microsoft.com/client/2007"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:my="clr-namespace:SilverlightAudioPlayer;assembly=ClientBin/SilverlightAudioPlayer.dll"
-
+        xmlns:gui="clr-namespace:Silverlight.Samples.Controls;assembly=ClientBin/Silverlight.Samples.Controls.dll"
         Loaded="Page_Loaded"
         x:Class="SilverlightAudioPlayer.SimplePlayer;assembly=ClientBin/SilverlightAudioPlayer.dll"
         Width="120"
@@ -20,7 +20,7 @@
 
   <Canvas.Resources>
     <Storyboard x:Name="expandPlayer">
-      <DoubleAnimation Storyboard.TargetName="RightCanvas" Storyboard.TargetProperty="(Canvas.Left)"
+      <DoubleAnimation Storyboard.TargetName="rightCanvas" Storyboard.TargetProperty="(Canvas.Left)"
       To="550" Duration="0:0:0.5" />
       <!--<DoubleAnimation Storyboard.TargetName="MidCanvas" Storyboard.TargetProperty="Width"
       To="500" Duration="0:0:1" />
@@ -33,7 +33,7 @@
     </Storyboard>
 
     <Storyboard x:Name="collapsePlayer">
-      <DoubleAnimation Storyboard.TargetName="RightCanvas" Storyboard.TargetProperty="(Canvas.Left)"
+      <DoubleAnimation Storyboard.TargetName="rightCanvas" Storyboard.TargetProperty="(Canvas.Left)"
       To="120" Duration="0:0:0.5" />
       <!--<DoubleAnimation Storyboard.TargetName="MidCanvas" Storyboard.TargetProperty="Width"
       To="100" Duration="0:0:1" />
@@ -85,7 +85,7 @@
       <!-- A little bit overkill, but there really seems to be no way of
       animating the size of a clip rectangle (i.e. no RectAnimation) -->
       <PathGeometry> 
-        <PathFigure IsClosed="true">
+        <PathFigure IsClosed="True">
           <LineSegment Name="seg1" Point="0,0"/> 
           <LineSegment Name="seg2" Point="500,0"/>
           <LineSegment Name="seg3" Point="500,100"/> 
@@ -95,6 +95,7 @@
     </Canvas.Clip> 
     <TextBlock x:Name="trackNameTextBlock" Canvas.Left="60" Canvas.Top="5" Text="Track Title / Artist Name Label" />
     <TextBlock x:Name="timeTextBlock" Canvas.Left="330" Canvas.Top="5" Text="00:05:13" />
+    <gui:ProgressSlider x:Name="slider2" Canvas.Left="55" Canvas.Top="35" Width="350" Height="20"/>
     <my:AudioPositionSlider x:Name="audioPositionSlider" Canvas.Left="55" Canvas.Top="55" Width="350" Height="30"/>
 <!--
     <Rectangle x:Name="downloadProgressRectangle" Fill="Blue" Opacity="0.2" Canvas.Left="60" Canvas.Top="60" RadiusX="3" RadiusY="3"  Width="120" Height="20" />
@@ -122,13 +123,15 @@
 
   </Canvas>
 
-  <Canvas x:Name="RightCanvas" Canvas.Top="5" Canvas.Left="550" >
-
+  <Canvas x:Name="rightCanvas" Canvas.Top="5" Canvas.Left="550" Width="200" Height="100">
 
 
     <Path x:Name="rightSection" Stroke="Black" StrokeThickness="5" Fill="#C0C0C0"
-    Data="M 0 0 h 100 a 20,20 0 0 1 20,20 v 60 a 20,20 0 0 1 -20,20 h -100 l 50, -50 Z"
-/>
+      Data="M 0 0 h 100 a 20,20 0 0 1 20,20 v 60 a 20,20 0 0 1 -20,20 h -100 l 50, -50 Z"/>
+    <Path x:Name="playIcon" Stroke="Black" StrokeThickness="5" StrokeLineJoin="Round" Fill="#C0C0C0"
+      Data="M 70 30 l 20, 20 l -20,20 Z"/>
+
+
   </Canvas>
 
 
