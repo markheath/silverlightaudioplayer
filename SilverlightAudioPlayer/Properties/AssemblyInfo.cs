@@ -31,10 +31,17 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.1.0.0")]
-[assembly: AssemblyFileVersion("0.1.0.0")]
+[assembly: AssemblyVersion("0.3.0.0")]
+[assembly: AssemblyFileVersion("0.3.0.0")]
 
 // v0.1 25 May 2007
 // very basic version can play and pause
 // v0.2 
 // created an AudioPositionSlider control
+// v0.3 31 May 2007
+// finally got collapsing working correctly
+
+// Tasks:
+// A play and pause icon
+// Slider should be movable with mouse
+// Control to display track title and author
