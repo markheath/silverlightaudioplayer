@@ -42,9 +42,7 @@
     <Reference Include="system.silverlight" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AudioPositionSlider.xaml.cs">
-      <DependentUpon>AudioPositionSlider.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="IAudioPlayer.cs" />
     <Compile Include="SimplePlayer.xaml.cs">
       <DependentUpon>SimplePlayer.xaml</DependentUpon>
     </Compile>
@@ -61,9 +59,6 @@
       <DependentUpon>TestPage.html</DependentUpon>
     </None>
     <None Include="Silverlight.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="AudioPositionSlider.xaml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SilverlightUIControls\SilverlightUIControls.csproj">
