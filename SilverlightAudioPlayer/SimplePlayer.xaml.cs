@@ -12,6 +12,8 @@ namespace SilverlightAudioPlayer
 {
     public partial class SimplePlayer : Canvas
     {
+        private bool showingProgress;
+
         public void Page_Loaded(object o, EventArgs e)
         {
             // Required to initialize variables
@@ -27,6 +29,7 @@ namespace SilverlightAudioPlayer
             rightSection.MouseEnter += new MouseEventHandler(rightSection_MouseEnter);
             rightSection.MouseLeave += new EventHandler(rightSection_MouseLeave);
             rightSection.MouseLeftButtonDown += new MouseEventHandler(rightSection_MouseLeftButtonDown);
+            slider2.ValueChanged += new EventHandler(slider2_ValueChanged);
             try
             {
                 //tentpeg.mp3, markheath+youhavealwaysgiven.mp3
@@ -38,6 +41,14 @@ namespace SilverlightAudioPlayer
                 trackNameTextBlock.Text = ex.Message;
             }
             mediaElement_DownloadProgressChanged(this, EventArgs.Empty);
+        }
+
+        void slider2_ValueChanged(object sender, EventArgs e)
+        {
+            if (!showingProgress)
+            {
+                mediaElement.Position = TimeSpan.FromMilliseconds(slider2.Value);
+            }
         }
 
         void rightSection_MouseLeftButtonDown(object sender, MouseEventArgs e)
@@ -94,6 +105,7 @@ namespace SilverlightAudioPlayer
         void mediaElement_MediaOpened(object sender, EventArgs e)
         {
             audioPositionSlider.Duration = mediaElement.NaturalDuration.TimeSpan;
+            slider2.Range = new Silverlight.Samples.Controls.ValueRange(0, mediaElement.NaturalDuration.TimeSpan.TotalMilliseconds);
             trackNameTextBlock.Text = FindTrackName();
             TimeSpan duration = mediaElement.NaturalDuration.TimeSpan;
             timeTextBlock.Text = String.Format("{0:00}:{1:00}:{2:00}",
@@ -105,17 +117,22 @@ namespace SilverlightAudioPlayer
 
         void mediaElement_MediaFailed(object sender, ErrorEventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("Media Failed {0}", e);
+
             trackNameTextBlock.Text = e.ErrorMessage;
         }
 
         void mediaElement_MediaEnded(object sender, EventArgs e)
         {
-            // TODO
+            System.Diagnostics.Debug.WriteLine("Media Ended");
+            mediaElement_CurrentStateChanged(sender, e);
         }
 
-        void mediaElement_DownloadProgressChanged(object sender, EventArgs e)
+        void mediaElement_DownloadProgressChanged(object sender, EventArgs args)
         {
+            System.Diagnostics.Debug.WriteLine("Download Progress {0}", mediaElement.DownloadProgress);
             audioPositionSlider.DownloadPercent = mediaElement.DownloadProgress;
+            slider2.DownloadPercent = mediaElement.DownloadProgress;
         }
 
         void mediaElement_CurrentStateChanged(object sender, EventArgs e)
@@ -138,7 +155,16 @@ namespace SilverlightAudioPlayer
 
         private void ShowProgress()
         {
-            audioPositionSlider.Position = mediaElement.Position;
+            try
+            {
+                showingProgress = true;
+                audioPositionSlider.Position = mediaElement.Position;
+                slider2.Value = mediaElement.Position.TotalMilliseconds;
+            }
+            finally
+            {
+                showingProgress = false;
+            }
         }
 
         void mediaElement_BufferingProgressChanged(object sender, EventArgs e)

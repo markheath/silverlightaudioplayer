@@ -4,19 +4,19 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.20404</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{83286BD8-4538-4195-9386-4E21F4F63B0B}</ProjectGuid>
+    <ProjectGuid>{6ED3BB00-78FB-4967-B61A-128B3C0594DC}</ProjectGuid>
     <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SilverlightAudioPlayer</RootNamespace>
-    <AssemblyName>SilverlightAudioPlayer</AssemblyName>
+    <RootNamespace>Silverlight.Samples.Controls</RootNamespace>
+    <AssemblyName>Silverlight.Samples.Controls</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>ClientBin\</OutputPath>
+    <OutputPath>.\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
@@ -38,38 +38,72 @@
     <Reference Include="mscorlib" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
-    <Reference Include="system.Xml.core" />
     <Reference Include="system.silverlight" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AudioPositionSlider.xaml.cs">
-      <DependentUpon>AudioPositionSlider.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SimplePlayer.xaml.cs">
-      <DependentUpon>SimplePlayer.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Buttons\Button.cs" />
+    <Compile Include="Buttons\ButtonBase.cs" />
+    <Compile Include="Buttons\ProgressThumb.cs" />
+    <Compile Include="Buttons\GripThumb.cs" />
+    <Compile Include="Buttons\RepeatButton.cs" />
+    <Compile Include="Buttons\Thumb.cs" />
+    <Compile Include="Common\ControlBase.cs" />
+    <Compile Include="Common\ControlException.cs" />
+    <Compile Include="Common\ValueRange.cs" />
+    <Compile Include="ListSelection\ListBox.cs" />
+    <Compile Include="Navigation\ScrollBar.cs" />
+    <Compile Include="Navigation\ScrollBarTrack.cs" />
+    <Compile Include="Navigation\ScrollViewer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RangeSelection\ProgressSlider.cs" />
+    <Compile Include="RangeSelection\Slider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <SilverlightPage Include="SimplePlayer.xaml">
+    <EmbeddedResource Include="Buttons\Button.xaml">
       <Generator>MSBuild:CompileXaml</Generator>
-    </SilverlightPage>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buttons\GripThumb.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buttons\RepeatButton.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buttons\Thumb.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="TestPage.html" />
-    <None Include="TestPage.html.js">
-      <DependentUpon>TestPage.html</DependentUpon>
-    </None>
-    <None Include="Silverlight.js" />
+    <EmbeddedResource Include="ListSelection\ListBox.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AudioPositionSlider.xaml" />
+    <EmbeddedResource Include="Navigation\ScrollBar.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Navigation\ScrollViewer.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SilverlightUIControls\SilverlightUIControls.csproj">
-      <Project>{6ED3BB00-78FB-4967-B61A-128B3C0594DC}</Project>
-      <Name>SilverlightUIControls</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="RangeSelection\Slider.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Navigation\ScrollBarTrack.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="RangeSelection\ProgressSlider.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Buttons\ProgressThumb.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\Silverlight\Microsoft.Silverlight.Csharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

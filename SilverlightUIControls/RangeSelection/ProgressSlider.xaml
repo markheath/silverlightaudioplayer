@@ -1,0 +1,56 @@
+﻿<Canvas xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' 
+        xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml' 
+        xmlns:uicontrol='clr-namespace:Silverlight.Samples.Controls;assembly=ClientBin/Silverlight.Samples.Controls.dll'
+        Width='200'
+        Height='20'
+        >
+  
+  <Rectangle 
+    x:Name="downloadProgressRectangle" 
+    Fill="Blue" 
+    Opacity="0.2" 
+    Canvas.Left="5" 
+    Canvas.Top="5" 
+    RadiusX="3" 
+    RadiusY="3" 
+    Width="100" 
+    Height="10" />
+
+  
+  <Rectangle 
+    x:Name="positionBarRectangle" 
+    Stroke="Black" 
+    StrokeThickness="3" 
+    Canvas.Left="5" 
+    Canvas.Top="5" 
+    RadiusX="3" 
+    RadiusY="3" 
+    Width="190" 
+    Height="10" />
+  
+  <!-- The slider track outline 
+  <Rectangle Width='200' Height='14' x:Name='slideroutline' RadiusX="7" RadiusY="7">
+    <Rectangle.Fill>
+      <LinearGradientBrush MappingMode="RelativeToBoundingBox" StartPoint="0,-0.125" EndPoint="0,1">
+        <GradientStop Offset="0.000000" Color="#ffffffff"/>
+        <GradientStop Offset="0.455056" Color="#ffbfbdba"/>
+        <GradientStop Offset="1.000000" Color="#ff807b76"/>
+      </LinearGradientBrush>
+    </Rectangle.Fill>
+  </Rectangle> -->
+
+  <!-- The slider track inside 
+  <Rectangle Width='190' Height='11' x:Name='sliderTrack' RadiusX="5.5" RadiusY="5.5" Canvas.Top="1.5" Canvas.Left="5">
+    <Rectangle.Fill>
+      <LinearGradientBrush MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Offset="0.455056" Color="#ffc9ecfa"/>
+        <GradientStop Offset="1.000000" Color="#ff93daf6"/>
+        <GradientStop Color="#FFF4FBFE" Offset="0"/>
+      </LinearGradientBrush>
+    </Rectangle.Fill>
+  </Rectangle> -->
+
+  <!-- The thumb element must have name "thumb" -->
+  <uicontrol:ProgressThumb x:Name="thumb" DragStart="OnDragStart" DragDelta="OnDragDelta" />
+</Canvas>
+

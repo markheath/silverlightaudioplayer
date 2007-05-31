@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SilverlightAudioPlayer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("SilverlightUIControls")]
+[assembly: AssemblyDescription("Sample UI Controls for Microsoft Silverlight.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Mark Heath")]
-[assembly: AssemblyProduct("SilverlightAudioPlayer")]
-[assembly: AssemblyCopyright("Copyright © Mark Heath 2007")]
+[assembly: AssemblyCompany("Microsoft Corp.")]
+[assembly: AssemblyProduct("SilverlightUIControls")]
+[assembly: AssemblyCopyright("Copyright © Microsoft Corp. 2007")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,21 +31,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.3.0.0")]
-[assembly: AssemblyFileVersion("0.3.0.0")]
-
-// v0.1 25 May 2007
-// very basic version can play and pause
-// v0.2 
-// created an AudioPositionSlider control
-// v0.3 31 May 2007
-// finally got collapsing working correctly
-// imported the Silverlight Sample Controls project to use as base classes
-// Created a progress slider control based on the sample slider
-// Added a basic play button icon
-
-// Tasks:
-// A play and pause icon - get working right
-// Fix slider range - not quite right at the end
-// Control to display track title and author
-// Consider fading out volume on pause & fading in on play
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
