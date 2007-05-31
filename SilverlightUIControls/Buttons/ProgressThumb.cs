@@ -17,12 +17,16 @@ namespace Silverlight.Samples.Controls {
     // horizontal or vertical direction and sends DragStart, DragEnd, DragDelta events. It also 
     // a Value propertie (set and get) which represents the offset of 
     // the Thumb from its initial position. 
-    public class ProgressThumb : Thumb {
+    public class ProgressThumb : Thumb 
+    {
 
+        FrameworkElement jewel;
         #region Public Methods
 
         public ProgressThumb()
         {
+            jewel = FindName("jewel") as FrameworkElement;
+            
         }
 
         #endregion Public Methods
@@ -33,6 +37,15 @@ namespace Silverlight.Samples.Controls {
             base.OnMouseMove(sender,args);
         }
 
+        protected override void UpdateLayout()
+        {
+            if (jewel != null)
+            {
+                jewel.Width = Width;
+                jewel.Height = Height;
+            }
+            base.UpdateLayout();
+        }
 
         #region Protected Properties
 

@@ -33,14 +33,14 @@ namespace Silverlight.Samples.Controls {
             Debug.Assert(thumb != null, "Thumb not found");
             sliderTrack = FindName("sliderTrack") as FrameworkElement;
             if (sliderTrack != null) {
-                size = sliderTrack.Width;
+                movingSize = sliderTrack.Width;
                 //set the thumb at the beginning of the sliderTrack
                 Thumb.SetValue(Canvas.LeftProperty, (double)(sliderTrack.GetValue(Canvas.LeftProperty)));
             } else {
-                size = Width;
+                movingSize = Width;
             }
 
-            Debug.Assert (size > thumb.Width, "The slider is smaller than the Thumb");
+            Debug.Assert (movingSize > thumb.Width, "The slider is smaller than the Thumb");
             Thumb.SetValue(Canvas.TopProperty, (Height - Thumb.Height) / 2);
 
             currentValue = lastValue = range.Min;
@@ -122,19 +122,33 @@ namespace Silverlight.Samples.Controls {
             double currDelta = range.Range == 0 ? 0 : Width / range.Range * (currentValue - range.Min);
             currentValue = lastValue = currDelta / Width * (newRange.Max - newRange.Min) + newRange.Min;
             range = newRange;
+            UpdateMovingSize();
         }
 
         //We need to update MovingSize if the Width chnges
         protected override void UpdateLayout()
         {
             base.UpdateLayout();
-            if (sliderTrack != null) {
-                double shrink = (double)(sliderTrack.GetValue(Canvas.LeftProperty));
-                sliderTrack.Width = size = Width - 2 * shrink;
-            } else {
-                size = Width;
-            }
+            Thumb.SetValue(Canvas.TopProperty, (Height - Thumb.Height) / 2);
+            UpdateMovingSize();
         }
+
+        private void UpdateMovingSize()
+        {
+            if (sliderTrack != null)
+            {
+                double shrink = (double)(sliderTrack.GetValue(Canvas.LeftProperty));
+                sliderTrack.Width = movingSize = Width - 2 * shrink;
+            }
+            else
+            {
+                movingSize = Width - Thumb.Width;
+            }
+
+        }
+
+
+        
 
         #endregion Protected Methods
 
@@ -163,13 +177,12 @@ namespace Silverlight.Samples.Controls {
             if (range.Range == 0)
                 return;
 
-            double thumbValue = thumb.Width / size * range.Range;
             if (currentValue < range.Min)
                 currentValue = range.Min;
-            if (currentValue > range.Max - thumbValue)
-                currentValue = range.Max - thumbValue;
-
-            double newDelta = size / range.Range * (currentValue - lastValue);
+            if (currentValue > range.Max)
+                currentValue = range.Max;
+            
+            double newDelta = movingSize / range.Range * (currentValue - lastValue);
             if (newDelta != 0.0) {
                 thumb.Move(newDelta);
                 lastValue = currentValue;
@@ -189,7 +202,7 @@ namespace Silverlight.Samples.Controls {
         private double lastValue = 0; //current position of the Thumb
         private double currentValue = 0; //the current value
         private ValueRange range = new ValueRange(0, 0); //the slider value range
-        private double size = 0;  //the pixel size of the slider (Width - thumb.Width)
+        private double movingSize = 0;  //the pixel size of the slider (Width - thumb.Width)
         private FrameworkElement sliderTrack = null; //the track that control slider movement
 
         #endregion Data

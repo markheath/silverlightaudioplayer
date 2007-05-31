@@ -66,6 +66,12 @@ namespace Silverlight.Samples.Controls
                 positionBarRectangle.Width = Width - 10;
                 positionBarRectangle.Height = Height - 10;
             }
+            if (downloadProgressRectangle != null)
+            {
+                downloadProgressRectangle.Width = Width - 10;
+                downloadProgressRectangle.Height = Height - 10;
+            }
+            Thumb.Height = Height;
             base.UpdateLayout();
         }
 
