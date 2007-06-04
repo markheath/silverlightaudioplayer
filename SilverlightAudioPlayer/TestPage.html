@@ -5,6 +5,17 @@
     
     <script type="text/javascript" src="Silverlight.js"></script>
     <script type="text/javascript" src="TestPage.html.js"></script>
+    <script type="text/javascript">
+        function play()
+        {
+            document.getElementById('SilverlightControl').Content.Player.Play();
+        }
+        
+        function load(url)
+        {
+            document.getElementById('SilverlightControl').Content.Player.Url = url;
+        }
+    </script>
 </head>
 
 <!-- Give the keyboard focus to the Silverlight control by default -->
@@ -14,5 +25,9 @@
             createSilverlight();
         </script>
     </div>
+    
+    <input name="urlinput" type="text" value="tentpeg.mp3" /><input type="button" onclick="load(urlinput.value)" value="Load" />
+    <input type="button" onclick="play()" value="Play" />
+    
 </body>
 </html>

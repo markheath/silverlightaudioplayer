@@ -31,8 +31,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.4.0.0")]
-[assembly: AssemblyFileVersion("0.4.0.0")]
+[assembly: AssemblyVersion("0.5.0.0")]
+[assembly: AssemblyFileVersion("0.5.0.0")]
 
 // v0.1 25 May 2007
 // very basic version can play and pause
@@ -50,6 +50,9 @@ using System.Runtime.InteropServices;
 // need to revisit later to see if Slider is now broken
 // Play and pause icons showing correctly
 // Now Play, Pause and Media URL are scriptable
+// v0.5 4 June 2007
+// Can script play and URL from HTML test page now
+// More error handling
 
 // Tasks:
 // Control to display track title and author
