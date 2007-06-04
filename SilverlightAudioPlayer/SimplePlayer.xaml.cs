@@ -32,17 +32,9 @@ namespace SilverlightAudioPlayer
             rightCanvas.MouseLeave += new EventHandler(rightSection_MouseLeave);
             rightCanvas.MouseLeftButtonDown += new MouseEventHandler(rightSection_MouseLeftButtonDown);
             audioPositionSlider.ValueChanged += new EventHandler(slider2_ValueChanged);
-            try
-            {
-                //tentpeg.mp3, markheath+youhavealwaysgiven.mp3
-                mediaElement.Source = new Uri("markheath+youhavealwaysgiven.mp3", UriKind.RelativeOrAbsolute);
-                //mediaElement.Source = new Uri("http://www.wordandspirit.co.uk/music/tentpeg.mp3", UriKind.Absolute);
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex);
-                trackNameTextBlock.Text = ex.Message;
-            }
+            //tentpeg.mp3, 
+            mediaElement_CurrentStateChanged(this, EventArgs.Empty);
+            Url = "markheath+youhavealwaysgiven.mp3";
             mediaElement_DownloadProgressChanged(this, EventArgs.Empty);
             WebApplication.Current.RegisterScriptableObject("Player", this);           
         }
@@ -59,13 +51,11 @@ namespace SilverlightAudioPlayer
         {
             if (mediaElement.CurrentState == "Playing")
             {
-                mediaElement.Pause();
-                collapsePlayer.Begin();
+                Pause();
             }
             else
             {
                 Play();
-                expandPlayer.Begin();
             }
         }
 
@@ -120,7 +110,8 @@ namespace SilverlightAudioPlayer
 
         void mediaElement_MediaFailed(object sender, ErrorEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Media Failed {0}", e);
+            System.Diagnostics.Debug.WriteLine("Media Failed {0}-{1}-{2}", 
+                e.ErrorCode,e.ErrorMessage,e.ErrorType);
 
             trackNameTextBlock.Text = e.ErrorMessage;
         }
@@ -176,6 +167,7 @@ namespace SilverlightAudioPlayer
 
         void mediaElement_BufferingProgressChanged(object sender, EventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("Buffering Progress Changed {0}", mediaElement.BufferingProgress);
         }
 
         #region IAudioPlayer Members
@@ -185,24 +177,49 @@ namespace SilverlightAudioPlayer
         {
             get
             {
-                throw new Exception("The method or operation is not implemented.");
+                return mediaElement.Source.OriginalString;
             }
             set
             {
-                throw new Exception("The method or operation is not implemented.");
+                try
+                {
+                    mediaElement.Stop();
+                    mediaElement.Source = new Uri(value, UriKind.RelativeOrAbsolute);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("Error setting source {0}",ex);
+                    trackNameTextBlock.Text = ex.Message;
+                }
             }
         }
 
         [Scriptable]
         public void Play()
         {
-            mediaElement.Play();
+            try
+            {
+                mediaElement.Play();
+                expandPlayer.Begin();
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Error Playing {0}", e);
+            }
         }
 
         [Scriptable]
         public void Pause()
         {
-            mediaElement.Pause();
+            try
+            {
+                mediaElement.Pause();
+                collapsePlayer.Begin();
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Error Pausing {0}", e);
+            }
         }
 
         #endregion
