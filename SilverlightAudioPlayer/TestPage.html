@@ -5,22 +5,14 @@
     
     <script type="text/javascript" src="Silverlight.js"></script>
     <script type="text/javascript" src="TestPage.html.js"></script>
-    <script type="text/javascript">
-        function play()
-        {
-            document.getElementById('SilverlightControl').Content.Player.Play();
-        }
-        
-        function load(url)
-        {
-            document.getElementById('SilverlightControl').Content.Player.Url = url;
-        }
-    </script>
+    <style type="text/css">
+        .silverlightHost { width: 700px; height: 120px; }
+    </style>
 </head>
 
 <!-- Give the keyboard focus to the Silverlight control by default -->
 <body onload="document.getElementById('SilverlightControl').focus()">
-    <div id="SilverlightControlHost" >
+    <div id="SilverlightControlHost" class="silverlighthost">
         <script type="text/javascript">
             createSilverlight();
         </script>

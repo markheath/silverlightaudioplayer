@@ -34,7 +34,7 @@ namespace SilverlightAudioPlayer
             audioPositionSlider.ValueChanged += new EventHandler(slider2_ValueChanged);
             //tentpeg.mp3, 
             mediaElement_CurrentStateChanged(this, EventArgs.Empty);
-            Url = "markheath+youhavealwaysgiven.mp3";
+            Url = "test1.mp3";
             mediaElement_DownloadProgressChanged(this, EventArgs.Empty);
             WebApplication.Current.RegisterScriptableObject("Player", this);           
         }
@@ -61,13 +61,12 @@ namespace SilverlightAudioPlayer
 
         void rightSection_MouseLeave(object sender, EventArgs e)
         {
-            //rightSection.Fill = new SolidColorBrush(Color.FromRgb(200, 200, 200));
+            rightSection.Fill = new SolidColorBrush(Color.FromRgb(200, 200, 200));
         }
 
         void rightSection_MouseEnter(object sender, MouseEventArgs e)
         {
-            // Causes a nasty exception - don't know why
-            //rightSection.Fill = new SolidColorBrush(Color.FromRgb(100, 100, 100));
+            rightSection.Fill = new SolidColorBrush(Color.FromRgb(100, 100, 100));
         }
 
         void positionUpdate_Completed(object sender, EventArgs e)
@@ -92,7 +91,8 @@ namespace SilverlightAudioPlayer
             catch (ArgumentNullException)
             {
                 // TODO: why does asking for attributes throw ArgumentNullException
-            }
+                
+            }            
             return mediaElement.Source.ToString();
         }
 
@@ -101,9 +101,8 @@ namespace SilverlightAudioPlayer
             audioPositionSlider.Range = new Silverlight.Samples.Controls.ValueRange(0, mediaElement.NaturalDuration.TimeSpan.TotalMilliseconds);
             trackNameTextBlock.Text = FindTrackName();
             TimeSpan duration = mediaElement.NaturalDuration.TimeSpan;
-            timeTextBlock.Text = String.Format("{0:00}:{1:00}:{2:00}",
-                duration.Hours,
-                duration.Minutes,
+            timeTextBlock.Text = String.Format("{0:00}:{1:00}",
+                (int) duration.TotalMinutes,
                 duration.Seconds);
             //Play();
         }

@@ -76,7 +76,7 @@ namespace Silverlight.Samples.Controls {
                         background.Width = Width - scrollBar.Height;
                     }
                 } else {
-                    scrollBar.Visibility = Visibility.Hidden;
+                    scrollBar.Visibility = Visibility.Collapsed;
                     //change the rectangle width if needed
                     if (background != null) {
                         background.Width = Width;
@@ -88,7 +88,7 @@ namespace Silverlight.Samples.Controls {
             selectionHighlight = new Rectangle();
             selectionHighlight.Opacity = 0.75;
             selectionHighlight.Fill = new SolidColorBrush(Color.FromArgb(0xff, 0xbe, 0xe7, 0xfb));
-            selectionHighlight.Visibility = Visibility.Hidden;
+            selectionHighlight.Visibility = Visibility.Collapsed;
             content.Children.Add(selectionHighlight);
         }
 
@@ -207,7 +207,7 @@ namespace Silverlight.Samples.Controls {
         private void Select(FrameworkElement item)
         {
             if (item == null) {
-                selectionHighlight.Visibility = Visibility.Hidden;
+                selectionHighlight.Visibility = Visibility.Collapsed;
             } else {
                 selectionHighlight.SetValue(Canvas.LeftProperty, item.GetValue(Canvas.LeftProperty));
                 selectionHighlight.SetValue(Canvas.TopProperty, item.GetValue(Canvas.TopProperty));
