@@ -31,8 +31,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.5.0.0")]
-[assembly: AssemblyFileVersion("0.5.0.0")]
+[assembly: AssemblyVersion("0.6.0.0")]
+[assembly: AssemblyFileVersion("0.6.0.0")]
 
 // v0.1 25 May 2007
 // very basic version can play and pause
@@ -53,6 +53,9 @@ using System.Runtime.InteropServices;
 // v0.5 4 June 2007
 // Can script play and URL from HTML test page now
 // More error handling
+// v0.6 30 July 2007
+// Updated to work with Silverlight 1.1 Refresh
+// Made the overall size of the control smaller
 
 // Tasks:
 // Control to display track title and author

@@ -46,7 +46,7 @@ namespace Silverlight.Samples.Controls {
                 rightButton.SetValue(Canvas.LeftProperty, Width - rightButton.Width);
                 rightButton.Visibility = Visibility.Visible;
             } else {
-                rightButton.Visibility = Visibility.Hidden;
+                rightButton.Visibility = Visibility.Collapsed;
             }
         }
 

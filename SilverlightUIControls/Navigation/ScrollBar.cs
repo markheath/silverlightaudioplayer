@@ -143,9 +143,9 @@ namespace Silverlight.Samples.Controls {
             if (slidingSize > 0) {
                 //hide the thumb if too big
                 if (Range.Range <= viewSize) {
-                    Thumb.Visibility = Visibility.Hidden;
-                    up.Visibility = Visibility.Hidden;
-                    down.Visibility = Visibility.Hidden;
+                    Thumb.Visibility = Visibility.Collapsed;
+                    up.Visibility = Visibility.Collapsed;
+                    down.Visibility = Visibility.Collapsed;
                 } else {
                     Thumb.Visibility = Visibility.Visible;
                     up.Visibility = Visibility.Visible;
@@ -153,7 +153,7 @@ namespace Silverlight.Samples.Controls {
                     //calculate the correct size
                     if (Thumb is GripThumb) {
                         if (slidingSize < ((GripThumb)Thumb).MinimumSize) {
-                            Thumb.Visibility = Visibility.Hidden;
+                            Thumb.Visibility = Visibility.Collapsed;
                         } else {
                             ((GripThumb)Thumb).Size = viewSize / Range.Range * slidingSize;
                         }

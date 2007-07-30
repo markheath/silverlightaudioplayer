@@ -1,0 +1,13 @@
+<ASX version = "3.0">
+<!--A simple playlist with entries to be played in sequence.-->
+    <Title>Test</Title>
+    <Entry>
+        <Ref href = "test1.mp3" />
+                <TITLE>All Over The World</TITLE>
+<AUTHOR>Matt Redman</AUTHOR>
+    
+    </Entry>
+    <Entry>
+        <Ref href = "test2.mp3" />
+    </Entry>
+</ASX>
