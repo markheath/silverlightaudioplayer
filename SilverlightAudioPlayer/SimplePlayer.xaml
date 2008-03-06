@@ -133,13 +133,13 @@
 
 
     <Canvas x:Name="playIcon" Canvas.Left="70" Canvas.Top="30" Visibility="Collapsed">
-      <Path Stroke="Black" StrokeThickness="5" StrokeLineJoin="Round" Fill="#C0C0C0"
+      <Path Stroke="Black" StrokeThickness="4" StrokeLineJoin="Round" Fill="#C0C0C0"
         Data="M 0 0 l 20, 20 l -20,20 Z"/>
     </Canvas>
     <Canvas x:Name="pauseIcon" Canvas.Left="70" Canvas.Top="30">
-      <Path Stroke="Black" StrokeThickness="5" StrokeLineJoin="Round" Fill="#C0C0C0"
+      <Path Stroke="Black" StrokeThickness="4" StrokeLineJoin="Round" Fill="#C0C0C0"
         Data="M 0 4 h 8 v 30 h -8 Z"/>
-      <Path Stroke="Black" StrokeThickness="5" StrokeLineJoin="Round" Fill="#C0C0C0"
+      <Path Stroke="Black" StrokeThickness="4" StrokeLineJoin="Round" Fill="#C0C0C0"
         Data="M 15 4 h 8 v 30 h -8 Z"/>      
     </Canvas>
 
