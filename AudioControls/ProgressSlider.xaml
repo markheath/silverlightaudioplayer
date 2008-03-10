@@ -1,9 +1,99 @@
 ﻿<UserControl x:Class="AudioControls.ProgressSlider"
     xmlns="http://schemas.microsoft.com/client/2007" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-    Width="400" Height="20">    
+    Width="400" Height="20">
+    <UserControl.Resources>
+        <Style x:Name="ThumbStyle1" TargetType="Thumb">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Grid x:Name="RootElement">
+                            <Grid.Resources>
+                                <Storyboard x:Key="Normal State">
+                                </Storyboard>
+                                <Storyboard x:Key="MouseOver State">
+                                    <ColorAnimation Duration="0:0:0.1"
+                                    Storyboard.TargetName="outerCircleFill"
+                                    Storyboard.TargetProperty="Color"
+                                    To="Gray" />
+                                </Storyboard>
+                            </Grid.Resources>
+                            <Ellipse x:Name="OuterCircle" Stroke="Black" Stretch="Fill">
+                                <Ellipse.Fill>
+                                    <SolidColorBrush x:Name="outerCircleFill" Color="White" />
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style TargetType="Slider" x:Name="SliderStyle1">            
+            <!-- Any other properties you want to set -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Slider">
+                        <Grid x:Name="RootElement">
+                            <!-- States -->
+                            <Grid.Resources>
+                                <!-- Transition to the slider's default state -->
+                                <Storyboard x:Key="Normal State">
+                                    <DoubleAnimation Duration="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" To="1" />
+                                </Storyboard>
+
+                                <!-- Transition to the slider's mouseover state -->
+                                <Storyboard x:Key="MouseOver State">
+                                    <DoubleAnimation Duration="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" To="1" />
+                                </Storyboard>
+
+                                <!-- Transition to the slider's disabled state -->
+                                <Storyboard x:Key="Disabled State">
+                                    <DoubleAnimation Duration="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" To="0.5" />
+                                </Storyboard>
+
+                                <!-- RepeatButton Templates -->
+                                <ControlTemplate x:Key="RepeatButtonTemplate">
+                                    <Grid x:Name="RootElement" Background="Transparent" Opacity="0" />
+                                </ControlTemplate>
+                            </Grid.Resources>
+
+                            <!-- Horizontal Template -->
+                            <Grid x:Name="HorizontalTemplateElement">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Track Layer -->
+                                <!-- Customized: made taller, transparent, rounded corners-->
+                                <Rectangle Stroke="Black" StrokeThickness="1" Grid.Column="0" Grid.ColumnSpan="3" Height="12" RadiusX="3" RadiusY="3" Margin="5,0,5,0" />
+
+                                <!-- Repeat Buttons + Thumb -->
+                                <RepeatButton x:Name="HorizontalTrackLargeChangeDecreaseRepeatButtonElement" Grid.Column="0" Template="{StaticResource RepeatButtonTemplate}" IsTabStop="False" />
+                                <Thumb x:Name="HorizontalThumbElement" Height="18" Width="18" Grid.Column="1" Style="{StaticResource ThumbStyle1}" />
+                                <RepeatButton x:Name="HorizontalTrackLargeChangeIncreaseRepeatButtonElement" Grid.Column="2" Template="{StaticResource RepeatButtonTemplate}" IsTabStop="False" />
+                            </Grid>
+
+
+                            <!-- Focus indicator -->
+                            <Rectangle x:Name="FocusVisualElement" Stroke="#666666" StrokeDashArray=".2 5"
+                    StrokeDashCap="Round" IsHitTestVisible="false" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+
+
+    </UserControl.Resources>
     <Grid x:Name="LayoutRoot" >
-        <Rectangle x:Name="downloadProgress" Width="50" Height="10" Fill="#FFA0FFA0" HorizontalAlignment="Left"/>
-        <Slider x:Name="slider" />
+        <Rectangle x:Name="downloadBackground" Height="10" Fill="#FFA0A0A0" Margin="5,0,5,0"  />
+        <Rectangle x:Name="downloadProgress" Width="50" Height="10" Fill="#FFA0FFA0" Margin="5,0,5,0" HorizontalAlignment="Left"/>
+        <Slider x:Name="slider" Style="{StaticResource SliderStyle1}" IsTabStop="False" />
     </Grid>
 </UserControl>
