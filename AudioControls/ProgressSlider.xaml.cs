@@ -44,8 +44,8 @@ namespace AudioControls
         /// </summary>
         public double DownloadPercent
         {
-            get { return downloadProgress.Width / this.Width; }
-            set { downloadProgress.Width = this.Width * value; }
+            get { return downloadProgress.Width / downloadBackground.ActualWidth; }
+            set { downloadProgress.Width = downloadBackground.ActualWidth * value; }
         }
 
         void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
