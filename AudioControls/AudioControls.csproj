@@ -45,6 +45,9 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProgressSlider.xaml.cs">
+      <DependentUpon>ProgressSlider.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimplePlayer.xaml.cs">
       <DependentUpon>SimplePlayer.xaml</DependentUpon>
@@ -52,6 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <SilverlightPage Include="SimplePlayer.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </SilverlightPage>
+  </ItemGroup>
+  <ItemGroup>
+    <SilverlightPage Include="ProgressSlider.xaml">
       <Generator>MSBuild:CompileXaml</Generator>
     </SilverlightPage>
   </ItemGroup>
