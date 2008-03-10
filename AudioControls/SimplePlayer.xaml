@@ -1,7 +1,8 @@
 ﻿<UserControl x:Class="AudioControls.SimplePlayer"
     xmlns="http://schemas.microsoft.com/client/2007" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-    Width="120" Height="700">
+    xmlns:my="clr-namespace:AudioControls"
+    Width="700" Height="120">
     <Canvas x:Name="parentCanvas"
         Loaded="Page_Loaded"
         Background="White">
@@ -43,8 +44,6 @@
             </Storyboard>
 
             <Storyboard x:Name="soundAnimation">
-
-
                 <DoubleAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetName="Sound1" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" >
                     <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
                     <LinearDoubleKeyFrame KeyTime="0:0:0.4" Value="1" />
@@ -75,7 +74,7 @@
 
         <Rectangle x:Name="hiddenRect" Visibility="Collapsed" />
 
-        <Canvas x:Name="MidCanvas" Background="LightBlue" Canvas.Top="5" Canvas.Left="120" Width="500" Height="100">
+        <Canvas x:Name="MidCanvas" Background="AliceBlue" Canvas.Top="5" Canvas.Left="120" Width="500" Height="100">
             <Canvas.Clip>
                 <!-- A little bit overkill, but there really seems to be no way of
       animating the size of a clip rectangle (i.e. no RectAnimation) -->
@@ -90,8 +89,8 @@
             </Canvas.Clip>
             <TextBlock x:Name="trackNameTextBlock" Canvas.Left="60" Canvas.Top="5" FontSize="24" Text="Track Title / Artist Name Label" />
     <TextBlock x:Name="timeTextBlock" Canvas.Left="330" Canvas.Top="5" FontSize="24" Text="00:05:13" />
-            <Slider x:Name="audioPositionSlider" Canvas.Left="55" Canvas.Top="60" Width="350" Height="30"/>
-            <!--<gui:ProgressSlider x:Name="audioPositionSlider" Canvas.Left="55" Canvas.Top="60" Width="350" Height="30"/>-->
+            <!--<Slider x:Name="audioPositionSlider" Canvas.Left="55" Canvas.Top="60" Width="350" Height="30"/>-->
+            <my:ProgressSlider x:Name="audioPositionSlider" Canvas.Left="55" Canvas.Top="60" Width="350" Height="30"/>
             
   </Canvas>
 

@@ -117,8 +117,7 @@ namespace AudioControls
         void mediaElement_DownloadProgressChanged(object sender, RoutedEventArgs args)
         {
             System.Diagnostics.Debug.WriteLine("Download Progress {0}", mediaElement.DownloadProgress);
-            // TODO: restore download progress
-            //audioPositionSlider.DownloadPercent = mediaElement.DownloadProgress;
+            audioPositionSlider.DownloadPercent = mediaElement.DownloadProgress;
         }
 
         void mediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)

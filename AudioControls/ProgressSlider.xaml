@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="AudioControls.ProgressSlider"
+    xmlns="http://schemas.microsoft.com/client/2007" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="400" Height="20">    
+    <Grid x:Name="LayoutRoot" >
+        <Rectangle x:Name="downloadProgress" Width="50" Height="10" Fill="#FFA0FFA0" HorizontalAlignment="Left"/>
+        <Slider x:Name="slider" />
+    </Grid>
+</UserControl>
