@@ -1,19 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Browser;
 
-namespace SilverlightAudioPlayer
+namespace AudioControls
 {
-    [ScriptableType]
-    public partial class SimplePlayer : Canvas, IAudioPlayer
+    public partial class SimplePlayer : UserControl
     {
+        public SimplePlayer()
+        {
+            InitializeComponent();
+        }
+
         private bool showingProgress;
 
         public void Page_Loaded(object sender, EventArgs args)
@@ -31,7 +36,7 @@ namespace SilverlightAudioPlayer
             rightCanvas.MouseEnter += new MouseEventHandler(rightSection_MouseEnter);
             rightCanvas.MouseLeave += new MouseEventHandler(rightSection_MouseLeave);
             rightCanvas.MouseLeftButtonDown += new MouseButtonEventHandler(rightSection_MouseLeftButtonDown);
-            audioPositionSlider.ValueChanged += new EventHandler(slider2_ValueChanged);
+            audioPositionSlider.ValueChanged += new RoutedPropertyChangedEventHandler<double>(slider2_ValueChanged);
             //tentpeg.mp3, 
             mediaElement_CurrentStateChanged(this, null);
             Url = "test1.mp3";
@@ -40,7 +45,7 @@ namespace SilverlightAudioPlayer
 
         }
 
-        void slider2_ValueChanged(object sender, EventArgs e)
+        void slider2_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!showingProgress)
             {
@@ -86,7 +91,8 @@ namespace SilverlightAudioPlayer
 
         void mediaElement_MediaOpened(object sender, EventArgs e)
         {
-            audioPositionSlider.Range = new Silverlight.Samples.Controls.ValueRange(0, mediaElement.NaturalDuration.TimeSpan.TotalMilliseconds);
+            audioPositionSlider.Minimum = 0;
+            audioPositionSlider.Maximum = mediaElement.NaturalDuration.TimeSpan.TotalMilliseconds;
             trackNameTextBlock.Text = FindTrackName();
             TimeSpan duration = mediaElement.NaturalDuration.TimeSpan;
             timeTextBlock.Text = String.Format("{0:00}:{1:00}",
@@ -111,7 +117,8 @@ namespace SilverlightAudioPlayer
         void mediaElement_DownloadProgressChanged(object sender, RoutedEventArgs args)
         {
             System.Diagnostics.Debug.WriteLine("Download Progress {0}", mediaElement.DownloadProgress);
-            audioPositionSlider.DownloadPercent = mediaElement.DownloadProgress;
+            // TODO: restore download progress
+            //audioPositionSlider.DownloadPercent = mediaElement.DownloadProgress;
         }
 
         void mediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)
