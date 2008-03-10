@@ -157,7 +157,7 @@ namespace Silverlight.Samples.Controls {
         }
 
         //Attaches the items to ListBox
-        protected override void OnLoaded(object sender, EventArgs args)
+        protected override void OnLoaded(object sender, RoutedEventArgs args)
         {
             base.OnLoaded(sender, args);
             UpdateItems();

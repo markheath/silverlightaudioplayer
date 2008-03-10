@@ -46,13 +46,13 @@ namespace Silverlight.Samples.Controls {
             base.Width = actualControl.Width;
             base.Height = actualControl.Height;
 
-            Loaded += new EventHandler(OnLoaded);
+            Loaded += new RoutedEventHandler(OnLoaded);
         }
 
         //forwards FindName to the actual control
         public new DependencyObject FindName(string name)
         {
-            return actualControl.FindName(name);
+            return (DependencyObject) actualControl.FindName(name);
         }
 
         #endregion Public Methods
@@ -93,7 +93,7 @@ namespace Silverlight.Samples.Controls {
         #region Protected Methods
 
         // Finds the root and registers for its MouseLeave
-        protected virtual void OnLoaded(object sender, EventArgs args)
+        protected virtual void OnLoaded(object sender, RoutedEventArgs args)
         {
             FrameworkElement root = this;
             do {
@@ -101,7 +101,7 @@ namespace Silverlight.Samples.Controls {
             } while (root != null && root.Parent != null);
 
             if (root != null) {
-                root.MouseLeave += new EventHandler(RaiseRootLeave);
+                root.MouseLeave += new MouseEventHandler(RaiseRootLeave);
             }
             Height = base.Height;
             Width = base.Width;
@@ -129,7 +129,7 @@ namespace Silverlight.Samples.Controls {
         #region Private Methods
 
         // Fire RootLeave event if needed
-        private void RaiseRootLeave(object sender, EventArgs args)
+        private void RaiseRootLeave(object sender, MouseEventArgs args)
         {
             if (RootLeave != null) {
                 RootLeave(sender, args);

@@ -55,7 +55,7 @@ namespace Silverlight.Samples.Controls {
         #region Protected Methods
 
         // Stores the parent for future use
-        protected override void OnLoaded(object sender, EventArgs args)
+        protected override void OnLoaded(object sender, RoutedEventArgs args)
         {
             base.OnLoaded(sender, args);
             parent = Parent as UIElement;
@@ -69,7 +69,7 @@ namespace Silverlight.Samples.Controls {
         }
 
         // initializes the start position and fires DragStart event
-        protected override void OnMouseLeftButtonDown(object sender, MouseEventArgs args)
+        protected override void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs args)
         {
             base.OnMouseLeftButtonDown(sender, args);
             if (MouseOver) {
@@ -82,7 +82,7 @@ namespace Silverlight.Samples.Controls {
         }
 
         // resets the drag state and fires DragEnd event
-        protected override void OnMouseLeftButtonUp(object sender, MouseEventArgs args)
+        protected override void OnMouseLeftButtonUp(object sender, MouseButtonEventArgs args)
         {
             base.OnMouseLeftButtonUp(sender, args);
             drag = false;
@@ -104,7 +104,7 @@ namespace Silverlight.Samples.Controls {
         }
 
         // Skip visuals update while dragging
-        protected override void OnMouseLeave(object sender, EventArgs args)
+        protected override void OnMouseLeave(object sender, MouseEventArgs args)
         {
             if (drag) {
                 //we do not want to update visuals while dragging to avoid blinking

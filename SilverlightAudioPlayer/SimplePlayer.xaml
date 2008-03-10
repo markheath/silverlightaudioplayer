@@ -4,7 +4,6 @@
 <Canvas x:Name="parentCanvas"
         xmlns="http://schemas.microsoft.com/client/2007"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:my="clr-namespace:SilverlightAudioPlayer;assembly=ClientBin/SilverlightAudioPlayer.dll"
         xmlns:gui="clr-namespace:Silverlight.Samples.Controls;assembly=ClientBin/Silverlight.Samples.Controls.dll"
         Loaded="Page_Loaded"
         x:Class="SilverlightAudioPlayer.SimplePlayer;assembly=ClientBin/SilverlightAudioPlayer.dll"
@@ -88,10 +87,10 @@
       animating the size of a clip rectangle (i.e. no RectAnimation) -->
       <PathGeometry> 
         <PathFigure IsClosed="True">
-          <LineSegment Name="seg1" Point="0,0"/> 
-          <LineSegment Name="seg2" Point="500,0"/>
-          <LineSegment Name="seg3" Point="500,100"/> 
-          <LineSegment Name="seg4" Point="0,100"/>
+          <LineSegment x:Name="seg1" Point="0,0"/> 
+          <LineSegment x:Name="seg2" Point="500,0"/>
+          <LineSegment x:Name="seg3" Point="500,100"/> 
+          <LineSegment x:Name="seg4" Point="0,100"/>
         </PathFigure> 
       </PathGeometry>
     </Canvas.Clip> 

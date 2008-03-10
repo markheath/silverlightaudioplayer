@@ -61,7 +61,7 @@ namespace Silverlight.Samples.Controls
         #region Protected Methods
 
         // Sets the ButtonPressed flag to false
-        protected override void OnMouseLeftButtonUp(object sender, MouseEventArgs args)
+        protected override void OnMouseLeftButtonUp(object sender, MouseButtonEventArgs args)
         {
             base.OnMouseLeftButtonUp(sender, args);
             RaiseClick();

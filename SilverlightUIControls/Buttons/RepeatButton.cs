@@ -34,7 +34,7 @@ namespace Silverlight.Samples.Controls {
         #region Protected Methods
 
         // Sets the ButtonPressed flag to false and starts the story board for repeat
-        protected override void OnMouseLeftButtonDown(object sender, MouseEventArgs args)
+        protected override void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs args)
         {
             base.OnMouseLeftButtonDown(sender, args);
             //start timer
@@ -45,7 +45,7 @@ namespace Silverlight.Samples.Controls {
         }
 
         // Sets the ButtonPressed flag to false and stops the storyboard
-        protected override void OnMouseLeftButtonUp(object sender, MouseEventArgs args)
+        protected override void OnMouseLeftButtonUp(object sender, MouseButtonEventArgs args)
         {
             //release timer
             if (storyboard != null) {

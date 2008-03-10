@@ -1,0 +1,139 @@
+﻿<UserControl x:Class="AudioControls.SimplePlayer"
+    xmlns="http://schemas.microsoft.com/client/2007" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="120" Height="700">
+    <Canvas x:Name="parentCanvas"
+        Loaded="Page_Loaded"
+        Background="White">
+        <Canvas.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+            </TransformGroup>
+        </Canvas.RenderTransform>
+
+        <Canvas.Resources>
+            <Storyboard x:Name="expandPlayer">
+                <DoubleAnimation x:Name="da1" Storyboard.TargetName="rightCanvas" Storyboard.TargetProperty="(Canvas.Left)"
+      To="550" Duration="0:0:0.5" />
+                <!--<DoubleAnimation Storyboard.TargetName="MidCanvas" Storyboard.TargetProperty="Width"
+      To="500" Duration="0:0:1" />
+      <DoubleAnimation Storyboard.TargetName="MidCanvas" Storyboard.TargetProperty="Opacity"
+      To="1" Duration="0:0:1" />-->
+                <PointAnimation x:Name="pa1" Storyboard.TargetName="seg2" Storyboard.TargetProperty="point"
+      To="500,0" Duration="0:0:0.5" />
+                <PointAnimation x:Name="pa2" Storyboard.TargetName="seg3" Storyboard.TargetProperty="point"
+      To="500,100" Duration="0:0:0.5" />
+            </Storyboard>
+
+            <Storyboard x:Name="collapsePlayer">
+                <DoubleAnimation x:Name="da2" Storyboard.TargetName="rightCanvas" Storyboard.TargetProperty="(Canvas.Left)"
+      To="120" Duration="0:0:0.5" />
+                <!--<DoubleAnimation Storyboard.TargetName="MidCanvas" Storyboard.TargetProperty="Width"
+      To="100" Duration="0:0:1" />
+      <DoubleAnimation Storyboard.TargetName="MidCanvas" Storyboard.TargetProperty="Opacity"
+      To="0" Duration="0:0:1" />-->
+                <PointAnimation x:Name="pa3" Storyboard.TargetName="seg2" Storyboard.TargetProperty="point"
+      To="100,0" Duration="0:0:0.5" />
+                <PointAnimation x:Name="pa4" Storyboard.TargetName="seg3" Storyboard.TargetProperty="point"
+      To="100,100" Duration="0:0:0.5" />
+            </Storyboard>
+
+            <Storyboard x:Name="positionUpdate">
+                <DoubleAnimation x:Name="da3" Duration="0:0:0.5" Storyboard.TargetName="hiddenRect" Storyboard.TargetProperty="Width" />
+            </Storyboard>
+
+            <Storyboard x:Name="soundAnimation">
+
+
+                <DoubleAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetName="Sound1" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" >
+                    <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                    <LinearDoubleKeyFrame KeyTime="0:0:0.4" Value="1" />
+                    <LinearDoubleKeyFrame KeyTime="0:0:0.8" Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+
+                <DoubleAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetName="Sound2" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" >
+                    <LinearDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
+                    <LinearDoubleKeyFrame KeyTime="0:0:0.6" Value="1" />
+                    <LinearDoubleKeyFrame KeyTime="0:0:1.0" Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+
+                <DoubleAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetName="Sound3" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" >
+                    <LinearDoubleKeyFrame KeyTime="0:0:0.4" Value="0" />
+                    <LinearDoubleKeyFrame KeyTime="0:0:0.8" Value="1" />
+                    <LinearDoubleKeyFrame KeyTime="0:0:1.2" Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+
+                <DoubleAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetName="Sound4" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" >
+                    <LinearDoubleKeyFrame KeyTime="0:0:0.6" Value="0" />
+                    <LinearDoubleKeyFrame KeyTime="0:0:1.0" Value="1" />
+                    <LinearDoubleKeyFrame KeyTime="0:0:1.4" Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+
+            </Storyboard>
+
+        </Canvas.Resources>
+
+        <Rectangle x:Name="hiddenRect" Visibility="Collapsed" />
+
+        <Canvas x:Name="MidCanvas" Background="LightBlue" Canvas.Top="5" Canvas.Left="120" Width="500" Height="100">
+            <Canvas.Clip>
+                <!-- A little bit overkill, but there really seems to be no way of
+      animating the size of a clip rectangle (i.e. no RectAnimation) -->
+                <PathGeometry>
+                    <PathFigure IsClosed="True">
+                        <LineSegment x:Name="seg1" Point="0,0"/>
+                        <LineSegment x:Name="seg2" Point="500,0"/>
+                        <LineSegment x:Name="seg3" Point="500,100"/>
+                        <LineSegment x:Name="seg4" Point="0,100"/>
+                    </PathFigure>
+                </PathGeometry>
+            </Canvas.Clip>
+            <TextBlock x:Name="trackNameTextBlock" Canvas.Left="60" Canvas.Top="5" FontSize="24" Text="Track Title / Artist Name Label" />
+    <TextBlock x:Name="timeTextBlock" Canvas.Left="330" Canvas.Top="5" FontSize="24" Text="00:05:13" />
+            <Slider x:Name="audioPositionSlider" Canvas.Left="55" Canvas.Top="60" Width="350" Height="30"/>
+            <!--<gui:ProgressSlider x:Name="audioPositionSlider" Canvas.Left="55" Canvas.Top="60" Width="350" Height="30"/>-->
+            
+  </Canvas>
+
+        <Canvas x:Name="LeftCanvas" Canvas.Top="5" Canvas.Left="5" >
+            <Path x:Name="LeftSection" Stroke="Black" StrokeThickness="5" Fill="LightGray"
+    Data="M 50 0 h 60 l 50 50 l -50 50 h -60 a 20,20 0 0 1 -20,-20 v -60 a 20,20 0 0 1 20,-20"
+/>
+            <Path x:Name="Speaker" Stroke="Black" StrokeThickness="5" Data="M 50 40 l 0 20 l 10 0 l 10,10 l 0,-40 l -10,10 Z" />
+
+            <MediaElement x:Name="mediaElement" AutoPlay="False" />
+
+            <Canvas x:Name="animatedSound" Visibility="Collapsed">
+                <Rectangle x:Name="Sound1" Fill="Gray" Canvas.Left="78" Canvas.Top="40" Width="8" Height="20" Opacity="0" />
+                <Rectangle x:Name="Sound2" Fill="Gray" Canvas.Left="88" Canvas.Top="37" Width="8" Height="26" Opacity="0" />
+                <Rectangle x:Name="Sound3" Fill="Gray" Canvas.Left="98" Canvas.Top="34" Width="8" Height="32" Opacity="0" />
+                <Rectangle x:Name="Sound4" Fill="Gray" Canvas.Left="108" Canvas.Top="31" Width="8" Height="38" Opacity="0" />
+
+
+            </Canvas>
+
+        </Canvas>
+
+        <Canvas x:Name="rightCanvas" Canvas.Top="5" Canvas.Left="550" Width="200" Height="100">
+
+
+            <Path x:Name="rightSection" Stroke="Black" StrokeThickness="5" Fill="#C0C0C0"
+      Data="M 0 0 h 100 a 20,20 0 0 1 20,20 v 60 a 20,20 0 0 1 -20,20 h -100 l 50, -50 Z"/>
+
+
+            <Canvas x:Name="playIcon" Canvas.Left="70" Canvas.Top="30" Visibility="Collapsed">
+                <Path Stroke="Black" StrokeThickness="4" StrokeLineJoin="Round" Fill="#C0C0C0"
+        Data="M 0 0 l 20, 20 l -20,20 Z"/>
+            </Canvas>
+            <Canvas x:Name="pauseIcon" Canvas.Left="70" Canvas.Top="30">
+                <Path Stroke="Black" StrokeThickness="4" StrokeLineJoin="Round" Fill="#C0C0C0"
+        Data="M 0 4 h 8 v 30 h -8 Z"/>
+                <Path Stroke="Black" StrokeThickness="4" StrokeLineJoin="Round" Fill="#C0C0C0"
+        Data="M 15 4 h 8 v 30 h -8 Z"/>
+            </Canvas>
+
+        </Canvas>
+
+
+    </Canvas>
+</UserControl>

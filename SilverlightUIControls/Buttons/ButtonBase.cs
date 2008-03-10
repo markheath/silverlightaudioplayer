@@ -43,9 +43,9 @@ namespace Silverlight.Samples.Controls {
 
             //attach event handlers
             ActualControl.MouseEnter += new MouseEventHandler(OnMouseEnter);
-            ActualControl.MouseLeave += new EventHandler(OnMouseLeave);
-            ActualControl.MouseLeftButtonDown += new MouseEventHandler(OnMouseLeftButtonDown);
-            ActualControl.MouseLeftButtonUp += new MouseEventHandler(OnMouseLeftButtonUp);
+            ActualControl.MouseLeave += new MouseEventHandler(OnMouseLeave);
+            ActualControl.MouseLeftButtonDown += new MouseButtonEventHandler(OnMouseLeftButtonDown);
+            ActualControl.MouseLeftButtonUp += new MouseButtonEventHandler(OnMouseLeftButtonUp);
             RootLeave += new EventHandler(OnRootLeave);
 
             //find the needed members
@@ -71,7 +71,7 @@ namespace Silverlight.Samples.Controls {
         #region Protected Methods
 
         // Sets the MouseOver and ButtonPressed flags to true
-        protected virtual void OnMouseLeftButtonDown(object sender, MouseEventArgs args)
+        protected virtual void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs args)
         {
             ActualControl.CaptureMouse();
             mouseOver = true;
@@ -80,7 +80,7 @@ namespace Silverlight.Samples.Controls {
         }
 
         // Sets the ButtonPressed flag to false
-        protected virtual void OnMouseLeftButtonUp(object sender, MouseEventArgs args)
+        protected virtual void OnMouseLeftButtonUp(object sender, MouseButtonEventArgs args)
         {
             ReleaseMouseCapture();
             buttonPressed = false;
@@ -95,7 +95,7 @@ namespace Silverlight.Samples.Controls {
         }
 
         // Sets the MouseOver flag to false
-        protected virtual void OnMouseLeave(object sender, EventArgs args)
+        protected virtual void OnMouseLeave(object sender, MouseEventArgs args)
         {
             mouseOver = false;
             UpdateVisuals();
