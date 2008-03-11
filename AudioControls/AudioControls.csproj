@@ -45,6 +45,9 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimatedSpeaker.xaml.cs">
+      <DependentUpon>AnimatedSpeaker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProgressSlider.xaml.cs">
       <DependentUpon>ProgressSlider.xaml</DependentUpon>
     </Compile>
@@ -60,6 +63,11 @@
   </ItemGroup>
   <ItemGroup>
     <SilverlightPage Include="ProgressSlider.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </SilverlightPage>
+  </ItemGroup>
+  <ItemGroup>
+    <SilverlightPage Include="AnimatedSpeaker.xaml">
       <Generator>MSBuild:CompileXaml</Generator>
     </SilverlightPage>
   </ItemGroup>

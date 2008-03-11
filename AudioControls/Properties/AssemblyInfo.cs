@@ -58,6 +58,8 @@ using System.Runtime.InteropServices;
 // Made the overall size of the control smaller
 // v0.7 10 Mar 2008
 // Updated to work with Silverlight 2.0 Beta
+// v0.8 11 Mar 2008
+// Animated Speaker is now a user control
 
 // Tasks:
 // Get download progress working again
