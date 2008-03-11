@@ -126,16 +126,14 @@ namespace AudioControls
             // Buffering, Closed, Error, Opening, Paused, Playing, or Stopped
             if (mediaElement.CurrentState == MediaElementState.Playing)
             {
-                animatedSound.Visibility = Visibility.Visible;
-                soundAnimation.Begin();
+                animatedSpeaker.StartAnimation();
                 positionUpdate.Begin();
                 pauseIcon.Visibility = Visibility.Visible;
                 playIcon.Visibility = Visibility.Collapsed;
             }
             else
             {
-                animatedSound.Visibility = Visibility.Collapsed;
-                soundAnimation.Stop();
+                animatedSpeaker.StopAnimation();
                 positionUpdate.Stop();
                 pauseIcon.Visibility = Visibility.Collapsed;
                 playIcon.Visibility = Visibility.Visible;

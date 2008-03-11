@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="AudioControls.AnimatedSpeaker"
+    xmlns="http://schemas.microsoft.com/client/2007" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="80" Height="60">
+    <UserControl.Resources>
+    <Storyboard x:Name="soundAnimation">
+        <DoubleAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetName="Sound1" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" >
+            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+            <LinearDoubleKeyFrame KeyTime="0:0:0.4" Value="1" />
+            <LinearDoubleKeyFrame KeyTime="0:0:0.8" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetName="Sound2" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" >
+            <LinearDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
+            <LinearDoubleKeyFrame KeyTime="0:0:0.6" Value="1" />
+            <LinearDoubleKeyFrame KeyTime="0:0:1.0" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetName="Sound3" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" >
+            <LinearDoubleKeyFrame KeyTime="0:0:0.4" Value="0" />
+            <LinearDoubleKeyFrame KeyTime="0:0:0.8" Value="1" />
+            <LinearDoubleKeyFrame KeyTime="0:0:1.2" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Duration="0:0:1.5" Storyboard.TargetName="Sound4" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" >
+            <LinearDoubleKeyFrame KeyTime="0:0:0.6" Value="0" />
+            <LinearDoubleKeyFrame KeyTime="0:0:1.0" Value="1" />
+            <LinearDoubleKeyFrame KeyTime="0:0:1.4" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+
+        </Storyboard>
+    </UserControl.Resources>
+    <Canvas x:Name="LayoutRoot">
+        <Path x:Name="Speaker" Stroke="Black" StrokeThickness="5" Data="M 5 20 l 0 20 l 10 0 l 10,10 l 0,-40 l -10,10 Z" />
+        <Canvas x:Name="animatedSound" Visibility="Collapsed">
+            <Rectangle x:Name="Sound1" Fill="Gray" Canvas.Left="33" Canvas.Top="20" Width="8" Height="20" Opacity="0" />
+            <Rectangle x:Name="Sound2" Fill="Gray" Canvas.Left="43" Canvas.Top="17" Width="8" Height="26" Opacity="0" />
+            <Rectangle x:Name="Sound3" Fill="Gray" Canvas.Left="53" Canvas.Top="14" Width="8" Height="32" Opacity="0" />
+            <Rectangle x:Name="Sound4" Fill="Gray" Canvas.Left="63" Canvas.Top="11" Width="8" Height="38" Opacity="0" />
+        </Canvas>
+    </Canvas>
+</UserControl>
