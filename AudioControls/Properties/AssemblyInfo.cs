@@ -31,8 +31,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.7.0.0")]
-[assembly: AssemblyFileVersion("0.7.0.0")]
+[assembly: AssemblyVersion("0.9.0.0")]
+[assembly: AssemblyFileVersion("0.9.0.0")]
 
 // v0.1 25 May 2007
 // very basic version can play and pause
@@ -60,6 +60,8 @@ using System.Runtime.InteropServices;
 // Updated to work with Silverlight 2.0 Beta
 // v0.8 11 Mar 2008
 // Animated Speaker is now a user control
+// v0.9 18 Mar 2008
+// Improvements to size and positioning
 
 // Tasks:
 // Get download progress working again

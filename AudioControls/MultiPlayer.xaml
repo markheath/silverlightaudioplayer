@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="AudioControls.MultiPlayer"
+    xmlns="http://schemas.microsoft.com/client/2007" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="400" Height="300">
+    <StackPanel x:Name="LayoutRoot" Background="White">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="buttonPrev" Content="Prev" Grid.Column="0" />
+            <Button x:Name="buttonPlay" Content="Play" Grid.Column="1"/>
+            <Button x:Name="buttonPause" Content="Pause" Grid.Column="2"/>
+            <Button x:Name="buttonNext" Content="Next" Grid.Column="3"/>
+            <TextBlock x:Name="titleScroller" Text="Title" Grid.Column="4"/>
+            <Slider Orientation="Horizontal" x:Name="sliderVolume" Width="40" Minimum="0" Maximum="100" Grid.Column="5"/>
+        </Grid>
+        <ListBox x:Name="playListBox">
+            <ListBoxItem Content="Hello"/>
+            <ListBoxItem Content="World"/>
+        </ListBox>
+    </StackPanel>
+</UserControl>
