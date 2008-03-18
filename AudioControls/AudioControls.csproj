@@ -48,6 +48,9 @@
     <Compile Include="AnimatedSpeaker.xaml.cs">
       <DependentUpon>AnimatedSpeaker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MultiPlayer.xaml.cs">
+      <DependentUpon>MultiPlayer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProgressSlider.xaml.cs">
       <DependentUpon>ProgressSlider.xaml</DependentUpon>
     </Compile>
@@ -68,6 +71,11 @@
   </ItemGroup>
   <ItemGroup>
     <SilverlightPage Include="AnimatedSpeaker.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </SilverlightPage>
+  </ItemGroup>
+  <ItemGroup>
+    <SilverlightPage Include="MultiPlayer.xaml">
       <Generator>MSBuild:CompileXaml</Generator>
     </SilverlightPage>
   </ItemGroup>

@@ -2,93 +2,159 @@
     xmlns="http://schemas.microsoft.com/client/2007" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:my="clr-namespace:AudioControls"
-    Width="700" Height="120">
+    Width="350" Height="60">
     <Canvas x:Name="parentCanvas"
         Loaded="Page_Loaded"
-        Background="White">
+        >
         <Canvas.RenderTransform>
-            <TransformGroup>
-                <ScaleTransform ScaleX="0.5" ScaleY="0.5" />
-            </TransformGroup>
+            <TranslateTransform X="-19.5" Y="-4.5" />
         </Canvas.RenderTransform>
 
-        <Canvas.Resources>
+            <Canvas.Resources>
             <Storyboard x:Name="expandPlayer">
-                <DoubleAnimation x:Name="da1" Storyboard.TargetName="rightCanvas" Storyboard.TargetProperty="(Canvas.Left)"
-      To="550" Duration="0:0:0.5" />
-                <PointAnimation x:Name="pa1" Storyboard.TargetName="seg2" Storyboard.TargetProperty="point"
-      To="500,0" Duration="0:0:0.5" />
-                <PointAnimation x:Name="pa2" Storyboard.TargetName="seg3" Storyboard.TargetProperty="point"
-      To="500,100" Duration="0:0:0.5" />
+                <DoubleAnimation 
+                    x:Name="da1" 
+                    Storyboard.TargetName="rightCanvas" 
+                    Storyboard.TargetProperty="(Canvas.Left)"
+                    To="275" 
+                    Duration="0:0:0.5" />
+                <PointAnimation 
+                    x:Name="pa1" 
+                    Storyboard.TargetName="seg2" 
+                    Storyboard.TargetProperty="point"
+                    To="250,0" 
+                    Duration="0:0:0.5" />
+                <PointAnimation 
+                    x:Name="pa2" 
+                    Storyboard.TargetName="seg3" 
+                    Storyboard.TargetProperty="point"
+                    To="250,50" 
+                    Duration="0:0:0.5" />
             </Storyboard>
 
             <Storyboard x:Name="collapsePlayer">
-                <DoubleAnimation x:Name="da2" Storyboard.TargetName="rightCanvas" Storyboard.TargetProperty="(Canvas.Left)"
-      To="120" Duration="0:0:0.5" />
-                <PointAnimation x:Name="pa3" Storyboard.TargetName="seg2" Storyboard.TargetProperty="point"
-      To="100,0" Duration="0:0:0.5" />
-                <PointAnimation x:Name="pa4" Storyboard.TargetName="seg3" Storyboard.TargetProperty="point"
-      To="100,100" Duration="0:0:0.5" />
+                <DoubleAnimation 
+                    x:Name="da2" 
+                    Storyboard.TargetName="rightCanvas" 
+                    Storyboard.TargetProperty="(Canvas.Left)"
+                    To="60" 
+                    Duration="0:0:0.5" />
+                <PointAnimation 
+                    x:Name="pa3" 
+                    Storyboard.TargetName="seg2" 
+                    Storyboard.TargetProperty="point"
+                    To="50,0" 
+                    Duration="0:0:0.5" />
+                <PointAnimation 
+                    x:Name="pa4" 
+                    Storyboard.TargetName="seg3" 
+                    Storyboard.TargetProperty="point"
+                    To="50,50" 
+                    Duration="0:0:0.5" />
             </Storyboard>
 
             <Storyboard x:Name="positionUpdate">
-                <DoubleAnimation x:Name="da3" Duration="0:0:0.5" Storyboard.TargetName="hiddenRect" Storyboard.TargetProperty="Width" />
+                <DoubleAnimation 
+                    x:Name="da3" 
+                    Duration="0:0:0.5" 
+                    Storyboard.TargetName="hiddenRect" 
+                    Storyboard.TargetProperty="Width" />
             </Storyboard>
-
-
-
         </Canvas.Resources>
 
+        <MediaElement x:Name="mediaElement" AutoPlay="False" />
+        
         <Rectangle x:Name="hiddenRect" Visibility="Collapsed" />
 
-        <Canvas x:Name="MidCanvas" Background="AliceBlue" Canvas.Top="5" Canvas.Left="120" Width="500" Height="100">
+        <Canvas 
+            x:Name="MidCanvas" 
+            Background="AliceBlue" 
+            Canvas.Top="5" 
+            Canvas.Left="60" 
+            Width="250" 
+            Height="50">
             <Canvas.Clip>
                 <!-- A little bit overkill, but there really seems to be no way of
-      animating the size of a clip rectangle (i.e. no RectAnimation) -->
+                    animating the size of a clip rectangle (i.e. no RectAnimation) -->
                 <PathGeometry>
                     <PathFigure IsClosed="True">
                         <LineSegment x:Name="seg1" Point="0,0"/>
-                        <LineSegment x:Name="seg2" Point="500,0"/>
-                        <LineSegment x:Name="seg3" Point="500,100"/>
-                        <LineSegment x:Name="seg4" Point="0,100"/>
+                        <LineSegment x:Name="seg2" Point="250,0"/>
+                        <LineSegment x:Name="seg3" Point="250,50"/>
+                        <LineSegment x:Name="seg4" Point="0,50"/>
                     </PathFigure>
                 </PathGeometry>
             </Canvas.Clip>
-            <TextBlock x:Name="trackNameTextBlock" Canvas.Left="60" Canvas.Top="5" FontSize="24" Text="Track Title / Artist Name Label" />
-    <TextBlock x:Name="timeTextBlock" Canvas.Left="330" Canvas.Top="5" FontSize="24" Text="00:05:13" />
-            <!--<Slider x:Name="audioPositionSlider" Canvas.Left="55" Canvas.Top="60" Width="350" Height="30"/>-->
-            <my:ProgressSlider x:Name="audioPositionSlider" Canvas.Left="55" Canvas.Top="60" Width="350" Height="30"/>
-            
-  </Canvas>
+            <TextBlock 
+                x:Name="trackNameTextBlock" 
+                Canvas.Left="30" 
+                Canvas.Top="2.5" 
+                FontSize="12" 
+                Text="Track Title / Artist Name Label" />
+            <TextBlock 
+                x:Name="timeTextBlock" 
+                Canvas.Left="165" 
+                Canvas.Top="2.5" 
+                FontSize="12" 
+                Text="00:05:13" />
+            <my:ProgressSlider
+                x:Name="audioPositionSlider" 
+                Canvas.Left="28" 
+                Canvas.Top="27" 
+                Width="185" 
+                Height="20"/>
+        </Canvas>
 
         <Canvas x:Name="LeftCanvas" Canvas.Top="5" Canvas.Left="5" >
-            <Path x:Name="LeftSection" Stroke="Black" StrokeThickness="5" Fill="LightGray"
-    Data="M 50 0 h 60 l 50 50 l -50 50 h -60 a 20,20 0 0 1 -20,-20 v -60 a 20,20 0 0 1 20,-20"
-/>
-            <MediaElement x:Name="mediaElement" AutoPlay="False" />
-            <my:AnimatedSpeaker x:Name="animatedSpeaker" Canvas.Left="50" Canvas.Top="20" />
+            <Canvas.RenderTransform>
+                <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
+            </Canvas.RenderTransform>
+            <Path x:Name="LeftSection" 
+                  Stroke="Black" 
+                  StrokeThickness="5" 
+                  Fill="LightGray"
+                  Data="M 50 0 h 60 l 50 50 l -50 50 h -60 a 20,20 0 0 1 -20,-20 v -60 a 20,20 0 0 1 20,-20" />
+            <my:AnimatedSpeaker 
+                x:Name="animatedSpeaker" 
+                Canvas.Left="50" 
+                Canvas.Top="20" />
         </Canvas>
 
-        <Canvas x:Name="rightCanvas" Canvas.Top="5" Canvas.Left="550" Width="200" Height="100">
-
-
-            <Path x:Name="rightSection" Stroke="Black" StrokeThickness="5" Fill="#C0C0C0"
-      Data="M 0 0 h 100 a 20,20 0 0 1 20,20 v 60 a 20,20 0 0 1 -20,20 h -100 l 50, -50 Z"/>
-
-
-            <Canvas x:Name="playIcon" Canvas.Left="70" Canvas.Top="30" Visibility="Collapsed">
-                <Path Stroke="Black" StrokeThickness="4" StrokeLineJoin="Round" Fill="#C0C0C0"
-        Data="M 0 0 l 20, 20 l -20,20 Z"/>
+        <Canvas x:Name="rightCanvas" Canvas.Top="5" Canvas.Left="275" Width="100" Height="50">
+            <Canvas.RenderTransform>
+                <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
+            </Canvas.RenderTransform>
+            <Path x:Name="rightSection" 
+                  Stroke="Black" 
+                  StrokeThickness="5" 
+                  Fill="#C0C0C0"
+                  Data="M 0 0 h 100 a 20,20 0 0 1 20,20 v 60 a 20,20 0 0 1 -20,20 h -100 l 50, -50 Z"/>
+            <Canvas 
+                x:Name="playIcon" 
+                Canvas.Left="70" 
+                Canvas.Top="30" 
+                Visibility="Collapsed">
+                <Path 
+                    Stroke="Black" 
+                    StrokeThickness="4" 
+                    StrokeLineJoin="Round" 
+                    Fill="#C0C0C0"
+                    Data="M 0 0 l 20, 20 l -20,20 Z"/>
             </Canvas>
             <Canvas x:Name="pauseIcon" Canvas.Left="70" Canvas.Top="30">
-                <Path Stroke="Black" StrokeThickness="4" StrokeLineJoin="Round" Fill="#C0C0C0"
-        Data="M 0 4 h 8 v 30 h -8 Z"/>
-                <Path Stroke="Black" StrokeThickness="4" StrokeLineJoin="Round" Fill="#C0C0C0"
-        Data="M 15 4 h 8 v 30 h -8 Z"/>
+                <Path 
+                    Stroke="Black" 
+                    StrokeThickness="4" 
+                    StrokeLineJoin="Round" 
+                    Fill="#C0C0C0"
+                    Data="M 0 4 h 8 v 30 h -8 Z"/>
+                <Path 
+                    Stroke="Black" 
+                    StrokeThickness="4" 
+                    StrokeLineJoin="Round" 
+                    Fill="#C0C0C0"
+                    Data="M 15 4 h 8 v 30 h -8 Z"/>
             </Canvas>
-
         </Canvas>
-
-
     </Canvas>
 </UserControl>

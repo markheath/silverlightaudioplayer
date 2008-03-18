@@ -18,7 +18,7 @@
                                     To="Gray" />
                                 </Storyboard>
                             </Grid.Resources>
-                            <Ellipse x:Name="OuterCircle" Stroke="Black" Stretch="Fill">
+                            <Ellipse x:Name="OuterCircle" Stroke="Black" Stretch="Fill" Margin="1,1,1,1">
                                 <Ellipse.Fill>
                                     <SolidColorBrush x:Name="outerCircleFill" Color="White" />
                                 </Ellipse.Fill>
@@ -78,18 +78,17 @@
 
 
                             <!-- Focus indicator -->
-                            <Rectangle x:Name="FocusVisualElement" Stroke="#666666" StrokeDashArray=".2 5"
-                    StrokeDashCap="Round" IsHitTestVisible="false" />
+                            <Rectangle 
+                                x:Name="FocusVisualElement" 
+                                Stroke="#666666" 
+                                StrokeDashArray=".2 5"
+                                StrokeDashCap="Round" 
+                                IsHitTestVisible="false" />
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-
-
-
-
-
     </UserControl.Resources>
     <Grid x:Name="LayoutRoot" >
         <Rectangle x:Name="downloadBackground" Height="10" Fill="#FFA0A0A0" Margin="5,0,5,0"  />
