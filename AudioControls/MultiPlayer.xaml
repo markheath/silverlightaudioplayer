@@ -2,6 +2,60 @@
     xmlns="http://schemas.microsoft.com/client/2007" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     Width="400" Height="300">
+    <UserControl.Resources>
+        <Color x:Key="OctwelveDarkGreen">#41803B</Color>
+        <Color x:Key="OctwelveLightGreen">#A7C494</Color>
+        <Color x:Key="OctwelvePaleGreen">#BCD3CD</Color>
+        <Color x:Key="OctwelvePaleYellow">#F4DD83</Color>
+        <Color x:Key="OctwelveBrown">#923224</Color>
+        <SolidColorBrush x:Key="BrownBrush" Color="{StaticResource OctwelveBrown}"/>
+
+        <Style x:Name="TransportButtonStyle" TargetType="Button">
+            <!--
+            <Setter Property="Background" >
+                <Setter.Value>
+                    <SolidColorBrush x:Name="backgroundBrush" Color="LightGoldenrodYellow" />
+                </Setter.Value>
+            </Setter>-->
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="RootElement">
+                            <Grid.Resources>
+                                <Storyboard x:Key="Normal State" />
+                                <Storyboard x:Key="MouseOver State">
+                                    <ColorAnimation Duration="0:0:0.2" Storyboard.TargetName="backgroundBrush" Storyboard.TargetProperty="Color" To="{StaticResource OctwelveDarkGreen}" />
+                                </Storyboard>
+                            </Grid.Resources>
+                            <!-- Fill="{TemplateBinding Background}"  -->
+                            <Rectangle x:Name="rectBackground" Margin="0" RadiusX="5" RadiusY="5">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush x:Name="backgroundBrush" Color="{StaticResource OctwelvePaleYellow}" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <ContentPresenter
+                              Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                              FontFamily="{TemplateBinding FontFamily}"
+                              FontSize="{TemplateBinding FontSize}"
+                              FontStretch="{TemplateBinding FontStretch}"
+                              FontStyle="{TemplateBinding FontStyle}"
+                              FontWeight="{TemplateBinding FontWeight}"
+                              Foreground="{TemplateBinding Foreground}"
+                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              Padding="{TemplateBinding Padding}"
+                              TextAlignment="{TemplateBinding TextAlignment}"
+                              TextDecorations="{TemplateBinding TextDecorations}"
+                              TextWrapping="{TemplateBinding TextWrapping}"
+                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                              Margin="4,4,4,4" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <StackPanel x:Name="LayoutRoot" Background="White">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -12,10 +66,18 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button x:Name="buttonPrev" Content="Prev" Grid.Column="0" />
-            <Button x:Name="buttonPlay" Content="Play" Grid.Column="1"/>
-            <Button x:Name="buttonPause" Content="Pause" Grid.Column="2"/>
-            <Button x:Name="buttonNext" Content="Next" Grid.Column="3"/>
+            <Button x:Name="buttonPrev" ToolTip="Prev" Style="{StaticResource TransportButtonStyle}" Grid.Column="0" >
+                <Path Fill="{StaticResource BrownBrush}" Margin="5,5,5,5"  Data="M 0,0 h 2 v 10 h -2 z m 7,0 v 10 l -5,-5 z"/>
+            </Button>
+            <Button x:Name="buttonPlay" ToolTip="Play" Style="{StaticResource TransportButtonStyle}" Grid.Column="1">
+                <Path Fill="Black" Margin="5,5,5,5" Data="M 0,0 l 5,5 l -5,5 z" />
+            </Button>
+            <Button x:Name="buttonPause" ToolTip="Pause" Style="{StaticResource TransportButtonStyle}" Grid.Column="2">
+                <Path Fill="Black" Margin="5,5,5,5"  Data="M 0,0 h 2 v 10 h -2 z m 5,0 h 2 v 10 h -2 z"/>
+            </Button>
+            <Button x:Name="buttonNext" ToolTip="Next" Style="{StaticResource TransportButtonStyle}" Grid.Column="3">
+                <Path Fill="Black" Margin="5,5,5,5"  Data="M 0,0 v 10 l 5,-5 z m 5,0 h 2 v 10 h -2 z"/>
+            </Button>
             <TextBlock x:Name="titleScroller" Text="Title" Grid.Column="4"/>
             <Slider Orientation="Horizontal" x:Name="sliderVolume" Width="40" Minimum="0" Maximum="100" Grid.Column="5"/>
         </Grid>

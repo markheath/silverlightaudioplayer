@@ -31,8 +31,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.9.0.0")]
-[assembly: AssemblyFileVersion("0.9.0.0")]
+[assembly: AssemblyVersion("0.10.0.0")]
+[assembly: AssemblyFileVersion("0.10.0.0")]
 
 // v0.1 25 May 2007
 // very basic version can play and pause
@@ -62,10 +62,14 @@ using System.Runtime.InteropServices;
 // Animated Speaker is now a user control
 // v0.9 18 Mar 2008
 // Improvements to size and positioning
+// Beginnings of MultiPlayer
+// v0.10 20 Mar 2008
+// Custom button template with icons for MultiPlayer
 
 // Tasks:
-// Get download progress working again
+// Factor out MediaElement control logic into a separate class
+// RegisterScriptableObject should be done at Page Level
+// Custom template for volume slider
 // Control to display track title and author
 // Consider fading out volume on pause & fading in on play
 // HTML access to scriptable properties
-// Investigate adding a simple volume slider
