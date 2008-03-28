@@ -82,8 +82,6 @@
             <Slider Orientation="Horizontal" x:Name="sliderVolume" Width="40" Minimum="0" Maximum="100" Grid.Column="5"/>
         </Grid>
         <ListBox x:Name="playListBox">
-            <ListBoxItem Content="Hello"/>
-            <ListBoxItem Content="World"/>
         </ListBox>
     </StackPanel>
 </UserControl>

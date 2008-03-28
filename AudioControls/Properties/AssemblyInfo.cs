@@ -31,8 +31,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.10.0.0")]
-[assembly: AssemblyFileVersion("0.10.0.0")]
+[assembly: AssemblyVersion("0.11.0.0")]
+[assembly: AssemblyFileVersion("0.11.0.0")]
 
 // v0.1 25 May 2007
 // very basic version can play and pause
@@ -65,6 +65,9 @@ using System.Runtime.InteropServices;
 // Beginnings of MultiPlayer
 // v0.10 20 Mar 2008
 // Custom button template with icons for MultiPlayer
+// v0.11 28 Mar 2008
+// Can use initialise parameters to choose a player to play
+// Added a website to enable us to load playlists via XML (not sure if I really needed to do this)
 
 // Tasks:
 // Factor out MediaElement control logic into a separate class
