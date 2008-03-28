@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using AudioControls;
 
 namespace TestHarness
 {
@@ -23,10 +24,22 @@ namespace TestHarness
             InitializeComponent();
         }
 
-        private void Application_Startup(object sender, StartupEventArgs e)
+        private void Application_Startup(object sender, StartupEventArgs e)        
         {
-            // Load the main control
-            this.RootVisual = new Page();
+            string playlist = null;
+            e.InitParams.TryGetValue("Playlist", out playlist);
+            if (playlist != null)
+            {
+                MultiPlayer player = new MultiPlayer();
+                player.PlaylistUrl = playlist;
+                this.RootVisual = player;
+            }
+            else
+            {
+                // Load the main control
+                this.RootVisual = new SimplePlayer(); // new Page();
+            }
+            
         }
 
         private void Application_Exit(object sender, EventArgs e)
