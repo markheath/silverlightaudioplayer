@@ -9,6 +9,11 @@
 <body>
     <form id="form1" runat="server">
     <div>
+    <ul>
+    <li><a href="MultiPlayer.htm">Multi-Player</a></li>
+    <li><a href="SinglePlayer.htm">SinglePlayer</a></li>
+    <li><a href="NoInitParams.htm">No InitParams</a></li>
+    </ul>
     
     </div>
     </form>

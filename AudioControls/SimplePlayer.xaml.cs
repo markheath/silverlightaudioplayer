@@ -38,9 +38,7 @@ namespace AudioControls
             rightCanvas.MouseLeave += new MouseEventHandler(rightSection_MouseLeave);
             rightCanvas.MouseLeftButtonDown += new MouseButtonEventHandler(rightSection_MouseLeftButtonDown);
             audioPositionSlider.ValueChanged += new RoutedPropertyChangedEventHandler<double>(slider2_ValueChanged);
-            //tentpeg.mp3, 
             mediaElement_CurrentStateChanged(this, null);
-            PlaylistUrl = "..\\playlist.xml";
             mediaElement_DownloadProgressChanged(this, null);
             HtmlPage.RegisterScriptableObject("Player", this);
 
@@ -179,39 +177,17 @@ namespace AudioControls
             }
         }
 
-        private string playlistUrl;
+        private PlaylistEntry playlistEntry;
 
-        public string PlaylistUrl
+        public PlaylistEntry PlaylistEntry
         {
-            get { return playlistUrl; }
+            get { return playlistEntry; }
             set
             {
-                playlistUrl = value;
-                WebClient downloader = new WebClient();
-                downloader.DownloadStringCompleted += new DownloadStringCompletedEventHandler(downloader_DownloadStringCompleted);
-                Uri playlistUri = new Uri(playlistUrl, UriKind.RelativeOrAbsolute);
-                downloader.DownloadStringAsync(playlistUri);
+                playlistEntry = value;
+                Url = value.Url;
             }
         }
-        
-        void downloader_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
-        {
-            if (e.Error == null)
-            {
-                IEnumerable<PlaylistEntry> playlist = Playlist.LoadFromXml(e.Result);
-                foreach (PlaylistEntry entry in playlist)
-                {
-                    Url = entry.Url;
-                    break;
-                }
-            }
-            else
-            {
-                string s = e.Error.Message;
-            }
-        }
-
-
 
         [ScriptableMember]
         public void Play()
