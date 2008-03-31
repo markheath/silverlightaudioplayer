@@ -15,8 +15,6 @@ namespace AudioControls
 {
     public partial class MultiPlayer : UserControl
     {
-        string playlistUrl;
-
         public MultiPlayer()
         {
             InitializeComponent();
@@ -28,31 +26,11 @@ namespace AudioControls
         }
 
 
-        public string PlaylistUrl
+        public IEnumerable<PlaylistEntry> Playlist
         {
-            get { return playlistUrl; }
-            set 
-            { 
-                playlistUrl = value;
-                WebClient downloader = new WebClient();
-                downloader.DownloadStringCompleted += new DownloadStringCompletedEventHandler(downloader_DownloadStringCompleted);
-                Uri playlistUri = new Uri(playlistUrl, UriKind.RelativeOrAbsolute);
-                downloader.DownloadStringAsync(playlistUri);
-            }
+            set { playListBox.ItemsSource = value; }
         }
         
-        void downloader_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
-        {
-            if (e.Error == null)
-            {
-                playListBox.ItemsSource = Playlist.LoadFromXml(e.Result);
-            }
-            else
-            {
-                string s = e.Error.Message;
-            }
-        }
-
         private void playListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             PlaylistEntry playlistEntry = (PlaylistEntry)playListBox.SelectedItem;

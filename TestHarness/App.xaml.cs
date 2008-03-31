@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using AudioControls;
+using System.Net;
 
 namespace TestHarness
 {
@@ -27,26 +28,42 @@ namespace TestHarness
         private void Application_Startup(object sender, StartupEventArgs e)        
         {
             string playlist = null;
-            string url = null;
-            e.InitParams.TryGetValue("Playlist", out playlist);
-            e.InitParams.TryGetValue("Url", out url);
-            if (playlist != null)
+            if (!e.InitParams.TryGetValue("Playlist", out playlist))
             {
-                MultiPlayer player = new MultiPlayer();
-                player.PlaylistUrl = playlist;
-                this.RootVisual = player;
+                playlist = "..\\playlist.xml";
+            }
+
+            WebClient client = new WebClient();
+            client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_DownloadStringCompleted);
+            client.DownloadStringAsync(new Uri(playlist, UriKind.RelativeOrAbsolute));
+        }
+
+        void client_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                Playlist playlist = Playlist.LoadFromXml(e.Result);
+                if (playlist.Count > 1)
+                {
+                    MultiPlayer player = new MultiPlayer();
+                    player.Playlist = playlist;
+                    this.RootVisual = player;
+                }
+                else
+                {
+                    SimplePlayer simplePlayer = new SimplePlayer();
+                    foreach (PlaylistEntry entry in playlist)
+                    {
+                        simplePlayer.PlaylistEntry = entry;
+                        break;
+                    }
+                    this.RootVisual = simplePlayer;
+                }
             }
             else
             {
-                // Load the main control
-                SimplePlayer simplePlayer = new SimplePlayer(); // new Page();
-                this.RootVisual = simplePlayer;
-                if(url != null)
-                {
-                    simplePlayer.Url = url;
-                }
+                this.RootVisual = new Oops();
             }
-            
         }
 
         private void Application_Exit(object sender, EventArgs e)

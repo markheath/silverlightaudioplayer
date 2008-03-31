@@ -31,8 +31,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.12.0.0")]
-[assembly: AssemblyFileVersion("0.12.0.0")]
+[assembly: AssemblyVersion("0.13.0.0")]
+[assembly: AssemblyFileVersion("0.13.0.0")]
 
 // v0.1 25 May 2007
 // very basic version can play and pause
@@ -72,9 +72,17 @@ using System.Runtime.InteropServices;
 // Multi-player using data-template for 
 // Multi-player has media element and can play selected item
 // Simple player can work off a playlist too
+// v0.13 31 Mar 2008
+// Simple and multi-player now both can work with Playlists
+// Root visual not set until we have a playlist
+// "Oops" control for playlist not found
+// Looks for default playlist if not specified in initParams
 
 // Tasks:
+// Get everything into one Silverlight assembly
+// Scrolling text user control
 // Interface implemented by each player
+// Playlist.xml to allow selection & configuration of players
 // Factor out MediaElement control logic into a separate class?
 // RegisterScriptableObject should be done at Page Level
 // Custom template for volume slider

@@ -41,11 +41,15 @@
     <Compile Include="MultiPlayer.xaml.cs">
       <DependentUpon>MultiPlayer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Playlist.cs" />
     <Compile Include="PlaylistEntry.cs" />
     <Compile Include="ProgressSlider.xaml.cs">
       <DependentUpon>ProgressSlider.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Oops.xaml.cs">
+      <DependentUpon>Oops.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SimplePlayer.xaml.cs">
       <DependentUpon>SimplePlayer.xaml</DependentUpon>
     </Compile>
@@ -80,6 +84,11 @@
     <Reference Include="System.Windows.Controls.Extended, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <SilverlightPage Include="Oops.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </SilverlightPage>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight\v2.0\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
