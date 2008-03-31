@@ -7,7 +7,7 @@
         Loaded="Page_Loaded"
         >
         <Canvas.RenderTransform>
-            <TranslateTransform X="-19.5" Y="-4.5" />
+            <TranslateTransform X="-19" Y="-4" />
         </Canvas.RenderTransform>
 
             <Canvas.Resources>

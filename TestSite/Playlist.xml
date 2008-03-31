@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <playlist>
+  <audiofile url="http://www.markheath.me.uk/music/tentpeg.mp3" title="A Tentpeg Through His Head" artist="Mark Heath" />
   <audiofile url="test1.mp3" title="Test File 1" artist="Mark Heath" />
   <audiofile url="test2.mp3" title="Test File 2" artist="Someone Else" />
   <audiofile url="test3.mp3" title="Test File 3" artist="Third Person" />
+  <audiofile url="http://www.markheath.me.uk/music/newperspective.mp3" title="New Perspective" artist="Mark Heath" />
+
 </playlist>

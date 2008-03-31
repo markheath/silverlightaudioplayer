@@ -20,6 +20,11 @@ namespace AudioControls
         public MultiPlayer()
         {
             InitializeComponent();
+            mediaElement.CurrentStateChanged += new RoutedEventHandler(mediaElement_CurrentStateChanged);
+            mediaElement.DownloadProgressChanged += new RoutedEventHandler(mediaElement_DownloadProgressChanged);
+            mediaElement.MediaEnded += new RoutedEventHandler(mediaElement_MediaEnded);
+            mediaElement.MediaFailed += mediaElement_MediaFailed;
+            mediaElement.MediaOpened += new RoutedEventHandler(mediaElement_MediaOpened);
         }
 
 
@@ -40,7 +45,7 @@ namespace AudioControls
         {
             if (e.Error == null)
             {
-                LoadPlaylist(e.Result);
+                playListBox.ItemsSource = Playlist.LoadFromXml(e.Result);
             }
             else
             {
@@ -48,32 +53,92 @@ namespace AudioControls
             }
         }
 
-        void LoadPlaylist(string xml)
+        private void playListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            try
+            PlaylistEntry playlistEntry = (PlaylistEntry)playListBox.SelectedItem;
+
+            SetCurrentEntry(playlistEntry);
+        }
+
+        bool wasPlaying = false;
+        void SetCurrentEntry(PlaylistEntry playlistEntry)
+        {
+            wasPlaying = (mediaElement.CurrentState == MediaElementState.Playing);
+            mediaElement.Stop();
+            mediaElement.Source = new Uri(playlistEntry.Url, UriKind.RelativeOrAbsolute);
+            titleScroller.Text = playlistEntry.Title + " (" + playlistEntry.Artist + ")";
+        }
+
+        void mediaElement_MediaOpened(object sender, EventArgs e)
+        {
+            if (wasPlaying)
             {
-                XDocument xmlPlaylist = XDocument.Parse(xml);
-                var playlist = from audioFile in xmlPlaylist.Descendants("audiofile")
-                               select new AudioFile
-                               {
-                                   Url = (string)audioFile.Attribute("url"),
-                                   Title = (string)audioFile.Attribute("title"),
-                                   Artist = (string)audioFile.Attribute("artist")
-                               };
-                playListBox.ItemsSource = playlist;
+                mediaElement.Play();
             }
-            catch (Exception e)
+            //audioPositionSlider.Minimum = 0;
+            //audioPositionSlider.Maximum = mediaElement.NaturalDuration.TimeSpan.TotalMilliseconds;
+            //trackNameTextBlock.Text = FindTrackName();
+            //TimeSpan duration = mediaElement.NaturalDuration.TimeSpan;
+            //timeTextBlock.Text = String.Format("{0:00}:{1:00}",
+             //   (int)duration.TotalMinutes,
+             //   duration.Seconds);
+            //Play();
+        }
+
+        void mediaElement_MediaFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Media Failed {0}", e);
+            //trackNameTextBlock.Text = e.ErrorException.Message;
+        }
+
+        void mediaElement_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            // apparently does not go into stop state by itself
+            //mediaElement.Stop();
+        }
+
+        void mediaElement_DownloadProgressChanged(object sender, RoutedEventArgs args)
+        {
+            //audioPositionSlider.DownloadPercent = mediaElement.DownloadProgress;
+        }
+
+        void mediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)
+        {
+            if (mediaElement.CurrentState == MediaElementState.Playing)
             {
-                
+                //positionUpdate.Begin();
             }
+            else
+            {
+                //positionUpdate.Stop();
+            }
+        }
+
+        private void buttonPlay_Click(object sender, RoutedEventArgs e)
+        {
+            mediaElement.Play();
+        }
+
+        private void buttonNext_Click(object sender, RoutedEventArgs e)
+        {
+            if (playListBox.SelectedIndex < playListBox.Items.Count - 1)
+                playListBox.SelectedIndex++;
+
+        }
+
+        private void buttonPrev_Click(object sender, RoutedEventArgs e)
+        {
+            if (playListBox.SelectedIndex > 0)
+                playListBox.SelectedIndex--;
+
+        }
+
+        private void buttonPause_Click(object sender, RoutedEventArgs e)
+        {
+            mediaElement.Pause();
         }
 
     }
 
-    public class AudioFile
-    {
-        public string Url { get; set; }
-        public string Title { get; set; }
-        public string Artist { get; set; }
-    }
+
 }

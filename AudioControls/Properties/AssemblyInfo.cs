@@ -31,8 +31,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.11.0.0")]
-[assembly: AssemblyFileVersion("0.11.0.0")]
+[assembly: AssemblyVersion("0.12.0.0")]
+[assembly: AssemblyFileVersion("0.12.0.0")]
 
 // v0.1 25 May 2007
 // very basic version can play and pause
@@ -68,9 +68,14 @@ using System.Runtime.InteropServices;
 // v0.11 28 Mar 2008
 // Can use initialise parameters to choose a player to play
 // Added a website to enable us to load playlists via XML (not sure if I really needed to do this)
+// v0.12 31 Mar 2008
+// Multi-player using data-template for 
+// Multi-player has media element and can play selected item
+// Simple player can work off a playlist too
 
 // Tasks:
-// Factor out MediaElement control logic into a separate class
+// Interface implemented by each player
+// Factor out MediaElement control logic into a separate class?
 // RegisterScriptableObject should be done at Page Level
 // Custom template for volume slider
 // Control to display track title and author

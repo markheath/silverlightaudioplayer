@@ -57,6 +57,7 @@
         </Style>
     </UserControl.Resources>
     <StackPanel x:Name="LayoutRoot" Background="White">
+        <MediaElement x:Name="mediaElement" AutoPlay="False" />
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -66,22 +67,31 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button x:Name="buttonPrev" ToolTip="Prev" Style="{StaticResource TransportButtonStyle}" Grid.Column="0" >
+            <Button x:Name="buttonPrev" ToolTip="Prev" Style="{StaticResource TransportButtonStyle}" Grid.Column="0" Click="buttonPrev_Click">
                 <Path Fill="{StaticResource BrownBrush}" Margin="5,5,5,5"  Data="M 0,0 h 2 v 10 h -2 z m 7,0 v 10 l -5,-5 z"/>
             </Button>
-            <Button x:Name="buttonPlay" ToolTip="Play" Style="{StaticResource TransportButtonStyle}" Grid.Column="1">
+            <Button x:Name="buttonPlay" ToolTip="Play" Style="{StaticResource TransportButtonStyle}" Grid.Column="1" Click="buttonPlay_Click">
                 <Path Fill="Black" Margin="5,5,5,5" Data="M 0,0 l 5,5 l -5,5 z" />
             </Button>
-            <Button x:Name="buttonPause" ToolTip="Pause" Style="{StaticResource TransportButtonStyle}" Grid.Column="2">
+            <Button x:Name="buttonPause" ToolTip="Pause" Style="{StaticResource TransportButtonStyle}" Grid.Column="2" Click="buttonPause_Click">
                 <Path Fill="Black" Margin="5,5,5,5"  Data="M 0,0 h 2 v 10 h -2 z m 5,0 h 2 v 10 h -2 z"/>
             </Button>
-            <Button x:Name="buttonNext" ToolTip="Next" Style="{StaticResource TransportButtonStyle}" Grid.Column="3">
+            <Button x:Name="buttonNext" ToolTip="Next" Style="{StaticResource TransportButtonStyle}" Grid.Column="3" Click="buttonNext_Click">
                 <Path Fill="Black" Margin="5,5,5,5"  Data="M 0,0 v 10 l 5,-5 z m 5,0 h 2 v 10 h -2 z"/>
             </Button>
             <TextBlock x:Name="titleScroller" Text="Title" Grid.Column="4"/>
             <Slider Orientation="Horizontal" x:Name="sliderVolume" Width="40" Minimum="0" Maximum="100" Grid.Column="5"/>
         </Grid>
-        <ListBox x:Name="playListBox">
+        <ListBox x:Name="playListBox" SelectionChanged="playListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Title}" Foreground="Red" Margin="5" />
+                        <TextBlock Text="{Binding Artist}" FontStyle="Italic" Margin="5" />
+                    </StackPanel>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
     </StackPanel>
 </UserControl>

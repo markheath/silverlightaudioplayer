@@ -27,7 +27,9 @@ namespace TestHarness
         private void Application_Startup(object sender, StartupEventArgs e)        
         {
             string playlist = null;
+            string url = null;
             e.InitParams.TryGetValue("Playlist", out playlist);
+            e.InitParams.TryGetValue("Url", out url);
             if (playlist != null)
             {
                 MultiPlayer player = new MultiPlayer();
@@ -37,7 +39,12 @@ namespace TestHarness
             else
             {
                 // Load the main control
-                this.RootVisual = new SimplePlayer(); // new Page();
+                SimplePlayer simplePlayer = new SimplePlayer(); // new Page();
+                this.RootVisual = simplePlayer;
+                if(url != null)
+                {
+                    simplePlayer.Url = url;
+                }
             }
             
         }
