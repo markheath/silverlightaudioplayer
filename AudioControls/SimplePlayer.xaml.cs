@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Browser;
+using System.Net;
 
 namespace AudioControls
 {
@@ -26,7 +27,7 @@ namespace AudioControls
             // Required to initialize variables
             InitializeComponent();
 
-            mediaElement.BufferingProgressChanged += new RoutedEventHandler(mediaElement_BufferingProgressChanged);
+            //mediaElement.BufferingProgressChanged += new RoutedEventHandler(mediaElement_BufferingProgressChanged);
             mediaElement.CurrentStateChanged += new RoutedEventHandler(mediaElement_CurrentStateChanged);
             mediaElement.DownloadProgressChanged += new RoutedEventHandler(mediaElement_DownloadProgressChanged);
             mediaElement.MediaEnded += new RoutedEventHandler(mediaElement_MediaEnded);
@@ -39,7 +40,7 @@ namespace AudioControls
             audioPositionSlider.ValueChanged += new RoutedPropertyChangedEventHandler<double>(slider2_ValueChanged);
             //tentpeg.mp3, 
             mediaElement_CurrentStateChanged(this, null);
-            Url = "test1.mp3";
+            PlaylistUrl = "..\\playlist.xml";
             mediaElement_DownloadProgressChanged(this, null);
             HtmlPage.RegisterScriptableObject("Player", this);
 
@@ -116,7 +117,7 @@ namespace AudioControls
 
         void mediaElement_DownloadProgressChanged(object sender, RoutedEventArgs args)
         {
-            System.Diagnostics.Debug.WriteLine("Download Progress {0}", mediaElement.DownloadProgress);
+            //System.Diagnostics.Debug.WriteLine("Download Progress {0}", mediaElement.DownloadProgress);
             audioPositionSlider.DownloadPercent = mediaElement.DownloadProgress;
         }
 
@@ -154,11 +155,6 @@ namespace AudioControls
             }
         }
 
-        void mediaElement_BufferingProgressChanged(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("Buffering Progress Changed {0}", mediaElement.BufferingProgress);
-        }
-
         #region IAudioPlayer Members
 
         [ScriptableMember]
@@ -182,6 +178,40 @@ namespace AudioControls
                 }
             }
         }
+
+        private string playlistUrl;
+
+        public string PlaylistUrl
+        {
+            get { return playlistUrl; }
+            set
+            {
+                playlistUrl = value;
+                WebClient downloader = new WebClient();
+                downloader.DownloadStringCompleted += new DownloadStringCompletedEventHandler(downloader_DownloadStringCompleted);
+                Uri playlistUri = new Uri(playlistUrl, UriKind.RelativeOrAbsolute);
+                downloader.DownloadStringAsync(playlistUri);
+            }
+        }
+        
+        void downloader_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                IEnumerable<PlaylistEntry> playlist = Playlist.LoadFromXml(e.Result);
+                foreach (PlaylistEntry entry in playlist)
+                {
+                    Url = entry.Url;
+                    break;
+                }
+            }
+            else
+            {
+                string s = e.Error.Message;
+            }
+        }
+
+
 
         [ScriptableMember]
         public void Play()
