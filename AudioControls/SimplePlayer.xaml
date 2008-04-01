@@ -85,18 +85,18 @@
                     </PathFigure>
                 </PathGeometry>
             </Canvas.Clip>
-            <TextBlock 
+            <my:TextScroller 
                 x:Name="trackNameTextBlock" 
                 Canvas.Left="30" 
                 Canvas.Top="2.5" 
-                FontSize="12" 
+                Width="140"
                 Text="Track Title / Artist Name Label" />
             <TextBlock 
                 x:Name="timeTextBlock" 
-                Canvas.Left="165" 
+                Canvas.Left="175" 
                 Canvas.Top="2.5" 
                 FontSize="12" 
-                Text="00:05:13" />
+                Text="05:13" />
             <my:ProgressSlider
                 x:Name="audioPositionSlider" 
                 Canvas.Left="28" 

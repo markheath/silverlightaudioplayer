@@ -92,7 +92,9 @@ namespace AudioControls
         {
             audioPositionSlider.Minimum = 0;
             audioPositionSlider.Maximum = mediaElement.NaturalDuration.TimeSpan.TotalMilliseconds;
-            trackNameTextBlock.Text = FindTrackName();
+            //trackNameTextBlock.Text = FindTrackName();
+            trackNameTextBlock.Text = playlistEntry.Title + " (" + playlistEntry.Artist + ")";
+
             TimeSpan duration = mediaElement.NaturalDuration.TimeSpan;
             timeTextBlock.Text = String.Format("{0:00}:{1:00}",
                 (int) duration.TotalMinutes,
