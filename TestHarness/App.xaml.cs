@@ -30,7 +30,7 @@ namespace TestHarness
             string playlist = null;
             if (!e.InitParams.TryGetValue("Playlist", out playlist))
             {
-                playlist = "..\\playlist.xml";
+                playlist = "playlist.xml";
             }
 
             WebClient client = new WebClient();

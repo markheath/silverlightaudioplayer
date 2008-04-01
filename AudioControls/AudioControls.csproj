@@ -53,6 +53,9 @@
     <Compile Include="SimplePlayer.xaml.cs">
       <DependentUpon>SimplePlayer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TextScroller.xaml.cs">
+      <DependentUpon>TextScroller.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <SilverlightPage Include="SimplePlayer.xaml">
@@ -87,6 +90,11 @@
   </ItemGroup>
   <ItemGroup>
     <SilverlightPage Include="Oops.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </SilverlightPage>
+  </ItemGroup>
+  <ItemGroup>
+    <SilverlightPage Include="TextScroller.xaml">
       <Generator>MSBuild:CompileXaml</Generator>
     </SilverlightPage>
   </ItemGroup>
