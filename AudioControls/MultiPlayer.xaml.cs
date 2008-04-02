@@ -45,6 +45,7 @@ namespace AudioControls
             mediaElement.Stop();
             mediaElement.Source = new Uri(playlistEntry.Url, UriKind.RelativeOrAbsolute);
             titleScroller.Text = playlistEntry.Title + " (" + playlistEntry.Artist + ")";
+            progressBar.Value = mediaElement.DownloadProgress;
         }
 
         void mediaElement_MediaOpened(object sender, EventArgs e)
@@ -77,7 +78,7 @@ namespace AudioControls
 
         void mediaElement_DownloadProgressChanged(object sender, RoutedEventArgs args)
         {
-            //audioPositionSlider.DownloadPercent = mediaElement.DownloadProgress;
+            progressBar.Value = mediaElement.DownloadProgress;
         }
 
         void mediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)

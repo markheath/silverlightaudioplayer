@@ -135,6 +135,7 @@
         </Style>
 
     </UserControl.Resources>
+    
     <StackPanel x:Name="LayoutRoot" Background="White">
         <MediaElement x:Name="mediaElement" AutoPlay="False" />
         <Grid ShowGridLines="False">
@@ -159,6 +160,7 @@
                 <Path Fill="Black" Margin="3"  Data="M 0,0 v 10 l 5,-5 z m 5,0 h 2 v 10 h -2 z"/>
             </Button>
             <my:TextScroller Margin="2" x:Name="titleScroller" Text="Title" Width="200" Grid.Column="4"/>
+            <my:HorizontalProgressBar Margin="2" Value="0.0" x:Name="progressBar" Width="200" Grid.Column="4" />
             <Slider 
                 Orientation="Horizontal" 
                 x:Name="sliderVolume" 
@@ -180,10 +182,9 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Title}" Foreground="Red" Margin="5" />
-                        <TextBlock Text="{Binding Artist}" FontStyle="Italic" Margin="5" />
+                        <TextBlock FontSize="12" Text="{Binding Title}" Foreground="Red" Margin="3" />
+                        <TextBlock FontSize="12" Text="{Binding Artist}" FontStyle="Italic" Margin="3" />
                     </StackPanel>
-
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

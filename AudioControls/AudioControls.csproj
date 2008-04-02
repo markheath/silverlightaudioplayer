@@ -38,6 +38,9 @@
     <Compile Include="AnimatedSpeaker.xaml.cs">
       <DependentUpon>AnimatedSpeaker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HorizontalProgressBar.xaml.cs">
+      <DependentUpon>HorizontalProgressBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MultiPlayer.xaml.cs">
       <DependentUpon>MultiPlayer.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,11 @@
   </ItemGroup>
   <ItemGroup>
     <SilverlightPage Include="TextScroller.xaml">
+      <Generator>MSBuild:CompileXaml</Generator>
+    </SilverlightPage>
+  </ItemGroup>
+  <ItemGroup>
+    <SilverlightPage Include="HorizontalProgressBar.xaml">
       <Generator>MSBuild:CompileXaml</Generator>
     </SilverlightPage>
   </ItemGroup>

@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="AudioControls.HorizontalProgressBar"
+    xmlns="http://schemas.microsoft.com/client/2007" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"              
+    Width="200" Height="20" >
+    
+    <Grid x:Name="LayoutRoot" >
+        <Rectangle x:Name="RectProgress" Fill="#80DFDFFF"  Width="0" 
+                   HorizontalAlignment="Left">
+            <Rectangle.Clip>
+                <RectangleGeometry x:Name="progressRectClipGeometry" RadiusX="5" RadiusY="5" Rect="0,0,200,20" />
+            </Rectangle.Clip>
+        </Rectangle>
+
+        <Rectangle x:Name="RectOutline" 
+            Stroke="Black" StrokeThickness="1"
+            RadiusX="5" RadiusY="5"/>
+                   
+
+    </Grid>
+</UserControl>
