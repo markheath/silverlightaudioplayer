@@ -1,6 +1,7 @@
 ﻿<UserControl x:Class="AudioControls.Oops"
     xmlns="http://schemas.microsoft.com/client/2007" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:my="clr-namespace:AudioControls"
     Width="400" Height="Auto">
     <Grid x:Name="LayoutRoot" Background="White" ShowGridLines="False">
         <Grid.ColumnDefinitions>
@@ -33,7 +34,13 @@
             FontFamily="Georgia"
             FontSize="20"
             />
- 
+<!--
+        <my:HorizontalProgressBar Grid.Column="1" 
+                                  Fill="#FFFFFF80" 
+                                  Width="200"
+                                  Height="20"
+                                  Value=".5"
+                                  VerticalAlignment="Bottom" /> -->
 
     </Grid>
 </UserControl>

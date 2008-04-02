@@ -84,10 +84,14 @@ using System.Runtime.InteropServices;
 // Style for a volume slider
 // Volume slider now controls volume 
 // Multi-player uses text scroller
+// v0.16 2 Apr 2008
+// A "progress bar" control that can be used to display download progress
+// Multi-player shows download progress
+
 
 // Tasks:
 // Get everything into one Silverlight assembly
-// Scrolling text user control
+// Improve scrolling text control
 // Interface implemented by each player
 // Playlist.xml to allow selection & configuration of players
 // Factor out MediaElement control logic into a separate class?
