@@ -116,6 +116,11 @@ namespace AudioControls
             mediaElement.Pause();
         }
 
+        private void sliderVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            mediaElement.Volume = sliderVolume.Value;
+        }
+
     }
 
 

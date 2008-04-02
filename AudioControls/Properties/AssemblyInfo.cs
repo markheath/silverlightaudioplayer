@@ -31,8 +31,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.14.0.0")]
-[assembly: AssemblyFileVersion("0.14.0.0")]
+[assembly: AssemblyVersion("0.15.0.0")]
+[assembly: AssemblyFileVersion("0.15.0.0")]
 
 // v0.1 25 May 2007
 // very basic version can play and pause
@@ -80,7 +80,10 @@ using System.Runtime.InteropServices;
 // v0.14 1 Apr 2008
 // Beginnings of a TextScoller control
 // Now looks in same folder for default playlist to allow use on Silverlight Streaming
-
+// v0.15 2 Apr 2008
+// Style for a volume slider
+// Volume slider now controls volume 
+// Multi-player uses text scroller
 
 // Tasks:
 // Get everything into one Silverlight assembly
