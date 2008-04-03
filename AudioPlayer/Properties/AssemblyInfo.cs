@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AudioControls")]
-[assembly: AssemblyDescription("Silverlight Audio Controls")]
+[assembly: AssemblyTitle("AudioPlayer")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Mark Heath")]
-[assembly: AssemblyProduct("AudioControls")]
-[assembly: AssemblyCopyright("Copyright © Mark Heath 2008")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("AudioPlayer")]
+[assembly: AssemblyCopyright("Copyright ©  2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("612da658-6241-43be-8491-35e8131584d0")]
+[assembly: Guid("d581151a-3394-4e31-abd0-2df4a67903f3")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -31,8 +31,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.15.0.0")]
-[assembly: AssemblyFileVersion("0.15.0.0")]
+[assembly: AssemblyVersion("0.17.0.0")]
+[assembly: AssemblyFileVersion("0.17.0.0")]
 
 // v0.1 25 May 2007
 // very basic version can play and pause
@@ -87,7 +87,8 @@ using System.Runtime.InteropServices;
 // v0.16 2 Apr 2008
 // A "progress bar" control that can be used to display download progress
 // Multi-player shows download progress
-
+// v0.17 3 Apr 2008
+// AudioControls and TestHarness merged into one Silverlight app
 
 // Tasks:
 // Get everything into one Silverlight assembly

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
-namespace AudioControls
+namespace AudioPlayer
 {
     public class PlaylistEntry
     {
