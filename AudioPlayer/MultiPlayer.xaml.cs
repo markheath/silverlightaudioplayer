@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 using System.Net;
 using System.Xml.Linq;
 
-namespace AudioControls
+namespace AudioPlayer
 {
     public partial class MultiPlayer : UserControl
     {

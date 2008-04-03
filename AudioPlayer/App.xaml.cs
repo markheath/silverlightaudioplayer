@@ -8,10 +8,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using AudioControls;
 using System.Net;
 
-namespace TestHarness
+namespace AudioPlayer
 {
     public partial class App : Application
     {
@@ -25,7 +24,7 @@ namespace TestHarness
             InitializeComponent();
         }
 
-        private void Application_Startup(object sender, StartupEventArgs e)        
+        private void Application_Startup(object sender, StartupEventArgs e)
         {
             string playlist = null;
             if (!e.InitParams.TryGetValue("Playlist", out playlist))

@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 using System.Windows.Browser;
 using System.Net;
 
-namespace AudioControls
+namespace AudioPlayer
 {
     public partial class SimplePlayer : UserControl
     {

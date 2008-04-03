@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace AudioControls
+namespace AudioPlayer
 {
     public partial class ProgressSlider : UserControl
     {
