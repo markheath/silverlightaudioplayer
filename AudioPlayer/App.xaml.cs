@@ -30,13 +30,12 @@ namespace AudioPlayer
             if (!e.InitParams.TryGetValue("Playlist", out playlist))
             {
                 playlist = "playlist.xml";
-            }
-
+            }           
             WebClient client = new WebClient();
             client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_DownloadStringCompleted);
             client.DownloadStringAsync(new Uri(playlist, UriKind.RelativeOrAbsolute));
         }
-
+        
         void client_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             if (e.Error == null)

@@ -15,10 +15,10 @@ namespace AudioPlayer
     {
         public static readonly DependencyProperty FillBrushProperty
             = DependencyProperty.Register("Fill",typeof(Brush),typeof(HorizontalProgressBar),            
-            new PropertyChangedCallback(FillBrushPropertyChanged));
+            new PropertyMetadata( new PropertyChangedCallback(FillBrushPropertyChanged)));
         public static readonly DependencyProperty ValueProperty
             = DependencyProperty.Register("Value", typeof(double), typeof(HorizontalProgressBar),
-            new PropertyChangedCallback(ValuePropertyChanged));
+            new PropertyMetadata(new PropertyChangedCallback(ValuePropertyChanged)));
 
 
         public HorizontalProgressBar()
