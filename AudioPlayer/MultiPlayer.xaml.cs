@@ -119,7 +119,11 @@ namespace AudioPlayer
 
         private void sliderVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            mediaElement.Volume = sliderVolume.Value;
+            // seems we can get this while the XAML is being parsed, and mediaElement does not yet exist
+            if (mediaElement != null)
+            {
+                mediaElement.Volume = sliderVolume.Value;
+            }
         }
 
     }

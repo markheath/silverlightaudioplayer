@@ -173,8 +173,7 @@
                 Style="{StaticResource VolumeSliderStyle}" 
                 IsTabStop="False"
                 IsEnabled="True"
-                ValueChanged="sliderVolume_ValueChanged"
-                />
+                ValueChanged="sliderVolume_ValueChanged" />
         </Grid>
         <ListBox 
             x:Name="playListBox" 
