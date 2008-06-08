@@ -4,140 +4,12 @@
     xmlns:my="clr-namespace:AudioPlayer"
     Width="400" Height="300">
     <UserControl.Resources>
-        <Color x:Key="OctwelveDarkGreen">#41803B</Color>
-        <Color x:Key="OctwelveLightGreen">#A7C494</Color>
-        <Color x:Key="OctwelvePaleGreen">#BCD3CD</Color>
-        <Color x:Key="OctwelvePaleYellow">#F4DD83</Color>
-        <Color x:Key="OctwelveBrown">#923224</Color>
-
-        <SolidColorBrush x:Key="BrownBrush" Color="{StaticResource OctwelveBrown}"/>
-        <Style x:Name="TransportButtonStyle" TargetType="Button">
-            <!--
-            <Setter Property="Background" >
-                <Setter.Value>
-                    <SolidColorBrush x:Name="backgroundBrush" Color="LightGoldenrodYellow" />
-                </Setter.Value>
-            </Setter>-->
-            <Setter Property="Margin" Value="1"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Grid x:Name="RootElement">
-                            <Grid.Resources>
-                                <Storyboard x:Key="Normal State" />
-                                <Storyboard x:Key="MouseOver State">
-                                    <ColorAnimation Duration="0:0:0.2" Storyboard.TargetName="backgroundBrush" Storyboard.TargetProperty="Color" To="{StaticResource OctwelveDarkGreen}" />
-                                </Storyboard>
-                            </Grid.Resources>
-                            <!-- Fill="{TemplateBinding Background}"  -->
-                            <Rectangle x:Name="rectBackground" Margin="0" RadiusX="5" RadiusY="5">
-                                <Rectangle.Fill>
-                                    <SolidColorBrush x:Name="backgroundBrush" Color="{StaticResource OctwelvePaleYellow}" />
-                                </Rectangle.Fill>
-                            </Rectangle>
-                            <ContentPresenter
-                              Content="{TemplateBinding Content}"
-                              ContentTemplate="{TemplateBinding ContentTemplate}"
-                              FontFamily="{TemplateBinding FontFamily}"
-                              FontSize="{TemplateBinding FontSize}"
-                              FontStretch="{TemplateBinding FontStretch}"
-                              FontStyle="{TemplateBinding FontStyle}"
-                              FontWeight="{TemplateBinding FontWeight}"
-                              Foreground="{TemplateBinding Foreground}"
-                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              Padding="{TemplateBinding Padding}"
-                              TextAlignment="{TemplateBinding TextAlignment}"
-                              TextDecorations="{TemplateBinding TextDecorations}"
-                              TextWrapping="{TemplateBinding TextWrapping}"
-                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                              Margin="4,4,4,4" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-
-        <Style x:Key="VolumeThumbStyle" TargetType="Thumb">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Thumb">
-                        <Grid x:Name="RootElement">
-                            <Grid.Resources>
-                                <Storyboard x:Key="Normal State">
-                                </Storyboard>
-                                <Storyboard x:Key="MouseOver State">
-                                    <ColorAnimation Duration="0:0:0.1"
-                                    Storyboard.TargetName="PointerFillBrush"
-                                    Storyboard.TargetProperty="Color"
-                                    To="LightBlue" />
-                                </Storyboard>
-                            </Grid.Resources>
-                            <Path Stroke="RoyalBlue" Data="M 5,0 l 5,5 v 15 h -10 v -15 z" Stretch="Fill" Margin="3,0,3,0">
-                                <Path.Fill>
-                                    <SolidColorBrush x:Name="PointerFillBrush" Color="CadetBlue" />
-                                </Path.Fill>
-                            </Path>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="Slider" x:Key="VolumeSliderStyle">
-            <!-- Any other properties you want to set -->
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Slider">
-                        <Grid x:Name="RootElement">
-                            <!-- States -->
-                            <Grid.Resources>
-                                <!-- Transition to the slider's default state -->
-                                <Storyboard x:Key="Normal State">
-                                    <DoubleAnimation Duration="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" To="1" />
-                                </Storyboard>
-
-                                <!-- Transition to the slider's mouseover state -->
-                                <Storyboard x:Key="MouseOver State">
-                                    <DoubleAnimation Duration="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" To="1" />
-                                </Storyboard>
-
-                                <!-- Transition to the slider's disabled state -->
-                                <Storyboard x:Key="Disabled State">
-                                    <DoubleAnimation Duration="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" To="0.5" />
-                                </Storyboard>
-
-                                <!-- RepeatButton Templates -->
-                                <ControlTemplate x:Key="RepeatButtonTemplate">
-                                    <Grid x:Name="RootElement" Background="Transparent" Opacity="0" />
-                                </ControlTemplate>
-                            </Grid.Resources>
-
-                            <!-- Horizontal Template -->
-                            <Grid x:Name="HorizontalTemplateElement">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                
-                                <Path Fill="Gray" Data="M 0,10 h 50 v -10 z" Margin="5,0,5,0" Grid.Column="0" Grid.ColumnSpan="3" Stretch="Fill" />
-                                
-                                <!-- need the Repeat buttons for the thumb to be positioned correctly -->
-                                <RepeatButton x:Name="HorizontalTrackLargeChangeDecreaseRepeatButtonElement" Grid.Column="0" Template="{StaticResource RepeatButtonTemplate}" IsTabStop="False" />
-                                <Thumb x:Name="HorizontalThumbElement" Width="18" Grid.Column="1" Style="{StaticResource VolumeThumbStyle}" />
-                                <RepeatButton x:Name="HorizontalTrackLargeChangeIncreaseRepeatButtonElement" Grid.Column="2" Template="{StaticResource RepeatButtonTemplate}" IsTabStop="False" />
-                            </Grid>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
 
     </UserControl.Resources>
-    
+
     <StackPanel x:Name="LayoutRoot" Background="White">
         <MediaElement x:Name="mediaElement" AutoPlay="False" />
+
         <Grid ShowGridLines="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -147,22 +19,41 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button x:Name="buttonPrev" Margin="2" Style="{StaticResource TransportButtonStyle}" Grid.Column="0" Click="buttonPrev_Click">
+            <Button x:Name="buttonPrev" 
+                    Margin="2" 
+                    Grid.Column="0" 
+                    Style="{StaticResource TransportButtonStyle}"
+                    Click="buttonPrev_Click">
                 <Path Fill="Black" Margin="3"  Data="M 0,0 h 2 v 10 h -2 z m 7,0 v 10 l -5,-5 z"/>
             </Button>
-            <Button x:Name="buttonPlay" Margin="2" Style="{StaticResource TransportButtonStyle}" Grid.Column="1" Click="buttonPlay_Click">
-                <Path Fill="Black" Margin="3" Data="M 0,0 l 5,5 l -5,5 z" />
+            <Button x:Name="buttonPlay" 
+                    Margin="2" 
+                    Style="{StaticResource TransportButtonStyle}"
+                    Grid.Column="1" 
+                    Click="buttonPlay_Click">
+                <Path Fill="Black" 
+                      Margin="3" 
+                      Data="M 0,0 l 5,5 l -5,5 z" />
             </Button>
-            <Button x:Name="buttonPause" Margin="2" Style="{StaticResource TransportButtonStyle}" Grid.Column="2" Click="buttonPause_Click">
+            <Button x:Name="buttonPause" 
+                    Margin="2" 
+                    Style="{StaticResource TransportButtonStyle}"
+                    Grid.Column="2" 
+                    Click="buttonPause_Click">
                 <Path Fill="Black" Margin="3"  Data="M 0,0 h 2 v 10 h -2 z m 5,0 h 2 v 10 h -2 z"/>
             </Button>
-            <Button x:Name="buttonNext" Margin="2" Style="{StaticResource TransportButtonStyle}" Grid.Column="3" Click="buttonNext_Click">
+            <Button x:Name="buttonNext" 
+                    Margin="2" 
+                    Style="{StaticResource TransportButtonStyle}"
+                    Grid.Column="3" 
+                    Click="buttonNext_Click">
                 <Path Fill="Black" Margin="3"  Data="M 0,0 v 10 l 5,-5 z m 5,0 h 2 v 10 h -2 z"/>
             </Button>
             <my:TextScroller Margin="2" x:Name="titleScroller" Text="Title" Width="200" Grid.Column="4"/>
             <my:HorizontalProgressBar Margin="2" Value="0.0" x:Name="progressBar" Width="200" Grid.Column="4" />
             <Slider 
                 Orientation="Horizontal" 
+                Style="{StaticResource VolumeSliderStyle}"
                 x:Name="sliderVolume" 
                 Width="80" Height="15" 
                 Value="0.5" 
@@ -170,10 +61,10 @@
                 Minimum="0" 
                 Maximum="1" 
                 Grid.Column="5" 
-                Style="{StaticResource VolumeSliderStyle}" 
                 IsTabStop="False"
                 IsEnabled="True"
                 ValueChanged="sliderVolume_ValueChanged" />
+            <!--                  -->
         </Grid>
         <ListBox 
             x:Name="playListBox" 
