@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AudioPlayer")]
-[assembly: AssemblyCopyright("Copyright ©  2008")]
+[assembly: AssemblyCopyright("Copyright © Mark Heath 2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,8 +31,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.17.0.0")]
-[assembly: AssemblyFileVersion("0.17.0.0")]
+[assembly: AssemblyVersion("0.19.0.0")]
+[assembly: AssemblyFileVersion("0.19.0.0")]
 
 // v0.1 25 May 2007
 // very basic version can play and pause
@@ -89,6 +89,12 @@ using System.Runtime.InteropServices;
 // Multi-player shows download progress
 // v0.17 3 Apr 2008
 // AudioControls and TestHarness merged into one Silverlight app
+// v0.18 7 Jun 2008
+// Conversion to Silverlight 2 beta 2
+// v0.19 8 Jun 2008
+// Switching control templating to use new visual state manager
+// had to remove the "Element" off the component names to get sliders working again
+// Moved styles into App.xaml
 
 // Tasks:
 // Get everything into one Silverlight assembly

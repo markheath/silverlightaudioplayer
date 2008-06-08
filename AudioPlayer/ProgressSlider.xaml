@@ -3,21 +3,31 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     Width="400" Height="20">
     <UserControl.Resources>
-        <Style x:Name="ThumbStyle1" TargetType="Thumb">
+        <Style x:Name="ThumbStyle1" 
+               TargetType="Thumb"
+               xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Thumb">
-                        <Grid x:Name="RootElement">
-                            <Grid.Resources>
-                                <Storyboard x:Key="Normal State">
-                                </Storyboard>
-                                <Storyboard x:Key="MouseOver State">
-                                    <ColorAnimation Duration="0:0:0.1"
-                                    Storyboard.TargetName="outerCircleFill"
-                                    Storyboard.TargetProperty="Color"
-                                    To="Gray" />
-                                </Storyboard>
-                            </Grid.Resources>
+                        <Grid x:Name="Root">
+                            <vsm:VisualStateManager.VisualStateGroups>
+                                <vsm:VisualStateGroup>
+                                    <vsm:VisualStateGroup.Transitions>
+                                        <vsm:VisualTransition To="Normal" Duration="0:0:0.1" />
+                                    </vsm:VisualStateGroup.Transitions>
+                                    <vsm:VisualState x:Name="Normal" />
+                                    <vsm:VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0"
+                                                Storyboard.TargetName="outerCircleFill"
+                                                Storyboard.TargetProperty="Color"
+                                                To="Gray" />
+                                        </Storyboard>
+                                    </vsm:VisualState>
+
+
+                                </vsm:VisualStateGroup>
+                            </vsm:VisualStateManager.VisualStateGroups>
                             <Ellipse x:Name="OuterCircle" Stroke="Black" Stretch="Fill" Margin="1,1,1,1">
                                 <Ellipse.Fill>
                                     <SolidColorBrush x:Name="outerCircleFill" Color="White" />
@@ -29,37 +39,41 @@
             </Setter>
         </Style>
         
-        <Style TargetType="Slider" x:Name="SliderStyle1">            
+        <Style TargetType="Slider" 
+               x:Name="SliderStyle1"
+               xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows">
+
             <!-- Any other properties you want to set -->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Slider">
-                        <Grid x:Name="RootElement">
+                        <Grid x:Name="Root">
                             <!-- States -->
                             <Grid.Resources>
-                                <!-- Transition to the slider's default state -->
-                                <Storyboard x:Key="Normal State">
-                                    <DoubleAnimation Duration="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" To="1" />
-                                </Storyboard>
-
-                                <!-- Transition to the slider's mouseover state -->
-                                <Storyboard x:Key="MouseOver State">
-                                    <DoubleAnimation Duration="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" To="1" />
-                                </Storyboard>
-
-                                <!-- Transition to the slider's disabled state -->
-                                <Storyboard x:Key="Disabled State">
-                                    <DoubleAnimation Duration="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" To="0.5" />
-                                </Storyboard>
-
                                 <!-- RepeatButton Templates -->
                                 <ControlTemplate x:Key="RepeatButtonTemplate">
-                                    <Grid x:Name="RootElement" Background="Transparent" Opacity="0" />
+                                    <Grid x:Name="Root" Background="Transparent" Opacity="0" />
                                 </ControlTemplate>
                             </Grid.Resources>
 
+                            <vsm:VisualStateManager.VisualStateGroups>
+                                <vsm:VisualStateGroup x:Name="CommonStates">
+                                    <vsm:VisualStateGroup.Transitions>
+
+                                    </vsm:VisualStateGroup.Transitions>
+                                    <vsm:VisualState x:Name="Normal" />
+                                    <vsm:VisualState x:Name="MouseOver" />
+                                    <vsm:VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0" Storyboard.TargetName="Root" Storyboard.TargetProperty="Opacity" To="0.5" />
+                                        </Storyboard>
+                                    </vsm:VisualState>
+
+                                </vsm:VisualStateGroup>
+                            </vsm:VisualStateManager.VisualStateGroups>
+
                             <!-- Horizontal Template -->
-                            <Grid x:Name="HorizontalTemplateElement">
+                            <Grid x:Name="HorizontalTemplate">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
@@ -71,19 +85,19 @@
                                 <Rectangle Stroke="Black" StrokeThickness="1" Grid.Column="0" Grid.ColumnSpan="3" Height="12" RadiusX="3" RadiusY="3" Margin="5,0,5,0" />
 
                                 <!-- Repeat Buttons + Thumb -->
-                                <RepeatButton x:Name="HorizontalTrackLargeChangeDecreaseRepeatButtonElement" Grid.Column="0" Template="{StaticResource RepeatButtonTemplate}" IsTabStop="False" />
-                                <Thumb x:Name="HorizontalThumbElement" Height="18" Width="18" Grid.Column="1" Style="{StaticResource ThumbStyle1}" />
-                                <RepeatButton x:Name="HorizontalTrackLargeChangeIncreaseRepeatButtonElement" Grid.Column="2" Template="{StaticResource RepeatButtonTemplate}" IsTabStop="False" />
+                                <RepeatButton x:Name="HorizontalTrackLargeChangeDecreaseRepeatButton" Grid.Column="0" Template="{StaticResource RepeatButtonTemplate}" IsTabStop="False" />
+                                <Thumb x:Name="HorizontalThumb" Height="18" Width="18" Grid.Column="1" Style="{StaticResource ThumbStyle1}" />
+                                <RepeatButton x:Name="HorizontalTrackLargeChangeIncreaseRepeatButton" Grid.Column="2" Template="{StaticResource RepeatButtonTemplate}" IsTabStop="False" />
                             </Grid>
 
 
-                            <!-- Focus indicator -->
+                            <!-- Focus indicator (don't want)
                             <Rectangle 
-                                x:Name="FocusVisualElement" 
+                                x:Name="FocusVisual" 
                                 Stroke="#666666" 
                                 StrokeDashArray=".2 5"
                                 StrokeDashCap="Round" 
-                                IsHitTestVisible="false" />
+                                IsHitTestVisible="false" /> -->
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>

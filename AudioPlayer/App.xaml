@@ -3,6 +3,166 @@
              x:Class="AudioPlayer.App"
              >
     <Application.Resources>
-        
+        <Color x:Key="OctwelveDarkGreen">#41803B</Color>
+        <Color x:Key="OctwelveLightGreen">#A7C494</Color>
+        <Color x:Key="OctwelvePaleGreen">#BCD3CD</Color>
+        <Color x:Key="OctwelvePaleYellow">#F4DD83</Color>
+        <Color x:Key="OctwelveBrown">#923224</Color>
+
+        <SolidColorBrush x:Key="BrownBrush" Color="{StaticResource OctwelveBrown}"/>
+        <Style x:Name="TransportButtonStyle" 
+               TargetType="Button"
+               xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows">
+            <!--
+            <Setter Property="Background" >
+                <Setter.Value>
+                    <SolidColorBrush x:Name="backgroundBrush" Color="LightGoldenrodYellow" />
+                </Setter.Value>
+            </Setter>-->
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="RootElement">
+                            <vsm:VisualStateManager.VisualStateGroups>
+                                <vsm:VisualStateGroup x:Name="CommonStates">
+                                    <vsm:VisualStateGroup.Transitions>
+                                        <vsm:VisualTransition To="MouseOver" Duration="0:0:0.2" />
+                                    </vsm:VisualStateGroup.Transitions>
+                                    <vsm:VisualState x:Name="Normal" />
+                                    <vsm:VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0"
+                                                Storyboard.TargetName="backgroundBrush"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{StaticResource OctwelveDarkGreen}" />
+                                        </Storyboard>
+                                    </vsm:VisualState>
+                                </vsm:VisualStateGroup>
+                            </vsm:VisualStateManager.VisualStateGroups>
+
+
+                            <!-- Fill="{TemplateBinding Background}"  -->
+                            <Rectangle x:Name="rectBackground" Margin="0" RadiusX="5" RadiusY="5">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush x:Name="backgroundBrush" 
+                                                     Color="{StaticResource OctwelvePaleYellow}" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <ContentPresenter
+                              Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                              FontFamily="{TemplateBinding FontFamily}"
+                              FontSize="{TemplateBinding FontSize}"
+                              FontStretch="{TemplateBinding FontStretch}"
+                              FontStyle="{TemplateBinding FontStyle}"
+                              FontWeight="{TemplateBinding FontWeight}"
+                              Foreground="{TemplateBinding Foreground}"
+                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              Padding="{TemplateBinding Padding}"
+                              TextAlignment="{TemplateBinding TextAlignment}"
+                              TextDecorations="{TemplateBinding TextDecorations}"
+                              TextWrapping="{TemplateBinding TextWrapping}"
+                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                              Margin="4,4,4,4" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="VolumeThumbStyle" 
+               TargetType="Thumb"
+               xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Grid x:Name="RootElement">
+                            <vsm:VisualStateManager.VisualStateGroups>
+
+                                <vsm:VisualStateGroup x:Name="CommonStates">
+                                    <vsm:VisualStateGroup.Transitions>
+                                        <vsm:VisualTransition To="MouseOver" Duration="0:0:0.1" />
+                                    </vsm:VisualStateGroup.Transitions>
+                                    <vsm:VisualState x:Name="Normal" />
+                                    <vsm:VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0"
+                                            Storyboard.TargetName="PointerFillBrush"
+                                            Storyboard.TargetProperty="Color"
+                                            To="LightBlue" />
+                                        </Storyboard>
+                                    </vsm:VisualState>
+                                </vsm:VisualStateGroup>
+                            </vsm:VisualStateManager.VisualStateGroups>
+
+                            <Path Stroke="RoyalBlue" 
+                                  Data="M 5,0 l 5,5 v 15 h -10 v -15 z" 
+                                  Stretch="Fill" 
+                                  Margin="3,0,3,0">
+                                <Path.Fill>
+                                    <SolidColorBrush x:Name="PointerFillBrush" Color="CadetBlue" />
+                                </Path.Fill>
+                            </Path>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Slider" 
+               x:Key="VolumeSliderStyle"
+               xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows">
+            <!-- Any other properties you want to set -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Slider">
+                        <Grid x:Name="Root">
+                            <!-- States -->
+                            <Grid.Resources>
+
+
+                                <!-- RepeatButton Templates -->
+                                <ControlTemplate x:Key="RepeatButtonTemplate">
+                                    <Grid x:Name="RootElement" Background="Transparent" Opacity="0" />
+                                </ControlTemplate>
+                            </Grid.Resources>
+
+                            <vsm:VisualStateManager.VisualStateGroups>
+                                <vsm:VisualStateGroup x:Name="CommonStates">
+                                    <vsm:VisualStateGroup.Transitions>
+                                        
+                                    </vsm:VisualStateGroup.Transitions>
+                                    <vsm:VisualState x:Name="Normal" />
+                                    <vsm:VisualState x:Name="MouseOver" />
+                                    <vsm:VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" To="0.5" />
+                                        </Storyboard>
+                                    </vsm:VisualState>
+                                </vsm:VisualStateGroup>
+                            </vsm:VisualStateManager.VisualStateGroups>
+                            
+                            <!-- Horizontal Template -->
+                            <Grid x:Name="HorizontalTemplate">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Path Fill="Gray" Data="M 0,10 h 50 v -10 z" Margin="5,0,5,0" Grid.Column="0" Grid.ColumnSpan="3" Stretch="Fill" />
+
+                                <!-- need the Repeat buttons for the thumb to be positioned correctly -->
+                                <RepeatButton x:Name="HorizontalTrackLargeChangeDecreaseRepeatButton" Grid.Column="0" Template="{StaticResource RepeatButtonTemplate}" IsTabStop="False" />
+                                <Thumb x:Name="HorizontalThumb" Width="18" Grid.Column="1" Style="{StaticResource VolumeThumbStyle}" />
+                                <RepeatButton x:Name="HorizontalTrackLargeChangeIncreaseRepeatButton" Grid.Column="2" Template="{StaticResource RepeatButtonTemplate}" IsTabStop="False" />
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Application.Resources>
 </Application>
