@@ -27,7 +27,7 @@
                             <vsm:VisualStateManager.VisualStateGroups>
                                 <vsm:VisualStateGroup x:Name="CommonStates">
                                     <vsm:VisualStateGroup.Transitions>
-                                        <vsm:VisualTransition To="MouseOver" Duration="0:0:0.2" />
+                                        <vsm:VisualTransition To="MouseOver" GeneratedDuration="0:0:0.2" />
                                     </vsm:VisualStateGroup.Transitions>
                                     <vsm:VisualState x:Name="Normal" />
                                     <vsm:VisualState x:Name="MouseOver">
@@ -52,18 +52,6 @@
                             <ContentPresenter
                               Content="{TemplateBinding Content}"
                               ContentTemplate="{TemplateBinding ContentTemplate}"
-                              FontFamily="{TemplateBinding FontFamily}"
-                              FontSize="{TemplateBinding FontSize}"
-                              FontStretch="{TemplateBinding FontStretch}"
-                              FontStyle="{TemplateBinding FontStyle}"
-                              FontWeight="{TemplateBinding FontWeight}"
-                              Foreground="{TemplateBinding Foreground}"
-                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              Padding="{TemplateBinding Padding}"
-                              TextAlignment="{TemplateBinding TextAlignment}"
-                              TextDecorations="{TemplateBinding TextDecorations}"
-                              TextWrapping="{TemplateBinding TextWrapping}"
-                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                               Margin="4,4,4,4" />
                         </Grid>
                     </ControlTemplate>
@@ -82,7 +70,7 @@
 
                                 <vsm:VisualStateGroup x:Name="CommonStates">
                                     <vsm:VisualStateGroup.Transitions>
-                                        <vsm:VisualTransition To="MouseOver" Duration="0:0:0.1" />
+                                        <vsm:VisualTransition To="MouseOver" GeneratedDuration="0:0:0.1" />
                                     </vsm:VisualStateGroup.Transitions>
                                     <vsm:VisualState x:Name="Normal" />
                                     <vsm:VisualState x:Name="MouseOver">
@@ -163,6 +151,44 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="ListBoxItemStyle1" TargetType="ListBoxItem">
+            <Setter Property="Foreground" Value="#FF000000" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Grid x:Name="Root">
+                            <Border CornerRadius="5" Background="#51615B" Margin="1">
+                                <ContentPresenter
+							    Margin="1"
+							    Content="{TemplateBinding Content}"							    
+							 />
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ListBoxStyle1" TargetType="ListBox">
+            <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemStyle1}" />
+		 	<Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <Grid x:Name="Root">
+						<Border Padding="3" Background="#E6BB8A" CornerRadius="5">
+						    <ScrollViewer x:Name="ScrollViewer" 
+								Padding="{TemplateBinding Padding}">
+						        <ItemsPresenter />
+						    </ScrollViewer>
+						</Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
 
     </Application.Resources>
 </Application>

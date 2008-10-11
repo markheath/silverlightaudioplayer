@@ -68,6 +68,7 @@
         </Grid>
         <ListBox 
             x:Name="playListBox" 
+            Style="{StaticResource ListBoxStyle1}"
             SelectionChanged="playListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>

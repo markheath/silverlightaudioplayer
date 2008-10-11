@@ -13,7 +13,7 @@
                             <vsm:VisualStateManager.VisualStateGroups>
                                 <vsm:VisualStateGroup>
                                     <vsm:VisualStateGroup.Transitions>
-                                        <vsm:VisualTransition To="Normal" Duration="0:0:0.1" />
+                                        <vsm:VisualTransition To="Normal" GeneratedDuration="0:0:0.1" />
                                     </vsm:VisualStateGroup.Transitions>
                                     <vsm:VisualState x:Name="Normal" />
                                     <vsm:VisualState x:Name="MouseOver">
