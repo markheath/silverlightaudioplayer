@@ -95,6 +95,10 @@ using System.Runtime.InteropServices;
 // Switching control templating to use new visual state manager
 // had to remove the "Element" off the component names to get sliders working again
 // Moved styles into App.xaml
+// v0.20 11 Oct 2008
+// updated to Silverlight 2 RC0
+// v0.21 14 Oct 2008
+// updated to Silverlight 
 
 // Tasks:
 // Get everything into one Silverlight assembly

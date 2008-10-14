@@ -152,6 +152,69 @@
             </Setter>
         </Style>
 
+		<Style TargetType="ScrollViewer" x:Key="ScrollViewerStyle1">
+		    <Setter Property="IsEnabled" Value="true" />
+		    <Setter Property="Foreground" Value="#FF000000" />
+		    <Setter Property="BorderBrush" Value="#FFA4A4A4" />
+		    <Setter Property="BorderThickness" Value="1" />
+		    <Setter Property="HorizontalContentAlignment" Value="Left" />
+		    <Setter Property="VerticalContentAlignment" Value="Top" />
+		    <Setter Property="Cursor" Value="Arrow" />
+		    <!-- Cannot currently parse FontFamily type in XAML so it's being set in code -->
+		    <!-- <Setter Property="FontFamily" Value="Trebuchet MS" /> -->
+		    <Setter Property="FontSize" Value="11" />
+		    <Setter Property="VerticalScrollBarVisibility" Value="Visible" />
+		    <Setter Property="Template">
+		        <Setter.Value>
+		            <ControlTemplate TargetType="ScrollViewer">
+		                <Grid Background="{TemplateBinding Background}">
+		                    <Grid.ColumnDefinitions>
+		                        <ColumnDefinition Width="*"/>
+		                        <ColumnDefinition Width="Auto"/>
+		                    </Grid.ColumnDefinitions>
+		                    <Grid.RowDefinitions>
+		                        <RowDefinition Height="*"/>
+		                        <RowDefinition Height="Auto"/>
+		                    </Grid.RowDefinitions>
+		                    <!-- Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" -->
+		                    <ScrollContentPresenter
+		                      x:Name="ScrollContentPresenter"
+		                      Grid.Column="0"
+		                      Grid.Row="0"
+		                      Content="{TemplateBinding Content}"
+		                      ContentTemplate="{TemplateBinding ContentTemplate}"
+		                      Cursor="{TemplateBinding Cursor}"
+		                      Margin="{TemplateBinding Padding}" />
+		                    <ScrollBar
+		                      x:Name="VerticalScrollBar"
+		                      Grid.Column="1"
+		                      Grid.Row="0"
+		                      Orientation="Vertical"
+		                      Cursor="Arrow"
+		                      Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+		                      ViewportSize="{TemplateBinding ViewportHeight}"
+		                      Minimum="0"
+		                      Maximum="{TemplateBinding ScrollableHeight}"
+		                      Value="{TemplateBinding VerticalOffset}" 
+		                      Width="18"/>
+		                    <ScrollBar
+		                      x:Name="HorizontalScrollBar"
+		                      Grid.Column="0"
+		                      Grid.Row="1"
+		                      Orientation="Horizontal"
+		                      Cursor="Arrow"
+		                      Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+		                      ViewportSize="{TemplateBinding ViewportWidth}"
+		                      Minimum="0"
+		                      Maximum="{TemplateBinding ScrollableWidth}"
+		                      Value="{TemplateBinding HorizontalOffset}" 
+		                      Height="18"/>
+		                </Grid>
+		            </ControlTemplate>
+		        </Setter.Value>
+		    </Setter>
+		</Style>
+
         <Style x:Key="ListBoxItemStyle1" TargetType="ListBoxItem">
             <Setter Property="Foreground" Value="#FF000000" />
             <Setter Property="Template">
@@ -178,6 +241,7 @@
                         <Grid x:Name="Root">
 						<Border Padding="3" Background="#E6BB8A" CornerRadius="5">
 						    <ScrollViewer x:Name="ScrollViewer" 
+								Style="{StaticResource ScrollViewerStyle1}"
 								Padding="{TemplateBinding Padding}">
 						        <ItemsPresenter />
 						    </ScrollViewer>
