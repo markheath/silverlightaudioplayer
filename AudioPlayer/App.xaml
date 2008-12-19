@@ -1,5 +1,6 @@
 ﻿<Application xmlns="http://schemas.microsoft.com/client/2007"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
              x:Class="AudioPlayer.App"
              >
     <Application.Resources>
@@ -8,11 +9,14 @@
         <Color x:Key="OctwelvePaleGreen">#BCD3CD</Color>
         <Color x:Key="OctwelvePaleYellow">#F4DD83</Color>
         <Color x:Key="OctwelveBrown">#923224</Color>
+        
+        <SolidColorBrush x:Key="ListBoxBackgroundBrush" Color="Black" />
+        <Color x:Key="ListBoxItemBackgroundColor">#F0F0F0</Color>
+        <Color x:Key="ListBoxItemSelectedBackgroundColor">#C0FFFF</Color>
 
         <SolidColorBrush x:Key="BrownBrush" Color="{StaticResource OctwelveBrown}"/>
         <Style x:Name="TransportButtonStyle" 
-               TargetType="Button"
-               xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows">
+               TargetType="Button">
             <!--
             <Setter Property="Background" >
                 <Setter.Value>
@@ -60,8 +64,7 @@
         </Style>
 
         <Style x:Key="VolumeThumbStyle" 
-               TargetType="Thumb"
-               xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows">
+               TargetType="Thumb">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Thumb">
@@ -99,8 +102,7 @@
         </Style>
 
         <Style TargetType="Slider" 
-               x:Key="VolumeSliderStyle"
-               xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows">
+               x:Key="VolumeSliderStyle">
             <!-- Any other properties you want to set -->
             <Setter Property="Template">
                 <Setter.Value>
@@ -108,8 +110,6 @@
                         <Grid x:Name="Root">
                             <!-- States -->
                             <Grid.Resources>
-
-
                                 <!-- RepeatButton Templates -->
                                 <ControlTemplate x:Key="RepeatButtonTemplate">
                                     <Grid x:Name="RootElement" Background="Transparent" Opacity="0" />
@@ -221,7 +221,39 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
                         <Grid x:Name="Root">
-                            <Border CornerRadius="5" Background="#51615B" Margin="1">
+                            <vsm:VisualStateManager.VisualStateGroups>
+                                <vsm:VisualStateGroup x:Name="SelectionStates">
+                                    <vsm:VisualState x:Name="Unselected" />
+                                    <vsm:VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                 Storyboard.TargetName="ListBoxItemBackgroundBrush"
+                                                 Storyboard.TargetProperty="Color"
+                                                 Duration="0"
+                                                 To="{StaticResource ListBoxItemSelectedBackgroundColor}"/>
+                                        </Storyboard>
+                                    </vsm:VisualState>
+                                </vsm:VisualStateGroup>
+
+                                <vsm:VisualStateGroup x:Name="CommonStates">
+                                    <vsm:VisualState x:Name="Normal" />
+                                    <vsm:VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                  Storyboard.TargetName="ListBoxItemBackgroundBrush"
+                                                  Storyboard.TargetProperty="Color"
+                                                  Duration="0"
+                                                  To="#898A8A"/>
+                                        </Storyboard>
+                                    </vsm:VisualState>
+                                </vsm:VisualStateGroup>
+
+                            </vsm:VisualStateManager.VisualStateGroups>
+
+                            <Border CornerRadius="0" Margin="1">
+                                <Border.Background>
+                                    <SolidColorBrush x:Name="ListBoxItemBackgroundBrush" Color="{StaticResource ListBoxItemBackgroundColor}" />
+                                </Border.Background>
                                 <ContentPresenter
 							    Margin="1"
 							    Content="{TemplateBinding Content}"							    
@@ -233,13 +265,15 @@
             </Setter>
         </Style>
 
+
+        
         <Style x:Key="ListBoxStyle1" TargetType="ListBox">
             <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemStyle1}" />
 		 	<Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBox">
                         <Grid x:Name="Root">
-						<Border Padding="3" Background="#E6BB8A" CornerRadius="5">
+						<Border Padding="3" Background="{StaticResource ListBoxBackgroundBrush}" CornerRadius="0">
 						    <ScrollViewer x:Name="ScrollViewer" 
 								Style="{StaticResource ScrollViewerStyle1}"
 								Padding="{TemplateBinding Padding}">

@@ -26,11 +26,22 @@ namespace AudioPlayer
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            string playlist = null;
-            if (!e.InitParams.TryGetValue("Playlist", out playlist))
+            string playlist = GetInitParam(e.InitParams,"Playlist","playlist.xml");
+            BeginLoadPlaylist(playlist);
+        }
+
+        private static string GetInitParam(IDictionary<string,string> initParams, string key, string defaultValue)
+        {
+            string returnValue = null;
+            if (!initParams.TryGetValue(key, out returnValue))
             {
-                playlist = "playlist.xml";
-            }           
+                returnValue = defaultValue;
+            }
+            return returnValue;
+        }
+
+        private void BeginLoadPlaylist(string playlist)
+        {
             WebClient client = new WebClient();
             client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_DownloadStringCompleted);
             client.DownloadStringAsync(new Uri(playlist, UriKind.RelativeOrAbsolute));
@@ -41,26 +52,31 @@ namespace AudioPlayer
             if (e.Error == null)
             {
                 Playlist playlist = Playlist.LoadFromXml(e.Result);
-                if (playlist.Count > 1)
-                {
-                    MultiPlayer player = new MultiPlayer();
-                    player.Playlist = playlist;
-                    this.RootVisual = player;
-                }
-                else
-                {
-                    SimplePlayer simplePlayer = new SimplePlayer();
-                    foreach (PlaylistEntry entry in playlist)
-                    {
-                        simplePlayer.PlaylistEntry = entry;
-                        break;
-                    }
-                    this.RootVisual = simplePlayer;
-                }
+                CreatePlayer(playlist);
             }
             else
             {
                 this.RootVisual = new Oops();
+            }
+        }
+
+        private void CreatePlayer(Playlist playlist)
+        {
+            if (playlist.Count > 1)
+            {
+                MultiPlayer player = new MultiPlayer();
+                player.Playlist = playlist;
+                this.RootVisual = player;
+            }
+            else
+            {
+                SimplePlayer simplePlayer = new SimplePlayer();
+                foreach (PlaylistEntry entry in playlist)
+                {
+                    simplePlayer.PlaylistEntry = entry;
+                    break;
+                }
+                this.RootVisual = simplePlayer;
             }
         }
 

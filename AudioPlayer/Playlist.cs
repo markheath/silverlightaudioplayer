@@ -11,7 +11,7 @@ namespace AudioPlayer
 
         public static Playlist LoadFromXml(string xml)
         {
-            Playlist playlist = new Playlist();
+            Playlist playlist = new Playlist();            
             XDocument xmlPlaylist = XDocument.Parse(xml);
             playlist.entries = new List<PlaylistEntry>();
             playlist.entries.AddRange(from audioFile in xmlPlaylist.Descendants("audiofile")
