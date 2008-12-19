@@ -10,7 +10,7 @@
     <StackPanel x:Name="LayoutRoot" Background="White">
         <MediaElement x:Name="mediaElement" AutoPlay="False" />
 
-        <Grid ShowGridLines="False">
+        <Grid ShowGridLines="True">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -73,8 +73,8 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock FontSize="12" Text="{Binding Title}" Foreground="Red" Margin="3" />
-                        <TextBlock FontSize="12" Text="{Binding Artist}" FontStyle="Italic" Margin="3" />
+                        <TextBlock FontSize="12" Text="{Binding Title}" FontWeight="Bold" Foreground="#404040" Margin="3" />
+                        <TextBlock FontSize="12" Text="{Binding Artist}" Foreground="#808080" Margin="3" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

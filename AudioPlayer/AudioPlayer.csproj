@@ -79,9 +79,6 @@
     <Compile Include="SimplePlayer.xaml.cs">
       <DependentUpon>SimplePlayer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TestListStyle.xaml.cs">
-      <DependentUpon>TestListStyle.xaml</DependentUpon>
-    </Compile>
     <Compile Include="TextScroller.xaml.cs">
       <DependentUpon>TextScroller.xaml</DependentUpon>
     </Compile>
@@ -126,10 +123,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="AnimatedSpeaker.xaml">
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
-    </Page>
-    <Page Include="TestListStyle.xaml">
-      <SubType>Page</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </Page>
   </ItemGroup>
