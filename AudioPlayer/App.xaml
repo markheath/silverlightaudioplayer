@@ -12,8 +12,8 @@
         
         <SolidColorBrush x:Key="ListBoxBackgroundBrush" Color="Black" />
         <Color x:Key="ListBoxItemBackgroundColor">#F0F0F0</Color>
-        <Color x:Key="ListBoxItemSelectedBackgroundColor">#C0FFFF</Color>
-
+        <Color x:Key="ListBoxItemSelectedBackgroundColor">#FFC080</Color>
+        <Color x:Key="ListBoxItemHoverBackgroundColor">#FFFFE0</Color>
         <SolidColorBrush x:Key="BrownBrush" Color="{StaticResource OctwelveBrown}"/>
         <Style x:Name="TransportButtonStyle" 
                TargetType="Button">
@@ -226,11 +226,13 @@
                                     <vsm:VisualState x:Name="Unselected" />
                                     <vsm:VisualState x:Name="Selected">
                                         <Storyboard>
-                                            <ColorAnimation
-                                                 Storyboard.TargetName="ListBoxItemBackgroundBrush"
-                                                 Storyboard.TargetProperty="Color"
-                                                 Duration="0"
-                                                 To="{StaticResource ListBoxItemSelectedBackgroundColor}"/>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                     Storyboard.TargetName="SelectedBorderBackgroundBrush"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     Duration="0"
+                                                     To="1.0"/>
+                                            </Storyboard>
                                         </Storyboard>
                                     </vsm:VisualState>
                                 </vsm:VisualStateGroup>
@@ -240,25 +242,38 @@
                                     <vsm:VisualState x:Name="MouseOver">
                                         <Storyboard>
                                             <ColorAnimation
-                                                  Storyboard.TargetName="ListBoxItemBackgroundBrush"
+                                                  Storyboard.TargetName="HoverBorderBackgroundBrush"
                                                   Storyboard.TargetProperty="Color"
                                                   Duration="0"
-                                                  To="#898A8A"/>
+                                                  To="{StaticResource ListBoxItemHoverBackgroundColor}"/>
                                         </Storyboard>
                                     </vsm:VisualState>
                                 </vsm:VisualStateGroup>
-
                             </vsm:VisualStateManager.VisualStateGroups>
 
-                            <Border CornerRadius="0" Margin="1">
+                            <Border Margin="1"
+                                x:Name="HoverBorder">
                                 <Border.Background>
-                                    <SolidColorBrush x:Name="ListBoxItemBackgroundBrush" Color="{StaticResource ListBoxItemBackgroundColor}" />
+                                    <SolidColorBrush
+                                        x:Name="HoverBorderBackgroundBrush"
+                                        Color="{StaticResource ListBoxItemBackgroundColor}" />
                                 </Border.Background>
-                                <ContentPresenter
-							    Margin="1"
-							    Content="{TemplateBinding Content}"							    
-							 />
                             </Border>
+
+                            <Border Margin="1"
+                                  x:Name="SelectedBorder">
+                                <Border.Background>
+                                    <SolidColorBrush
+                                        x:Name="SelectedBorderBackgroundBrush"
+                                        Opacity="0"
+                                        Color="{StaticResource ListBoxItemSelectedBackgroundColor}" />
+                                </Border.Background>
+                            </Border>
+
+                            <ContentPresenter
+							    Margin="2"
+							    Content="{TemplateBinding Content}" />
+
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>

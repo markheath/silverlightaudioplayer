@@ -10,7 +10,7 @@
     <StackPanel x:Name="LayoutRoot" Background="White">
         <MediaElement x:Name="mediaElement" AutoPlay="False" />
 
-        <Grid ShowGridLines="True">
+        <Grid ShowGridLines="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
