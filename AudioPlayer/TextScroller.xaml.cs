@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace AudioPlayer
 {
@@ -39,9 +40,11 @@ namespace AudioPlayer
             { 
                 text = value;
                 message.Text = value;
-
-                daMoveMessage.To = 0 - message.Text.Length * 10 + this.Width;
-                daMoveMessage.Duration = new Duration(TimeSpan.FromMilliseconds(message.Text.Length * 200));
+                //Debug.Assert(message.ActualWidth > 0, "Is it working now?");
+                double messageWidth = message.ActualWidth; // didn't use to work, so estimated with message.Text.Length * 10
+                daMoveMessage.From = this.Width;
+                daMoveMessage.To = 0 - messageWidth; // +this.Width;
+                daMoveMessage.Duration = CalculateAnimationDuration(this.Width - messageWidth);
                 if (daMoveMessage.To < 0)
                 {
                     scrollStoryboard.Stop();
@@ -50,6 +53,11 @@ namespace AudioPlayer
 
                 // will fire a message size changed?
             }
+        }
+
+        private Duration CalculateAnimationDuration(double distanceTravelled)
+        {
+            return new Duration(TimeSpan.FromMilliseconds(distanceTravelled * 50));
         }
 
         
