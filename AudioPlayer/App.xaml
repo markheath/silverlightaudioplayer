@@ -10,58 +10,12 @@
         <Color x:Key="OctwelvePaleYellow">#F4DD83</Color>
         <Color x:Key="OctwelveBrown">#923224</Color>
         
-        <SolidColorBrush x:Key="ListBoxBackgroundBrush" Color="Black" />
+        <SolidColorBrush x:Key="ListBoxBackgroundBrush" Color="DarkGray" />
         <Color x:Key="ListBoxItemBackgroundColor">#F0F0F0</Color>
         <Color x:Key="ListBoxItemSelectedBackgroundColor">#FFC080</Color>
         <Color x:Key="ListBoxItemHoverBackgroundColor">#FFFFE0</Color>
         <SolidColorBrush x:Key="BrownBrush" Color="{StaticResource OctwelveBrown}"/>
-        <Style x:Name="TransportButtonStyle" 
-               TargetType="Button">
-            <!--
-            <Setter Property="Background" >
-                <Setter.Value>
-                    <SolidColorBrush x:Name="backgroundBrush" Color="LightGoldenrodYellow" />
-                </Setter.Value>
-            </Setter>-->
-            <Setter Property="Margin" Value="1"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Grid x:Name="RootElement">
-                            <vsm:VisualStateManager.VisualStateGroups>
-                                <vsm:VisualStateGroup x:Name="CommonStates">
-                                    <vsm:VisualStateGroup.Transitions>
-                                        <vsm:VisualTransition To="MouseOver" GeneratedDuration="0:0:0.2" />
-                                    </vsm:VisualStateGroup.Transitions>
-                                    <vsm:VisualState x:Name="Normal" />
-                                    <vsm:VisualState x:Name="MouseOver">
-                                        <Storyboard>
-                                            <ColorAnimation Duration="0"
-                                                Storyboard.TargetName="backgroundBrush"
-                                                Storyboard.TargetProperty="Color"
-                                                To="{StaticResource OctwelveDarkGreen}" />
-                                        </Storyboard>
-                                    </vsm:VisualState>
-                                </vsm:VisualStateGroup>
-                            </vsm:VisualStateManager.VisualStateGroups>
 
-
-                            <!-- Fill="{TemplateBinding Background}"  -->
-                            <Rectangle x:Name="rectBackground" Margin="0" RadiusX="5" RadiusY="5">
-                                <Rectangle.Fill>
-                                    <SolidColorBrush x:Name="backgroundBrush" 
-                                                     Color="{StaticResource OctwelvePaleYellow}" />
-                                </Rectangle.Fill>
-                            </Rectangle>
-                            <ContentPresenter
-                              Content="{TemplateBinding Content}"
-                              ContentTemplate="{TemplateBinding ContentTemplate}"
-                              Margin="4,4,4,4" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
 
         <Style x:Key="VolumeThumbStyle" 
                TargetType="Thumb">
@@ -79,20 +33,24 @@
                                     <vsm:VisualState x:Name="MouseOver">
                                         <Storyboard>
                                             <ColorAnimation Duration="0"
-                                            Storyboard.TargetName="PointerFillBrush"
+                                            Storyboard.TargetName="PointerStrokeBrush"
                                             Storyboard.TargetProperty="Color"
-                                            To="LightBlue" />
+                                            To="RoyalBlue" />
                                         </Storyboard>
                                     </vsm:VisualState>
                                 </vsm:VisualStateGroup>
                             </vsm:VisualStateManager.VisualStateGroups>
 
-                            <Path Stroke="RoyalBlue" 
+                            <Path 
                                   Data="M 5,0 l 5,5 v 15 h -10 v -15 z" 
                                   Stretch="Fill" 
+                                  StrokeThickness="2"
                                   Margin="3,0,3,0">
+                                <Path.Stroke>
+                                    <SolidColorBrush x:Name="PointerStrokeBrush" Color="CadetBlue" />
+                                </Path.Stroke>
                                 <Path.Fill>
-                                    <SolidColorBrush x:Name="PointerFillBrush" Color="CadetBlue" />
+                                    <SolidColorBrush x:Name="PointerFillBrush" Color="AliceBlue" />
                                 </Path.Fill>
                             </Path>
                         </Grid>
@@ -139,7 +97,7 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Path Fill="Gray" Data="M 0,10 h 50 v -10 z" Margin="5,0,5,0" Grid.Column="0" Grid.ColumnSpan="3" Stretch="Fill" />
+                                <Path Fill="LightGray" Data="M 0,10 h 50 v -10 z" Margin="5,0,5,0" Grid.Column="0" Grid.ColumnSpan="3" Stretch="Fill" />
 
                                 <!-- need the Repeat buttons for the thumb to be positioned correctly -->
                                 <RepeatButton x:Name="HorizontalTrackLargeChangeDecreaseRepeatButton" Grid.Column="0" Template="{StaticResource RepeatButtonTemplate}" IsTabStop="False" />
@@ -288,7 +246,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBox">
                         <Grid x:Name="Root">
-						<Border Padding="3" Background="{StaticResource ListBoxBackgroundBrush}" CornerRadius="0">
+						<Border Padding="1" Background="{StaticResource ListBoxBackgroundBrush}" CornerRadius="0">
 						    <ScrollViewer x:Name="ScrollViewer" 
 								Style="{StaticResource ScrollViewerStyle1}"
 								Padding="{TemplateBinding Padding}">
