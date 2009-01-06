@@ -28,11 +28,11 @@
 
                                 </vsm:VisualStateGroup>
                             </vsm:VisualStateManager.VisualStateGroups>
-                            <Ellipse x:Name="OuterCircle" Stroke="Black" Stretch="Fill" Margin="1,1,1,1">
-                                <Ellipse.Fill>
-                                    <SolidColorBrush x:Name="outerCircleFill" Color="White" />
-                                </Ellipse.Fill>
-                            </Ellipse>
+                            <Rectangle x:Name="OuterCircle" Stretch="Fill" RadiusX="2" RadiusY="2">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush x:Name="outerCircleFill" Color="#666666" />
+                                </Rectangle.Fill>
+                            </Rectangle>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -82,12 +82,12 @@
 
                                 <!-- Track Layer -->
                                 <!-- Customized: made taller, transparent, rounded corners-->
-                                <Rectangle Stroke="Black" StrokeThickness="1" Grid.Column="0" Grid.ColumnSpan="3" Height="12" RadiusX="3" RadiusY="3" Margin="5,0,5,0" />
 
                                 <!-- Repeat Buttons + Thumb -->
                                 <RepeatButton x:Name="HorizontalTrackLargeChangeDecreaseRepeatButton" Grid.Column="0" Template="{StaticResource RepeatButtonTemplate}" IsTabStop="False" />
-                                <Thumb x:Name="HorizontalThumb" Height="18" Width="18" Grid.Column="1" Style="{StaticResource ThumbStyle1}" />
+                                <Thumb x:Name="HorizontalThumb" Width="24" Grid.Column="1" Style="{StaticResource ThumbStyle1}" />
                                 <RepeatButton x:Name="HorizontalTrackLargeChangeIncreaseRepeatButton" Grid.Column="2" Template="{StaticResource RepeatButtonTemplate}" IsTabStop="False" />
+                                <Rectangle Stroke="Black" StrokeThickness="1" Grid.Column="0" Grid.ColumnSpan="3"  Margin="4,2,4,2" />
                             </Grid>
 
 
@@ -105,8 +105,8 @@
         </Style>
     </UserControl.Resources>
     <Grid x:Name="LayoutRoot" >
-        <Rectangle x:Name="downloadBackground" Height="10" Fill="#FFA0A0A0" Margin="5,0,5,0"  />
-        <Rectangle x:Name="downloadProgress" Width="50" Height="10" Fill="#FFA0FFA0" Margin="5,0,5,0" HorizontalAlignment="Left"/>
+        <Rectangle x:Name="downloadBackground" Fill="White" Margin="4,2,4,2"  />
+        <Rectangle x:Name="downloadProgress" Width="50" Fill="#FFCCCCCC" Margin="4,2,4,2" HorizontalAlignment="Left"/>
         <Slider x:Name="slider" Style="{StaticResource SliderStyle1}" IsTabStop="False" />
     </Grid>
 </UserControl>

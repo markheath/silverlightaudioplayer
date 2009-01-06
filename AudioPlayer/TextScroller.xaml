@@ -17,7 +17,6 @@
         <TextBlock 
             x:Name="message" 
             Text="Hello World This is too long for the available space" 
-            FontSize="12"
             TextWrapping="NoWrap"
             Canvas.Left="0">
         </TextBlock>

@@ -15,6 +15,11 @@ namespace AudioPlayer
 {
     public partial class SimplePlayer : UserControl
     {
+        private Brush rightCanvasBrush = new SolidColorBrush(Color.FromArgb(255, 0xCC, 0xCC, 0xCC));
+        private Brush rightCanvasMouseOverBrush = new SolidColorBrush(Color.FromArgb(255, 0x99, 0x99, 0x99));
+        private Brush iconBrush = new SolidColorBrush(Color.FromArgb(255, 0x66, 0x66, 0x66));
+        private Brush iconMouseOverBrush = new SolidColorBrush(Colors.White);
+
         public SimplePlayer()
         {
             InitializeComponent();
@@ -66,12 +71,16 @@ namespace AudioPlayer
 
         void rightSection_MouseLeave(object sender, MouseEventArgs e)
         {
-            rightSection.Fill = new SolidColorBrush(Color.FromArgb(255, 200, 200, 200));
+            rightSection.Fill = rightCanvasBrush;
+            playIcon.Fill = iconBrush;
+            pauseIcon.Fill = iconBrush;
         }
 
         void rightSection_MouseEnter(object sender, MouseEventArgs e)
         {
-            rightSection.Fill = new SolidColorBrush(Color.FromArgb(255, 100, 100, 100));
+            rightSection.Fill = rightCanvasMouseOverBrush;
+            playIcon.Fill = iconMouseOverBrush;
+            pauseIcon.Fill = iconMouseOverBrush;
         }
 
         void positionUpdate_Completed(object sender, EventArgs e)
@@ -79,7 +88,6 @@ namespace AudioPlayer
             ShowProgress();
             positionUpdate.Begin();
         }
-
 
         string FindTrackName()
         {
