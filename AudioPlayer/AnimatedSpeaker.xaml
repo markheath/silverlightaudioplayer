@@ -31,12 +31,12 @@
         </Storyboard>
     </UserControl.Resources>
     <Canvas x:Name="LayoutRoot">
-        <Path x:Name="Speaker" Stroke="Black" StrokeThickness="5" Data="M 5 20 l 0 20 l 10 0 l 10,10 l 0,-40 l -10,10 Z" />
+        <Path x:Name="Speaker" Fill="#333333" Data="M 5 20 l 0 20 l 10 0 l 10,10 l 0,-40 l -10,10 Z" />
         <Canvas x:Name="animatedSound" Visibility="Collapsed">
-            <Rectangle x:Name="Sound1" Fill="Gray" Canvas.Left="33" Canvas.Top="20" Width="8" Height="20" Opacity="0" />
-            <Rectangle x:Name="Sound2" Fill="Gray" Canvas.Left="43" Canvas.Top="17" Width="8" Height="26" Opacity="0" />
-            <Rectangle x:Name="Sound3" Fill="Gray" Canvas.Left="53" Canvas.Top="14" Width="8" Height="32" Opacity="0" />
-            <Rectangle x:Name="Sound4" Fill="Gray" Canvas.Left="63" Canvas.Top="11" Width="8" Height="38" Opacity="0" />
+            <Rectangle x:Name="Sound1" Fill="#666666" Canvas.Left="33" Canvas.Top="20" Width="8" Height="20" Opacity="0" />
+            <Rectangle x:Name="Sound2" Fill="#666666" Canvas.Left="43" Canvas.Top="17" Width="8" Height="26" Opacity="0" />
+            <Rectangle x:Name="Sound3" Fill="#666666" Canvas.Left="53" Canvas.Top="14" Width="8" Height="32" Opacity="0" />
+            <Rectangle x:Name="Sound4" Fill="#666666" Canvas.Left="63" Canvas.Top="11" Width="8" Height="38" Opacity="0" />
         </Canvas>
     </Canvas>
 </UserControl>

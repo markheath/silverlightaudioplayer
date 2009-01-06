@@ -44,7 +44,7 @@ namespace AudioPlayer
                 double messageWidth = message.ActualWidth; // didn't use to work, so estimated with message.Text.Length * 10
                 daMoveMessage.From = this.Width;
                 daMoveMessage.To = 0 - messageWidth; // +this.Width;
-                daMoveMessage.Duration = CalculateAnimationDuration(this.Width - messageWidth);
+                daMoveMessage.Duration = CalculateAnimationDuration(this.Width + messageWidth);
                 if (daMoveMessage.To < 0)
                 {
                     scrollStoryboard.Stop();
