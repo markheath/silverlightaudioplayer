@@ -6,6 +6,10 @@
     <Canvas x:Name="parentCanvas"
         Loaded="Page_Loaded">
             <Canvas.Resources>
+            <SolidColorBrush x:Key="rightCanvasBrush" Color="#CCCCCC" />
+            <SolidColorBrush x:Key="iconBrush" Color="#666666" />
+            <SolidColorBrush x:Key="midCanvasBrush" Color="#E9E6DF" />
+            <SolidColorBrush x:Key="leftCanvasBrush" Color="#EEEEEE" />
             <Storyboard x:Name="expandPlayer">
                 <DoubleAnimation 
                     Storyboard.TargetName="rightCanvas" 
@@ -70,7 +74,7 @@
 
         <Canvas 
             x:Name="MidCanvas" 
-            Background="#E9E6DF" 
+            Background="{StaticResource midCanvasBrush}" 
             Canvas.Top="0" 
             Canvas.Left="30" 
             Width="250" 
@@ -111,7 +115,7 @@
 
         <Canvas x:Name="LeftCanvas" Canvas.Top="0" Canvas.Left="0" >
             <Path x:Name="LeftSection" 
-                  Fill="#EEEEEE"
+                  Fill="{StaticResource LeftCanvasBrush}"
                   Data="M 5 0 h 30 l 10 15 l -10 15 h -30 a 5,5 0 0 1 -5,-5 v -20 a 5,5 0 0 1 5,-5" />
             <my:AnimatedSpeaker 
                 x:Name="animatedSpeaker" 
@@ -126,7 +130,7 @@
         <!-- we are starting off in the collapsed position -->
         <Canvas x:Name="rightCanvas" Canvas.Top="0" Canvas.Left="35" Width="100" Height="30">
             <Path x:Name="rightSection" 
-                  Fill="#CCCCCC"
+                  Fill="{StaticResource rightCanvasBrush}"
                   Data="M 0 0 h 40 a 5,5 0 0 1 5,5 v 20 a 5,5 0 0 1 -5,5 h -40 l 10,-15 Z"/>
             <Canvas 
                 Canvas.Left="22" 
@@ -134,13 +138,13 @@
                 <Path 
                     x:Name="playIcon"
                     Visibility="Collapsed"
-                    Fill="#666666"
+                    Fill="{StaticResource iconBrush}"
                     Data="M 0 0 l 9,9 l -9,9 Z"/>
             </Canvas>
             <Canvas Canvas.Left="22" Canvas.Top="5">
                 <Path 
                     x:Name="pauseIcon" 
-                    Fill="#666666"
+                    Fill="{StaticResource iconBrush}"
                     Data="M 0 2 h 4 v 15 h -4 Z M 8 2 h 4 v 15 h -4 Z"/>
             </Canvas>
         </Canvas>
