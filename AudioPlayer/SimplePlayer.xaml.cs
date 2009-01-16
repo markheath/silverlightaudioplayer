@@ -15,29 +15,29 @@ namespace AudioPlayer
 {
     public partial class SimplePlayer : UserControl
     {
-        private Brush rightCanvasBrush = new SolidColorBrush(Color.FromArgb(255, 0xCC, 0xCC, 0xCC));
+        private Brush rightCanvasBrush;
         private Brush rightCanvasMouseOverBrush = new SolidColorBrush(Color.FromArgb(255, 0x99, 0x99, 0x99));
-        private Brush iconBrush = new SolidColorBrush(Color.FromArgb(255, 0x66, 0x66, 0x66));
+        private Brush iconBrush;
         private Brush iconMouseOverBrush = new SolidColorBrush(Colors.White);
 
         public SimplePlayer()
         {
             InitializeComponent();
+
+            rightCanvasBrush = (Brush)parentCanvas.Resources["rightCanvasBrush"];
+            iconBrush = (Brush)parentCanvas.Resources["iconBrush"];
         }
 
         private bool showingProgress;
 
         public void Page_Loaded(object sender, EventArgs args)
-        {
-            // Required to initialize variables
-            InitializeComponent();
-
+        {            
             //mediaElement.BufferingProgressChanged += new RoutedEventHandler(mediaElement_BufferingProgressChanged);
             mediaElement.CurrentStateChanged += new RoutedEventHandler(mediaElement_CurrentStateChanged);
             mediaElement.DownloadProgressChanged += new RoutedEventHandler(mediaElement_DownloadProgressChanged);
             mediaElement.MediaEnded += new RoutedEventHandler(mediaElement_MediaEnded);
             mediaElement.MediaFailed += mediaElement_MediaFailed;
-            mediaElement.MediaOpened += new RoutedEventHandler(mediaElement_MediaOpened);
+            mediaElement.MediaOpened += new RoutedEventHandler(mediaElement_MediaOpened);            
             positionUpdate.Completed += new EventHandler(positionUpdate_Completed);
             rightCanvas.MouseEnter += new MouseEventHandler(rightSection_MouseEnter);
             rightCanvas.MouseLeave += new MouseEventHandler(rightSection_MouseLeave);
@@ -131,7 +131,6 @@ namespace AudioPlayer
 
         void mediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)
         {
-            // for some reason this is a string not an enum
             // Buffering, Closed, Error, Opening, Paused, Playing, or Stopped
             if (mediaElement.CurrentState == MediaElementState.Playing)
             {
