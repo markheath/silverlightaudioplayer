@@ -115,7 +115,7 @@
 
         <Canvas x:Name="LeftCanvas" Canvas.Top="0" Canvas.Left="0" >
             <Path x:Name="LeftSection" 
-                  Fill="{StaticResource LeftCanvasBrush}"
+                  Fill="{StaticResource leftCanvasBrush}"
                   Data="M 5 0 h 30 l 10 15 l -10 15 h -30 a 5,5 0 0 1 -5,-5 v -20 a 5,5 0 0 1 5,-5" />
             <my:AnimatedSpeaker 
                 x:Name="animatedSpeaker" 
