@@ -26,7 +26,7 @@ namespace AudioPlayer
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            string playlist = GetInitParam(e.InitParams,"Playlist","playlist.xml");
+            string playlist = GetInitParam(e.InitParams,"Playlist","../playlist.xml");
             BeginLoadPlaylist(playlist);
         }
 
