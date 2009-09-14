@@ -18,7 +18,6 @@ namespace AudioPlayer
         public App()
         {
             this.Startup += this.Application_Startup;
-            this.Exit += this.Application_Exit;
             this.UnhandledException += this.Application_UnhandledException;
 
             InitializeComponent();
@@ -26,8 +25,22 @@ namespace AudioPlayer
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            string playlist = GetInitParam(e.InitParams,"Playlist","../playlist.xml");
-            BeginLoadPlaylist(playlist);
+            string url = GetInitParam(e.InitParams, "Url", null);
+            bool autoPlay = bool.Parse(GetInitParam(e.InitParams, "AutoPlay", "False"));
+            if(url != null)
+            {
+                string artist = GetInitParam(e.InitParams, "Artist", null);
+                string title = GetInitParam(e.InitParams, "Title", null);
+                Playlist playlist = new Playlist();
+                playlist.Add(new PlaylistEntry() { Url = url, Artist = artist, Title = title });
+                CreatePlayer(playlist);
+            }
+            else
+            {
+                string playlistUrl = GetInitParam(e.InitParams,"Playlist","../playlist.xml");
+                BeginLoadPlaylist(playlistUrl);
+            }
+
         }
 
         private static string GetInitParam(IDictionary<string,string> initParams, string key, string defaultValue)
@@ -80,10 +93,6 @@ namespace AudioPlayer
             }
         }
 
-        private void Application_Exit(object sender, EventArgs e)
-        {
-
-        }
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
 

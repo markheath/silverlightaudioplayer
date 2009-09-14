@@ -9,11 +9,16 @@ namespace AudioPlayer
     {
         List<PlaylistEntry> entries;
 
+        public Playlist()
+        {
+            entries = new List<PlaylistEntry>();
+        }
+
         public static Playlist LoadFromXml(string xml)
         {
             Playlist playlist = new Playlist();            
             XDocument xmlPlaylist = XDocument.Parse(xml);
-            playlist.entries = new List<PlaylistEntry>();
+            
             playlist.entries.AddRange(from audioFile in xmlPlaylist.Descendants("audiofile")
                                       select new PlaylistEntry
                                       {
@@ -22,6 +27,11 @@ namespace AudioPlayer
                                           Artist = (string)audioFile.Attribute("artist")
                                       });
             return playlist;
+        }
+
+        public void Add(PlaylistEntry entry)
+        {
+            entries.Add(entry);
         }
 
         public int Count
@@ -38,6 +48,5 @@ namespace AudioPlayer
         {
             return ((System.Collections.IEnumerable)entries).GetEnumerator();
         }
-
     }
 }

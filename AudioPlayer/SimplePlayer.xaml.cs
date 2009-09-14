@@ -90,7 +90,7 @@ namespace AudioPlayer
         }
 
         string FindTrackName()
-        {
+        {            
             if(mediaElement.Attributes.ContainsKey("Title"))
                 return mediaElement.Attributes["Title"];
             return mediaElement.Source.ToString();
@@ -100,14 +100,27 @@ namespace AudioPlayer
         {
             audioPositionSlider.Minimum = 0;
             audioPositionSlider.Maximum = mediaElement.NaturalDuration.TimeSpan.TotalMilliseconds;
-            //trackNameTextBlock.Text = FindTrackName();
-            trackNameTextBlock.Text = playlistEntry.Title + " (" + playlistEntry.Artist + ")";
+            ConstructName();
 
             TimeSpan duration = mediaElement.NaturalDuration.TimeSpan;
             timeTextBlock.Text = String.Format("{0:00}:{1:00}",
                 (int) duration.TotalMinutes,
                 duration.Seconds);
             //Play();
+        }
+
+        // try to construct something meaningful to display
+        private void ConstructName()
+        {
+            if (playlistEntry.Title == null)
+            {
+                playlistEntry.Title = FindTrackName();
+            }
+            trackNameTextBlock.Text = playlistEntry.Title;
+            if (!String.IsNullOrEmpty(playlistEntry.Artist))
+            {
+                trackNameTextBlock.Text += " (" + playlistEntry.Artist + ")";
+            }
         }
 
         void mediaElement_MediaFailed(object sender, ExceptionRoutedEventArgs e)
