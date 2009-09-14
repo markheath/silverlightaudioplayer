@@ -7,21 +7,9 @@
         body { font-family: Tahoma,Arial,Sans-Serif; background-color: cadetblue; }
         #SilverlightControlHost { width: 295px; height: 30px; background-color: cadetblue;  }
     </style>
-    
-    <script type="text/javascript">
-    function test(argument) {
-       var silverlightControl = document.getElementById('SilverlightControl');
-       if(silverlightControl)
-       {
-           silverlightControl.Content.Player.Play(argument);       
-       }
-    }
-    </script>
-    
-    
 </head>
 
-<body onload="bodyOnLoad()">
+<body>
 	<h3>Silverlight Audio Player - Single-Player</h3>
     <p>By <a href="http://mark-dot-net.blogspot.com/">Mark Heath</a>. Source code available at <a href="http://www.codeplex.com/slaudioplayer">http://www.codeplex.com/slaudioplayer</a></p>
 
@@ -32,13 +20,10 @@
 			<param name="Windowless" value="true" />
 			<param name="initParams" value="Url=http://www.wordandspirit.co.uk/blog/audio/dont-look-at-me.mp3,Artist=Mark Heath,Title=Don't look at me" />
 			<a href="http://go.microsoft.com/fwlink/?LinkID=124807" style="text-decoration: none;">
-
      			<img src="http://go.microsoft.com/fwlink/?LinkId=108181" alt="Get Microsoft Silverlight" style="border-style: none"/>
 			</a>
 		</object>
 		<iframe style='visibility:hidden;height:0;width:0;border:0px'></iframe>
     </div>
-
-
 </body>
 </html>
