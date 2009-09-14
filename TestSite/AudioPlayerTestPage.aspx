@@ -10,12 +10,11 @@
     <title>Test Page For AudioPlayer</title>
 </head>
 <body style="height:100%;margin:0;">
-    <asp:Silverlight runat="server" Height="100px" Width="100px">
-    </asp:Silverlight>
     <form id="form1" runat="server" style="height:100%;">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div  style="height:100%;">
-            <asp:Silverlight ID="Xaml1" runat="server" Source="~/ClientBin/AudioPlayer.xap" Version="2.0" Width="100%" Height="100%" />
+            <asp:Silverlight ID="Xaml1" runat="server" Source="~/ClientBin/AudioPlayer.xap" 
+                Version="2.0" Width="100%" Height="100%" />
         </div>
     </form>
 </body>

@@ -4,4 +4,8 @@ ClientBin
 </Value></Property><Property><Name>svn:ignore</Name><Value>Bin
 ClientBin
 App_Code
+</Value></Property><Property><Name>svn:ignore</Name><Value>Bin
+ClientBin
+App_Code
+*.tmp
 </Value></Property></Properties></ItemProperties>

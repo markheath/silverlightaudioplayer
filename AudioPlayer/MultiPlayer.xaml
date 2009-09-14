@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:my="clr-namespace:AudioPlayer"
     xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
-    Width="400" Height="300">
+    > <!-- 400, 300-->
     <UserControl.Resources>
 
         <Color x:Key="TransportButtonBackground">#A7C494</Color>
@@ -64,11 +64,10 @@
 
     </UserControl.Resources>
 
-    <StackPanel x:Name="LayoutRoot" Background="White">
-        <MediaElement x:Name="mediaElement" AutoPlay="False" />
+    
+    <Grid x:Name="LayoutRoot" ShowGridLines="False">
 
-        <Grid ShowGridLines="False">
-            <Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -76,6 +75,10 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <Button x:Name="buttonPrev" 
                     Margin="2" 
                     Grid.Column="0" 
@@ -124,19 +127,25 @@
                 IsEnabled="True"
                 ValueChanged="sliderVolume_ValueChanged" />
             <!--                  -->
-        </Grid>
-        <ListBox 
-            x:Name="playListBox" 
-            Style="{StaticResource ListBoxStyle1}"
-            SelectionChanged="playListBox_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock FontSize="12" Text="{Binding Title}" FontWeight="Bold" Foreground="#404040" Margin="3" />
-                        <TextBlock FontSize="12" Text="{Binding Artist}" Foreground="#808080" Margin="3" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </StackPanel>
+
+            <ListBox 
+                Grid.Row="1"
+                Grid.ColumnSpan="6"
+                x:Name="playListBox" 
+                Style="{StaticResource ListBoxStyle1}"
+                SelectionChanged="playListBox_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="12" Text="{Binding Title}" FontWeight="Bold" Foreground="#404040" Margin="3" />
+                            <TextBlock FontSize="12" Text="{Binding Artist}" Foreground="#808080" Margin="3" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        <MediaElement x:Name="mediaElement" AutoPlay="False" />
+
+    </Grid>
+
+
 </UserControl>
