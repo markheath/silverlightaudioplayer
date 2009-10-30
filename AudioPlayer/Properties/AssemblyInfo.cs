@@ -119,6 +119,7 @@ using System.Runtime.InteropServices;
 // v0.28 30 Oct 2009
 // Addition of new Volume Slider control to simple player
 // Documentation page uses object tag instead of (now obsolete?) asp:Silverlight control
+// Supports an Alternative "Path=" syntax instead of "Url=" to make it work nice with WikiPlex
 
 // Tasks:
 // Get everything into one Silverlight assembly

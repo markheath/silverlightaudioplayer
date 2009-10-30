@@ -26,6 +26,11 @@ namespace AudioPlayer
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             string url = GetInitParam(e.InitParams, "Url", null);
+            if (url == null)
+            {
+                // alternative key to allow us to pass parameters using WikiPlex (for CodePlex)                
+                url = GetInitParam(e.InitParams, "Path", null);
+            }
             bool autoPlay = bool.Parse(GetInitParam(e.InitParams, "AutoPlay", "False"));
             if(url != null)
             {
