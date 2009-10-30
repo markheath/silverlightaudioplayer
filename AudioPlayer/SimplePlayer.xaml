@@ -30,7 +30,17 @@
                     Storyboard.TargetName="animatedSpeaker"
                     Storyboard.TargetProperty="(Canvas.Left)"
                     To="4"
-                    Duration="0:0:0.5" />                
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="animatedSpeaker"
+                    Storyboard.TargetProperty="Opacity"
+                    To="0"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="volumeSlider"
+                    Storyboard.TargetProperty="Opacity"
+                    To="1"
+                    Duration="0:0:0.5" />
             </Storyboard>
 
             <Storyboard x:Name="collapsePlayer">
@@ -56,6 +66,16 @@
                     Storyboard.TargetName="animatedSpeaker"
                     Storyboard.TargetProperty="(Canvas.Left)"
                     To="12"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="animatedSpeaker"
+                    Storyboard.TargetProperty="Opacity"
+                    To="1"
+                    Duration="0:0:0.5" />
+                <DoubleAnimation
+                    Storyboard.TargetName="volumeSlider"
+                    Storyboard.TargetProperty="Opacity"
+                    To="0"
                     Duration="0:0:0.5" />
             </Storyboard>
 
@@ -117,6 +137,7 @@
             <Path x:Name="LeftSection" 
                   Fill="{StaticResource leftCanvasBrush}"
                   Data="M 5 0 h 30 l 10 15 l -10 15 h -30 a 5,5 0 0 1 -5,-5 v -20 a 5,5 0 0 1 5,-5" />
+            
             <my:AnimatedSpeaker 
                 x:Name="animatedSpeaker" 
                 Canvas.Left="4" 
@@ -125,6 +146,12 @@
                     <ScaleTransform ScaleX="0.4" ScaleY="0.4" />
                 </my:AnimatedSpeaker.RenderTransform>
             </my:AnimatedSpeaker>
+            <my:VolumeSlider 
+                Opacity="0"
+                Width="45" Height="25"
+                x:Name="volumeSlider"
+                Canvas.Left="4"
+                Canvas.Top="3" />
         </Canvas>
         
         <!-- we are starting off in the collapsed position -->

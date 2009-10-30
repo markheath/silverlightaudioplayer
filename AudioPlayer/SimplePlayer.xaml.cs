@@ -46,7 +46,13 @@ namespace AudioPlayer
             mediaElement_CurrentStateChanged(this, null);
             mediaElement_DownloadProgressChanged(this, null);
             HtmlPage.RegisterScriptableObject("Player", this);
+            volumeSlider.Volume = mediaElement.Volume;
+            volumeSlider.VolumeChanged += new EventHandler<VolumeChangedEventArgs>(volumeSlider_VolumeChanged);
+        }
 
+        void volumeSlider_VolumeChanged(object sender, VolumeChangedEventArgs e)
+        {
+            mediaElement.Volume = e.Volume;
         }
 
         void slider2_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
