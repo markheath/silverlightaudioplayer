@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Silverlight Audio Player Demo Page</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
@@ -31,11 +31,20 @@
     
     <p><b>InitParams:</b> <i>Url=http://www.wordandspirit.co.uk/blog/audio/dont-look-at-me.mp3,Artist=Mark Heath,Title=Don't look at me</i></p>
     <div style="width:295px; height: 30px;">
+    	<object data="data:application/x-silverlight," type="application/x-silverlight-2" id="Demo1" width="100%" height="100%">
+			<param name="source" value="ClientBin/AudioPlayer.xap"/>
+			<param name="background" value="white" />
+			<param name="initParams" value="Url=http://www.wordandspirit.co.uk/blog/audio/dont-look-at-me.mp3,Artist=Mark Heath,Title=Don't look at me" />
+            <param name="minRuntimeVersion" value="3.0.40624.0" />	
+            <a href="http://go.microsoft.com/fwlink/?LinkID=149156&v=3.0.40624.0" style="text-decoration:none">
+              <img src="http://go.microsoft.com/fwlink/?LinkId=108181" alt="Get Microsoft Silverlight" style="border-style:none"/>
+            </a>
+		</object><iframe style='visibility:hidden;height:0;width:0;border:0px'></iframe>
 
-        <asp:Silverlight ID="Demo1" runat="server" 
+        <!--<asp:Silverlight ID="Demo1" runat="server" 
             InitParams="Url=http://www.wordandspirit.co.uk/blog/audio/dont-look-at-me.mp3,Artist=Mark Heath,Title=Don't look at me"
             Source="~/ClientBin/AudioPlayer.xap" 
-            Version="2.0" Width="100%" Height="100%" />
+            Version="2.0" Width="100%" Height="100%" />-->
     </div>
     
     <h3>Single Player Demo 2</h3>
@@ -45,11 +54,15 @@
     
     <p><b>InitParams:</b> <i>Url=http://www.wordandspirit.co.uk/blog/audio/you-have-always-given.mp3</i></p>
     <div style="width:295px; height: 30px;">
-
-        <asp:Silverlight ID="Demo2" runat="server" 
-            InitParams="Url=http://www.wordandspirit.co.uk/blog/audio/you-have-always-given.mp3"
-            Source="~/ClientBin/AudioPlayer.xap" 
-            Version="2.0" Width="100%" Height="100%" />
+    	<object data="data:application/x-silverlight," type="application/x-silverlight-2" id="Demo2" width="100%" height="100%">
+			<param name="source" value="ClientBin/AudioPlayer.xap"/>
+			<param name="background" value="white" />
+			<param name="initParams" value="Url=http://www.wordandspirit.co.uk/blog/audio/you-have-always-given.mp3" />
+            <param name="minRuntimeVersion" value="3.0.40624.0" />	
+            <a href="http://go.microsoft.com/fwlink/?LinkID=149156&v=3.0.40624.0" style="text-decoration:none">
+              <img src="http://go.microsoft.com/fwlink/?LinkId=108181" alt="Get Microsoft Silverlight" style="border-style:none"/>
+            </a>
+		</object><iframe style='visibility:hidden;height:0;width:0;border:0px'></iframe>
     </div>
     
     <h3>Multiple File Player Demo</h3>
@@ -75,11 +88,15 @@
     <p><b>InitParams:</b> <i>Url=Playlist=../Playlist.xml</i></p>
         
     <div style="width:400px; height:150px; margin:5px;">
-
-        <asp:Silverlight ID="Demo3" runat="server" 
-            InitParams="Playlist=../Playlist.xml"
-            Source="~/ClientBin/AudioPlayer.xap" 
-            Version="2.0" Width="100%" Height="100%" />
+    	<object data="data:application/x-silverlight," type="application/x-silverlight-2" id="Demo3" width="100%" height="100%">
+			<param name="source" value="ClientBin/AudioPlayer.xap"/>
+			<param name="background" value="white" />
+			<param name="initParams" value="Playlist=../Playlist.xml" />
+            <param name="minRuntimeVersion" value="3.0.40624.0" />	
+            <a href="http://go.microsoft.com/fwlink/?LinkID=149156&v=3.0.40624.0" style="text-decoration:none">
+              <img src="http://go.microsoft.com/fwlink/?LinkId=108181" alt="Get Microsoft Silverlight" style="border-style:none"/>
+            </a>
+		</object><iframe style='visibility:hidden;height:0;width:0;border:0px'></iframe>
     </div>
     
     <h3>Many Audio Tracks</h3>
@@ -88,14 +105,17 @@
 
     <p><b>InitParams:</b> <i>Url=Playlist=../12ItemPlaylist.xml</i></p>
         
-        <div style="width:400px; height:150px; margin:5px;">
-
-        <asp:Silverlight ID="Silverlight1" runat="server" 
-            InitParams="Playlist=../12ItemPlaylist.xml"
-            Source="~/ClientBin/AudioPlayer.xap" 
-            Version="2.0" Width="100%" Height="100%" />
+    <div style="width:400px; height:150px; margin:5px;">
+    	<object data="data:application/x-silverlight," type="application/x-silverlight-2" id="Demo4" width="100%" height="100%">
+			<param name="source" value="ClientBin/AudioPlayer.xap"/>
+			<param name="background" value="white" />
+			<param name="initParams" value="Playlist=../12ItemPlaylist.xml" />
+            <param name="minRuntimeVersion" value="3.0.40624.0" />	
+            <a href="http://go.microsoft.com/fwlink/?LinkID=149156&v=3.0.40624.0" style="text-decoration:none">
+              <img src="http://go.microsoft.com/fwlink/?LinkId=108181" alt="Get Microsoft Silverlight" style="border-style:none"/>
+            </a>
+		</object><iframe style='visibility:hidden;height:0;width:0;border:0px'></iframe>
     </div>
-
     
     <h3>No Parameters Demo</h3>
     
