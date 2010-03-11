@@ -114,7 +114,11 @@ namespace AudioPlayer
 
         private void buttonPause_Click(object sender, RoutedEventArgs e)
         {
-            mediaElement.Pause();
+            if (mediaElement.CanPause)
+                mediaElement.Pause();
+            else
+                mediaElement.Stop();
+
         }
 
         private void sliderVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

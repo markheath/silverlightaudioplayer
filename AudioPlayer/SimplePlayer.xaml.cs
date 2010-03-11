@@ -236,7 +236,10 @@ namespace AudioPlayer
         {
             try
             {
-                mediaElement.Pause();
+                if (mediaElement.CanPause)
+                    mediaElement.Pause();
+                else
+                    mediaElement.Stop();
                 collapsePlayer.Begin();
             }
             catch (Exception e)
