@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="Default.aspx.cs" Inherits="_Default" %>
-<%@ Register Assembly="System.Web.Silverlight" Namespace="System.Web.UI.SilverlightControls" TagPrefix="asp" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -40,11 +39,6 @@
               <img src="http://go.microsoft.com/fwlink/?LinkId=108181" alt="Get Microsoft Silverlight" style="border-style:none"/>
             </a>
 		</object><iframe style='visibility:hidden;height:0;width:0;border:0px'></iframe>
-
-        <!--<asp:Silverlight ID="Demo1" runat="server" 
-            InitParams="Url=http://www.wordandspirit.co.uk/blog/audio/dont-look-at-me.mp3,Artist=Mark Heath,Title=Don't look at me"
-            Source="~/ClientBin/AudioPlayer.xap" 
-            Version="2.0" Width="100%" Height="100%" />-->
     </div>
     
     <h3>Single Player Demo 2</h3>
@@ -75,10 +69,10 @@
     <div class="xml">
         &lt;?xml version="1.0" encoding="utf-8" ?&gt; <br />
         &lt;playlist&gt; <br />
-&nbsp;&nbsp;    &lt;audiofile url="http://www.markheath.me.uk/music/markheath+oppositionandjoy.mp3" title="Opposition and Joy" artist="Mark Heath" /&gt; <br />
-&nbsp;&nbsp;    &lt;audiofile url="http://www.markheath.me.uk/music/markheath+youhavealwaysgiven.mp3" title="You have always given" artist="Mark Heath" /&gt; <br />
-&nbsp;&nbsp;    &lt;audiofile url="http://www.markheath.me.uk/music/markheath+dontlookatme.mp3" title="Don't Look at Me" artist="Mark Heath" /&gt; <br />
-&nbsp;&nbsp;    &lt;audiofile url="http://www.markheath.me.uk/music/markheath+holyspiritwillyoube.mp3" title="Holy Spirit Will You Be" artist="Mark Heath" /&gt; <br />
+&nbsp;&nbsp;    &lt;audiofile url="http://www.mysite.com/track1.mp3" title="Track 1" artist="Mark Heath" /&gt; <br />
+&nbsp;&nbsp;    &lt;audiofile url="http://www.mysite.com/track2.mp3" title="Track 2" artist="Mark Heath" /&gt; <br />
+&nbsp;&nbsp;    &lt;audiofile url="http://www.mysite.com/track3.mp3" title="Track 3" artist="Mark Heath" /&gt; <br />
+&nbsp;&nbsp;    &lt;audiofile url="http://www.mysite.com/track4.mp3" title="Track 4" artist="Mark Heath" /&gt; <br />
         &lt;/playlist&gt; 
     </div>
         
